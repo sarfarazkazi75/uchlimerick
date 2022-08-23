@@ -1,0 +1,585 @@
+.fw-bold{font-weight: bold !important;}
+.fw-medium{font-weight: 500 !important;}
+/* Arrive Eat and Stay page  */
+.map-sec {
+    padding: 100px 0 70px;
+}
+.map-sec .section-header,
+.color-black,
+.food-drink.light .text-border-bottom h5 {
+    color: #000;
+}
+.map-sec p,
+.accordion-box .content p,
+.img-with-text p,
+.food-drink.light p{
+    color: rgba(0, 0, 0, 0.85);
+}
+.map-sec ul li a{
+    color: #701D45;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 25px;
+    display: inline-block;
+}
+.map-sec ul li a b{
+    font-weight: 700;
+}
+.map-sec ul{
+    margin: 35px 0;
+}
+.map-sec ul li:not(:last-child){
+    margin-bottom: 10px;
+}
+.map-sec ul li .icon{
+    position: absolute;
+    top: 0;
+    left: 0;    
+}
+.map-sec .button-dark{
+    font-weight: 500;
+}
+.img-with-text .col-left :last-child,
+.food-drink .col-right :last-child {
+    margin-bottom: 0;
+}
+.accordion-box .title {
+    font-family: 'Rubik';
+}
+.accordion-box .title-wrp {
+    padding: 23px 15px;
+    border-bottom: 1px solid #98774A;
+}
+/* .accordion-box {
+    margin-bottom: 8px;
+} */
+.accordion-sign {
+    position: absolute;
+    right: 5px;
+    transform: translate(0, -50%);
+    top: 50%;
+    height: 27px;
+    width: 25px;
+    cursor: pointer;
+}
+.accordion-sign .horizontal {
+    background-color: #98774A;
+    width: 25px;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+.accordion-sign .vertical {
+    background-color: #98774A;
+    height: 24px;
+    width: 2px;
+    position: absolute;
+    left: 12px;
+    top: 3px;
+    -webkit-transition: all .25s;
+    -moz-transition: all .25s;
+    -ms-transition: all .25s;
+    -o-transition: all .25s;
+    transition: all .25s;
+}
+.accordion-sign.opened .vertical{
+    height: 0;
+}
+.accordion-box .content :last-child {
+    margin-bottom: 00;
+}
+.accordion-box .content {
+    padding: 40px 0;
+}
+.accordion-box .img-wrapper{
+    padding-top: 90%;
+}
+.accordion-sec {
+    padding-bottom: 90px;
+}
+.img-with-text {
+    background: rgba(231, 233, 236, 0.75);
+    padding: 80px 0;
+}
+.img-with-text .section-header .title{
+    margin-bottom: 30px;
+}
+.food-drink {
+    background: linear-gradient(0deg, #3C1226 39.06%, #181214 100%);
+    padding: 95px 0 100px;
+    z-index: 1;
+    overflow: hidden;
+}
+.food-drink .food-drink-wrp .row {
+    margin-top: 65px;
+}
+.food-drink .food-drink-wrp .img-wrapper {
+    padding-top: 60%;
+}
+.food-drink .col-right,
+.img-with-text.dark .col-left {
+    padding-left: 80px;
+}
+.food-drink::before{
+    content: "";
+    position: absolute;
+    right: 0;
+    background-image: url('https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/food-drink-bg.svg');
+    bottom: 0;
+    z-index: -1;
+    width: 100%;
+    opacity: 0.8;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-size: 100%;
+}
+.food-drink::after {
+    content: "";
+    position: absolute;
+    right: 0;
+        background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/food-drink-bot.svg);
+    bottom: -430px;
+    z-index: -1;
+    opacity: 0.8;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: auto;
+}
+.food-drink .food-drink-wrp .button-light {
+    padding: 16px 25px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+.food-drink.light {
+    background: #fff;
+}
+.food-drink.light::after{
+    display: none;
+}
+.food-drink.light::before{
+    background-image: url(../images/food-light-bg.png);
+    background-size: auto;
+    background-position: right 37%;
+}
+.food-drink.light .food-drink-wrp .row {
+    flex-direction: row-reverse;
+}
+.food-drink.light .food-drink-wrp .col-right {
+    padding-right: 80px;
+    padding-left: 15px;
+}
+.food-drink.light .section-header .col-right{
+    padding-left: 15px;
+}
+.food-drink.light .section-header .col-left{
+    padding-right: 80px;
+}
+.food-drink.light .food-drink-wrp .button-light {
+    background-color: transparent;
+    color: #000;
+}
+.food-drink.light .food-drink-wrp .button-light:hover{
+    background-color: #FFC72C;
+    color: #fff;
+}
+.food-drink.light .text-border-bottom h3{
+    color: #701D45;
+}
+.food-drink .food-drink-wrp p {
+    font-size: 12px;
+    line-height: 130%;
+}
+.food-drink .food-drink-wrp p a{color:#FFC72C;}
+.food-drink .food-drink-wrp p a:hover{color:#98774A;}
+
+.food-drink .food-drink-wrp h6{
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-family: 'Rubik';
+}
+.food-drink.light .food-drink-wrp h6{
+    color: #701D45;
+}
+.page-template-Arrive-EatStay .support-hero{
+    overflow: hidden;
+}
+.food-drink .food-drink-wrp .text-border-bottom:before{
+    bottom: 0;
+    padding-top: 0;
+}
+.food-drink .food-drink-wrp .text-border-bottom{
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+}
+.food-drink .food-drink-wrp .text-border-bottom h5{
+    margin-bottom: 0;
+}
+/* corporate member  */
+.img-with-text.dark {
+    background: linear-gradient(0deg, #3C1226 39.06%, #181214 100%);
+    padding: 100px 0;
+    z-index: 1;
+    overflow: hidden;
+}
+.img-with-text.dark:before{
+    content: "";
+    background-image: url(../images/img-with-text-dark.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    height: 100%;
+    width: 100%;
+    left: -20px;
+    top: -40px;
+    position: absolute;
+    opacity: 0.4;
+    z-index: -1;
+}
+.img-with-text.dark .section-header .title{
+    color: #FFC72C;
+    font-size: 24px;
+}
+.img-with-text.dark p{
+    color: #fff;
+}
+.img-with-text.dark .img-list li .icon {
+    min-width: 50px;
+    height: 50px;
+    border: 1px solid #98774A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-with-text.dark .img-list li h6{
+    font-family: 'Rubik';
+    font-size: 16px;
+}
+.img-with-text.dark .img-list li:not(:last-child){
+    margin-bottom: 40px;
+}
+.become-ofc {
+    padding: 110px 0;
+}
+.become-ofc .section-header .subtitle {
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 12px;
+    color: #3C3E4D;
+    font-family: 'Rubik';
+}
+.become-ofc .section-header .title {
+    font-weight: 600;
+    font-size: 42px;
+    color: #701D45;
+}
+.become-ofc .section-header p{
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 130%;
+    color: rgba(0, 0, 0, 0.85);
+}
+.become-ofc .section-header p a{
+    color: #701D45;
+    text-decoration: underline;
+}
+.become-ofc .section-header p a:hover{
+    color: #98774A;
+}
+.become-ofc .btn-wrap {
+    margin-left: -8px;
+    margin-right: -8px;
+}
+.become-ofc .btn-wrap > div{
+    padding: 0 8px;
+}
+.become-ofc .button {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    padding: 25px 30px;
+}
+.become-ofc .row-wrp > div:last-child{
+    padding-left: 80px;
+}
+.become-ofc .benifit-box {
+    border: 1px solid #98774A;
+    padding: 40px;
+    color: #3C3E4D;
+}
+.become-ofc .benifit-box ul li{
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 130%;
+}
+.become-ofc .benifit-box ul li:not(:last-child){
+    margin-bottom: 20px;
+}
+.become-ofc .benifit-box h5{
+    font-weight: 600;
+    font-size: 31px;
+    color: #701D45;
+}
+.become-ofc .benifit-box ul{    
+    list-style: disc;
+    margin-left: 23px;
+}
+.become-ofc .benifit-box ul li::marker{
+    color: #3C3E4D;
+}
+.become-ofc .row-wrp:not(:last-child){
+    margin-bottom: 90px;
+}
+.become-ofc .row-wrp:nth-child(even){
+    flex-direction: row-reverse;
+}
+.become-ofc .row-wrp:nth-child(even) > div:last-child{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.become-ofc .row-wrp:nth-child(even) > div:first-child{
+    padding-left: 80px;
+}
+.sponser-detail .data {
+    border-bottom: 1px solid #000;
+}
+.venur-box .venur-box-wrp{
+    border: 1px solid #98774A;
+    height: 100%;
+    padding: 40px;
+    background-color: #fff;
+}
+.venur-box .venur-box-wrp p {
+    font-size: 16px;
+    line-height: 130%;
+    color: #701D45;
+    word-break: break-word;
+}
+.venur-box .venur-box-col{
+    margin-bottom: 30px;
+}
+.venur-box:before{
+    content: "";
+    background-image: url(../images/venue-box-bg.png);
+    position: absolute;
+    top: -100px;
+    left: 0;
+    height: calc(100% + 220px);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+.page-template-careers-post .post-container h5{
+    font-weight: 600;
+    font-size: 28px;
+}
+.page-template-careers-post .post-container ul li:before{
+    top: 2px;
+    transform: none;
+}
+.page-template-careers-post .post-container .button {
+    min-width: 285px;
+}
+.testimoniyal .link-btn{
+    color: #FFC72C;
+    font-weight: 400;
+    font-size: 28px;
+    text-decoration: underline;
+}
+.testimoniyal .link-btn:hover {
+    color: #fff;
+}
+
+/* responsive css  */
+@media screen and (max-width: 1360px){
+    .food-drink.light::before,
+    .img-with-text.dark:before{
+        background-size: 40%;
+    }
+}
+@media screen and (max-width: 1199px){
+    .map-sec,.img-with-text,.food-drink,.img-with-text.dark,.become-ofc {
+        padding: 70px 0;
+    }
+    .accordion-sec{
+        padding-bottom: 70px;
+    }
+    .accordion-box .title{
+        font-size: 18px;
+    }
+    .accordion-box .content {
+        padding: 30px 0;
+    }
+    .food-drink .food-drink-wrp .row {
+        margin-top: 40px;
+    }
+    .food-drink .col-right,.img-with-text.dark .col-left,.become-ofc .row-wrp > div:last-child,.become-ofc .row-wrp:nth-child(even) > div:first-child {
+        padding-left: 40px;
+    }
+    .food-drink.light .food-drink-wrp .col-right,
+    .food-drink.light .section-header .col-left{
+        padding-right: 40px;
+    }
+    .become-ofc .row-wrp:not(:last-child) {
+        margin-bottom: 40px;
+    }
+    .become-ofc .benifit-box{
+        padding: 30px;
+    }
+    .become-ofc .button{
+        padding: 17px 15px;
+    }
+    .venur-box .venur-box-wrp{
+        padding: 30px;
+    }
+    .testimoniyal .link-btn{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 991px){
+    .map-sec, .img-with-text, .food-drink,.img-with-text.dark,.become-ofc {
+        padding: 50px 0;
+    }
+    .map-sec .section-title{
+        margin-bottom: 40px;
+    }
+    .map-sec ul {
+        margin: 25px 0;
+    }
+    .accordion-sec {
+        padding-bottom: 50px;
+    }
+    .food-drink .col-right,.img-with-text.dark .col-left,.become-ofc .row-wrp > div:last-child,.become-ofc .row-wrp:nth-child(even) > div:first-child {
+        padding-left: 15px;
+    }
+    .food-drink.light .food-drink-wrp .col-right,
+    .food-drink.light .section-header .col-left{
+        padding-right: 15px;
+    }
+    .food-drink .food-drink-wrp .button-light{
+        margin-top: 10px;
+    }
+    .food-drink .food-drink-wrp .row {
+        margin-top: 35px;
+    }
+    .become-ofc .benifit-box{
+        padding: 20px;
+    }
+    .become-ofc .section-header .title{
+        font-size: 36px;
+    }
+    .testimoniyal .link-btn{
+        font-size: 22px;
+    }
+}
+@media screen and (max-width: 767px){
+    .map-sec .section-title {
+        margin-bottom: 25px;
+    }
+    .map-sec .button-dark,
+    .accordion-sec .button,
+    .food-drink .food-drink-wrp .button-light,
+    .page-template-careers-post .page-banner .button,
+    .post-container .button{
+        width: 100%;
+        text-align: center;
+    }
+    .map-sec{
+        padding: 30px 0;
+    }
+    .accordion-box .title {
+        font-size: 14px;
+        font-weight: 300;
+    }
+    .accordion-box .title-wrp{
+        padding: 30px 15px 30px 0;
+    }
+    .accordion-sign .horizontal{
+        width: 21px;
+    }
+    .accordion-sign .vertical{
+        height: 21px;
+        left: 10px;
+        top: 5px;
+    }
+    .accordion-sec {
+        padding-bottom: 30px;
+    }
+    .img-with-text {
+        padding: 55px 0 45px;
+    }
+    .img-with-text.dark{
+        padding: 45px 0;
+    }
+    .img-with-text .section-header .title{
+        font-size: 30px;
+        margin-bottom: 24px;
+    }
+    .food-drink {
+        padding: 45px 0 20px;
+    }
+    .food-drink .food-drink-wrp .row {
+        margin-top: 28px;
+    }
+    .food-drink .food-drink-wrp .text-border-bottom{
+        padding-bottom: 15px;
+    }
+    .map-sec p,
+    .accordion-box .content p,
+    .img-with-text p,
+    .food-drink.light p{
+        color: #000;
+    }
+    .become-ofc{
+        padding: 70px 0 40px;
+    }
+    .become-ofc .section-header .title {
+        font-size: 30px;
+    }
+    .become-ofc .benifit-box h5{
+        font-size: 24px;
+        border-bottom: 1px solid #98774A;
+        padding-bottom: 10px;
+    }
+    .become-ofc .row-wrp:not(:last-child) {
+        margin-bottom: 70px;
+    }
+    .venur-box .venur-box-wrp {
+        padding: 20px;
+    }
+    .venur-box .venur-box-col {
+        margin-bottom: 16px;
+    }
+    .venur-box:before{
+        display: none;
+    }
+    .page-template-careers-post .post-container ul li{
+        font-size: 14px;
+        font-weight: 300;
+        color: rgba(0, 0, 0, 0.85);
+        padding-left: 22px;
+        margin-bottom: 8px;
+        margin-left: 18px;
+    }
+    .page-template-careers-post .post-container ul {
+        margin: 30px 0;
+    }
+    .page-template-careers-post .post-container ul li:before{
+        top: 5px;
+    }
+    .testimoniyal .link-btn{
+        font-size: 18px;
+    }
+    .food-title {
+        margin-bottom: 16px;
+    }
+    .food-drink::before{ display: none;}
+}
+
+

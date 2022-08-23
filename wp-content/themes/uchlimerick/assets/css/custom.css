@@ -1,0 +1,742 @@
+@font-face {
+    font-family: 'Rubik';
+    src: url('../fonts/Rubik-BlackItalic.woff2') format('woff2'),
+        url('../fonts/Rubik-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('../fonts/Rubik-BoldItalic.woff2') format('woff2'),
+        url('../fonts/Rubik-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('../fonts/Rubik-Bold.woff2') format('woff2'),
+        url('../fonts/Rubik-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('../fonts/Rubik-Black.woff2') format('woff2'),
+        url('../fonts/Rubik-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('../fonts/Rubik-MediumItalic.woff2') format('woff2'),
+        url('../fonts/Rubik-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('../fonts/Rubik-LightItalic.woff2') format('woff2'),
+        url('../fonts/Rubik-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('../fonts/Rubik-Italic.woff2') format('woff2'),
+        url('../fonts/Rubik-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('../fonts/Rubik-Light.woff2') format('woff2'),
+        url('../fonts/Rubik-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('../fonts/Rubik-Medium.woff2') format('woff2'),
+        url('../fonts/Rubik-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('../fonts/Rubik-Regular.woff2') format('woff2'),
+        url('../fonts/Rubik-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Cormorant Garamond Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Cormorant Garamond Regular'), url('../fonts/CormorantGaramond-Regular.woff') format('woff');
+    }
+    @font-face {
+    font-family: 'Cormorant Garamond Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Cormorant Garamond Italic'), url('../fonts/CormorantGaramond-Italic.woff') format('woff');
+    }
+    @font-face {
+    font-family: 'Cormorant Garamond Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Cormorant Garamond Light'), url('../fonts/CormorantGaramond-Light.woff') format('woff');
+    }
+    @font-face {
+    font-family: 'Cormorant Garamond Light Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Cormorant Garamond Light Italic'), url('../fonts/CormorantGaramond-LightItalic.woff') format('woff');
+    }
+    @font-face {
+    font-family: 'Cormorant Garamond Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Cormorant Garamond Medium'), url('../fonts/CormorantGaramond-Medium.woff') format('woff');
+    }
+    @font-face {
+    font-family: 'Cormorant Garamond Medium Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Cormorant Garamond Medium Italic'), url('../fonts/CormorantGaramond-MediumItalic.woff') format('woff');
+    }
+    @font-face {
+    font-family: 'Cormorant Garamond SemiBold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Cormorant Garamond SemiBold'), url('../fonts/CormorantGaramond-SemiBold.woff') format('woff');
+    }
+    @font-face {
+    font-family: 'Cormorant Garamond SemiBold Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Cormorant Garamond SemiBold Italic'), url('../fonts/CormorantGaramond-SemiBoldItalic.woff') format('woff');
+    }
+    @font-face {
+    font-family: 'Cormorant Garamond Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Cormorant Garamond Bold'), url('../fonts/CormorantGaramond-Bold.woff') format('woff');
+    }
+    @font-face {
+    font-family: 'Cormorant Garamond Bold Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Cormorant Garamond Bold Italic'), url('../fonts/CormorantGaramond-BoldItalic.woff') format('woff');
+    }
+html, body{overflow-x: hidden!important;}
+html::-webkit-scrollbar{display: none;}
+body{overflow-x: hidden;font-family: 'Rubik';color:#353535;margin:0;padding:0;font-size:16px;line-height: 1;font-weight:300;-webkit-font-smoothing:antialiased;-moz-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background-color:#fff;color: #fff;}
+h1.h1, h2,.h2, h3,.h3, h4,.h4, h5,.h5, h6,.h6 {margin-bottom:20px;line-height: 1.25;}
+h1.h1, h2,.h2{font-weight: 700}
+h3,.h3,h4,.h4, h5,.h5{font-weight: 500;}
+h6,.h6{font-weight: 400}
+
+h1,.h1{font-size: 90px; margin-bottom: 30px;font-family: 'Cormorant Garamond SemiBold';}
+h2,.h2{font-size: 67px; margin-bottom: 30px;font-family: 'Cormorant Garamond SemiBold';}
+h3,.h3{font-size: 51px; margin-bottom: 30px;font-family: 'Cormorant Garamond SemiBold';}
+h4,.h4{font-size: 42px;margin-bottom: 30px;font-family: 'Cormorant Garamond SemiBold';}
+h5,.h5{font-size: 38px;font-family: 'Cormorant Garamond SemiBold';}
+h6,.h6{font-size: 21px;font-family: 'Cormorant Garamond SemiBold';}
+p{margin-bottom: 20px;line-height: 1.5;}
+/* p:nth-last-child(1){margin-bottom: 0} */
+img {width: auto;max-width: 100%;height: auto;}
+
+p:empty{display: none;}
+ul li::marker {color: #98774A;font-size: 13px;}
+ol, ul {list-style: none;padding-left: 0;margin-left: 0;}
+.btn-check:focus+.btn, .btn:focus{box-shadow: none;}
+:focus-visible {outline: none;}
+.section-padding{padding-top: 55px;padding-bottom: 55px;}
+.img-wrapper { position: relative; padding-top: 100%;}
+.img-wrapper img{position: absolute;top: 0;left: 0;height: 100%;width: 100%;object-fit: cover;}
+.post, .page{margin: 0;}
+.img-100-wrapper{width: 100%;height: 100%;}
+.img-100{width: 100%;height: 100%;object-fit: cover;}
+.text-border-bottom{position: relative;}
+.text-border-bottom:before{content: '';padding-top: 20px;border-bottom: 1px solid #98774A;position: absolute;left: 0;bottom: -10px;width: 100%;}
+.text-border-bottom-two{border-bottom: 1px solid #98774A;}
+/* .page-template a, .page-template p{color: #000;} */
+.text-border-left{position: relative;}
+.text-border-left:before{content: '';border-bottom: 1px solid #98774A;position: absolute;right: 0%;bottom: 25%;width: 66%;}
+.g-md-0{margin-left: 0;margin-right: 0;}
+.border-gold{border: 1px solid #98774A;}
+.p-44{padding: 44px;}
+.pb-30{padding-bottom: 30px;}
+.pink-burgundy{color: #701D45;}
+/*plaecholder*/
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder{color: #98774A;opacity: 1}
+input::-moz-placeholder,
+textarea::-moz-placeholder{color: #98774A;opacity: 1}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder{color: #98774A;opacity: 1}
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder{color: #98774A;opacity: 1}
+input::placeholder,
+textarea::placeholder{color: #98774A;opacity: 1}
+a{background-color: transparent;text-decoration: none;}
+a:hover{text-decoration: none;color: #FFC72C;}
+a:visited,a:focus, a:active {text-decoration: none;outline: 0;color:#fff;}
+.p-small{font-size: 12px;}
+.container{max-width: 100%;padding-left: 36px;padding-right: 32px;}
+.container-inner{max-width: 1110px;margin: 0 auto;}
+.fw-semibold{font-weight: 600 !important;}
+.button{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align: center;padding: 24px 36px;-webkit-transition: all .25s;-moz-transition: all .25s;-ms-transition: all .25s;-o-transition: all .25s;transition: all .25s;line-height: 1;display: inline-block;}
+.button:visited, .button:focus, .button:active{color: #fff;}
+.button-dark{background-color: #98774A;border: 1px solid #98774A;}
+.button-light{background-color: rgba(102, 102, 102, 0.6);border: 1px solid #98774A;}
+.button:hover,.button-light:hover{background-color: #FFC72C;color: #fff;border: 1px solid #FFC72C;}
+.btn-wrapper{display: flex;}
+.btn-wrapper .button-dark{margin-right: 16px;}
+.load-more-btn a{font-size: 14px;}
+input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align: center;padding: 24px 36px;-webkit-transition: all .25s;-moz-transition: all .25s;-ms-transition: all .25s;-o-transition: all .25s;transition: all .25s;line-height: 1;display: inline-block;}
+
+.two-colum-section .paragaraph-medium a{color: #FFC72C;}
+.two-colum-section .paragaraph-medium a:hover{color: #98774A;}
+.slick-slide{outline: 0;}
+.slick-arrow{color: #FFC72C;cursor: pointer;border: none;font-size: 0px; position: absolute; top: 50%; transform: translateY(-50%);z-index: 1;height: 48px;width: 48px;background: rgba(0, 0, 0, 0.5);backdrop-filter: blur(20px);}
+.slick-arrow:hover{color: #353535;}
+.slick-prev{left:0px;}
+.slick-next{right:0px;}
+.slick-prev:before{content: '\f053';font-family: "Font Awesome 6 Free";font-weight: 600;color: #fff;font-size: 20px;outline: none;border: none;}
+.slick-next:before{content: '\f054';font-family: "Font Awesome 6 Free";font-weight: 600;color: #fff;font-size: 20px;outline: none;border: none;}
+.slick-disabled { opacity: 0;}
+.slick-dots{width:100%;list-style:none;text-align:center;position:relative;line-height:0;padding: 0;margin: 0;}
+.slick-dots li{position: relative;display: inline-block;cursor: pointer;list-style: none;margin: 0 5px;}
+.slick-dots li button {border-radius: 50%;display: block;width: 15px;height: 15px;cursor: pointer;color: transparent;background-color: #fff;border: 0px solid #F46F2C;outline: 0 !important;position: relative;padding: 0;background-image: none;opacity: 0.3;}
+.slick-dots li button:hover,.slick-dots li.slick-active button {opacity: 1;border: none;}
+.slick-arrow:focus{border: none;outline: none;}
+
+/* Header Css */
+.site-header{background: transparent;position: absolute;top: 0;width: 100%;z-index: 1;z-index: 99;}
+.nav-menu{display: flex;align-items: center;justify-content: flex-end;flex-direction: row;}
+.main-menu .desktop-menu ul{margin-bottom: 0;}
+.main-menu .desktop-menu ul li{display: inline-block;padding: 0 28px;}
+.main-menu .desktop-menu ul li a{color: #fff;}
+.main-menu .desktop-menu ul li a:hover{color: #FFC72C;}
+.main-menu .desktop-menu ul li.fa-phone a{color: #FFC72C;}
+.main-menu .desktop-menu ul li.fa-phone a:hover{color: #fff;}
+.main-menu .desktop-menu ul li.fa-phone:hover:before{color: #fff;}
+.main-menu .desktop-menu ul li.fa-phone{padding-right: 10px;color: #FFC72C;position: relative;}
+.main-menu .desktop-menu ul li.fa-phone:before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/call-icon.svg);width: 18px;height: 18px;position: absolute;left: -7px;top: -3px;background-size: cover;background-repeat: no-repeat;}
+.main-menu .desktop-menu ul li.menu-item-has-children{position: relative;padding-top: 55px;padding-bottom: 55px;transition: 0.45s ease-in-out;}
+.main-menu .desktop-menu ul li.menu-item-has-children:hover ul{visibility: visible;opacity: 1;}
+.main-menu ul li.menu-item-has-children::before{content: "\f107";font-family: "Font Awesome 6 Free";font-weight: 900;position: absolute;right: 0px;color: #fff;font-size: 12px;}
+.main-menu .desktop-menu ul li.menu-item-has-children ul{position: absolute;top: 100%;width: 203px;margin: 0;left: 0%;visibility: hidden;opacity: 0;}
+/* .main-menu .desktop-menu ul li.menu-item-has-children ul::after{content: '';width: 160px;height: 1px;position: absolute;top: -20%;left: 0;background-color: #fff;} */
+.main-menu .desktop-menu ul li.menu-item-has-children::after{content: '';width: 160px;height: 1px;position: absolute;top: 106px;left: 0;background-color: #fff;display: none;}
+.main-menu .desktop-menu ul li.menu-item-has-children:hover::after{display: block;}
+.main-menu .desktop-menu ul li.menu-item-has-children ul li{border: 1px solid #98774A;background: rgba(0, 0, 0, 0.6);backdrop-filter: blur(20px);width: 100%;text-align: center;border-bottom: none;}
+.main-menu .desktop-menu ul li.menu-item-has-children ul li:last-child{border-bottom: 1px solid #98774A;}
+.main-menu .desktop-menu ul li.menu-item-has-children ul li a{color: #fff;padding: 16px 0px;display: inline-block;}
+.main-menu .desktop-menu ul li.menu-item-has-children ul li:hover{background-color: #FFC72C;}
+.main-menu ul li.fa-user{position: relative;margin-left: 28px;}
+.main-menu ul li.fa-user:before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/user.svg);width: 24px;height: 24px;position: absolute;left: -7px;top: -3px;background-size: cover;background-repeat: no-repeat;}
+.main-menu ul li.fa-user:hover:before{color: #FFC72C;}
+.header-right{display: flex;justify-content: flex-end;}
+.site-header.fixed{background: linear-gradient(110.9deg, rgba(22, 24, 26, 0.8) 22.87%, rgba(43, 44, 47, 0.8) 101.09%);position: fixed;top:0; left:0;width: 100%;}
+.site-branding{padding:12px 0}
+/* Hero banner Section */
+.hero-section{background: linear-gradient(180deg, #3C1226 39.06%, #181214 100%);position: relative;}
+.hero-section img{width: 100%;}
+.bg-video-wrap {position: relative;overflow: hidden;width: 100%;height: 85vh;clip-path: ellipse(120% 87% at 76% 9%);-webkit-clip-path: ellipse(120% 87% at 76% 9%);background-color: #98774A;}
+.clip-border {position: absolute;top: 0px;left: 0px;right: 0px;bottom: 1px;background: white;-webkit-clip-path: ellipse(120% 87% at 76% 9%);clip-path: ellipse(120% 87% at 76% 9%);}
+ video{min-width: 100%;min-height: 85vh;z-index: 1;width: 100%;object-fit: cover;}
+.overlay{width: 100%;height: 100%;position: absolute;top: 0;left: 0;bottom:0;z-index: 2;background: linear-gradient(333.88deg, rgba(0, 0, 0, 0.2) 15.86%, rgba(0, 0, 0, 0) 39.37%), linear-gradient(278.45deg, rgba(58, 19, 39, 0.9) 31.04%, rgba(112, 29, 69, 0) 58.16%);transform: matrix(-1, 0, 0, 1, 0, 0);pointer-events: none;}
+.banner-text{position: absolute;top:18%;z-index: 2;}
+.banner-text h1{font-family: 'Cormorant Garamond SemiBold';display: inline-block;text-transform: uppercase;}
+.banner-text p{margin-bottom: 0;}
+.banner-text .btn-wrapper{margin-top: 35px;}
+.banner-text .btn-wrapper .button-dark{margin-right: 16px;}
+.newsletter-popup{padding: 35px 36px;background: #701D45;max-width: 516px;position: absolute;right: 0;top: 58%;z-index: 3;}
+.newsletter-popup.newsletter h6{font-size: 18px;font-weight: 300;}
+.newsletter-popup.newsletter .close{position: absolute;top: 35px;right: 36px;padding: 5px;line-height: 14px;font-size: 40px;text-shadow: none;color: #ffff;opacity: 0.7;outline: none;z-index: 999;}
+.newsletter-popup.hide{transform: translateX(200%)!important;}
+.banner-border{border-bottom: 1px solid #98774A;display: inline-block;width: 100%;transform-origin: right;transform: scaleX(0);margin-bottom: 30px;}
+/* .banner-text:hover .banner-border{transform: scaleX(1)!important;transform-origin:left;} */
+/* Highlights */
+.section {width: 25vw;height:100%;position: relative;margin-right: 16px;}
+.section img{height: 495px;}
+.highlights{position: relative;background: linear-gradient(360deg, #3C1226 39.06%, #181214 100%);padding-bottom: 114px;}
+.highlights-patten{padding-top: 50px;}
+.highlights-patten::before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/banner-highlight-patten.png);background-repeat: no-repeat;background-size: contain;width: 100%;height: 855px;position: absolute;left: 0;top:-59%;pointer-events: none;}
+.highlight-text{position: absolute;bottom:0;padding: 35px;left: 0;right: 0;max-width: 300px;}
+.car-wrappper{display: flex;justify-content: flex-end;}
+.main-car{width: 100%;max-width: calc(100% - 21%);padding-top: 25px;}
+.date-info{display: flex;justify-content: space-between;}
+.date-info p{color:#FFC72C;margin-bottom: 0;white-space: nowrap;}
+.highlight-text h6{font-size: 24px;}
+.date-info .more-info{visibility: hidden;opacity: 0;color:#FFC72C;transition: 0.4s ease-in-out;}
+.section.active .highlight-text h6{font-size: 42px;transition: 0.4s ease-in-out;}
+.section.active .highlight-text{max-width: 100%;transition: 0.4s ease-in-out;}
+.section.active .date-info .more-info{visibility: visible;opacity: 1;transition: 0.4s ease-in-out;}
+.section.active{width: 100vw!important;transition: 0.4s ease-in-out;}
+/* Whats on css */
+.whats-on{background: linear-gradient(180deg, #3C1226 39.06%, #181214 100%);position: relative;}
+.whats-on:before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/whats-on-pattern.png);background-size: contain;background-repeat: no-repeat;width: 100%;height: 100%;position: absolute;left: 0;top: 15px;}
+.section-title{display: flex;justify-content: space-between;margin-bottom: 70px;}
+.section-title.text-border-bottom:before{padding-top: 20px;}
+.whats-on h3{margin-bottom: 10px;}
+.whats-on .post-main-cover{border-bottom: none;}
+/* Support Css */
+.support-hero.homepage .banner-text{right: 12%;}
+.support-hero.homepage::after{transform: matrix(1, 0, 0, 1, 0, 0);}
+.support-hero.homepage .support-hero-right{top: 46px;right: 0px;z-index: 1;}
+.support-hero .bg-main{height: 100%;object-fit: cover;}
+/* venue Hire css */
+.venue-hire{position: relative;}
+.venue-hire:before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/07/Venue-hire-patten.png);background-repeat: no-repeat;background-size:  cover;position: absolute;left: 0%;top: 0;width: 100%;height: 100%;z-index: 1;}
+.venue-row{position: relative;}
+.venue-text{position: absolute;top: 32%;bottom: 0;margin: auto;z-index: 1;}
+.venue-text h3{padding-bottom: 25px;margin-bottom: 0;border-bottom: 1px solid #98774A;}
+.venue-text p{max-width: 440px;margin-top: 35px;margin-bottom: 35px;display: inline-block;}
+.venue-row img{max-height: 800px;}
+/* Newsletter css */
+.newsletter-left{position: relative;}
+.newsletter-left:before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/07/newsletter-patten-min.png);background-size: cover;background-repeat: no-repeat;position: absolute;left: 0;width: 100%;height: 100%;}
+.newsletter-left img{object-fit: initial;}
+.newsletter-right{background: #701D45;height: 100%;position: relative;display: flex;align-items: center;}
+.newsletter-text-wrapper{padding:80px 160px 80px 65px;position: relative;z-index: 2;}
+.newsletter-text-wrapper h4{font-family: 'Cormorant Garamond SemiBold';position: relative;}
+.newsletter-right:before{content:'';background:url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/07/newsletter-bg-min.png) no-repeat;width: 100%;height: 100%;background-size: cover;position: absolute;left:0%;}
+.newsletter input[type="button"]{color: #FFFFFF;font-size: 14px;padding: 17px 22px;line-height: 1;background-color: #98774A;display: inline-block;border: none;border-radius: 0;}
+.newsletter input[type="button"]:hover{background-color: #FFC72C;}
+.newsletter input[type="submit"]{color: #FFFFFF;font-size: 14px;padding: 17px 22px;line-height: 1;background-color: #98774A;display: inline-block;border: none;border-radius: 0;}
+.newsletter input[type="submit"]:hover{background-color: #FFC72C;}
+.newsletter input[type="email"]{height: 50px;border-radius: 0;padding: 17px 14px;width: 100%;}
+.newsletter input[type="email"]::placeholder{color: #000;text-transform: capitalize;font-size: 12px;}
+.newsletter form{width: 100%;display: flex;margin: 17px 0;}
+.newsletter h6{font-family: 'Rubik';font-weight: 500;}
+.newsletter-popup .close{font-weight: 300;}
+.newsletter-popup .p-small{margin-bottom: 0;}
+/* Footer Css */
+.site-footer{background: linear-gradient(110.9deg, #16181A 22.87%, #2B2C2F 101.09%);padding-top: 72px;padding-bottom: 70px;}
+.footer-blocks{justify-content: space-between;margin-left: 0;margin-right: 0;}
+.footer-links-items{display: flex;flex-wrap: wrap;justify-content: space-between;}
+.footer-links li{padding-top: 24px;}
+.footer-links li a{font-size: 12px;font-weight: 400;}
+.footer-links li a:hover{color:#FFC72C;}
+.footer-links h6{color:#FFC72C;font-family: 'Cormorant Garamond Medium';margin-bottom: 0;pointer-events: none;}
+.footer-logo-block{padding: 0;}
+.footer-social-block{text-align: center;}
+.footer-social-block{margin-top: 40px;}
+.footer-social-block p{color: rgba(255, 255, 255, 0.75);}
+.footer-logo{text-align: center;}
+.socail-icon li{background-color:rgba(255, 255, 255, 0.6);width: 30px;height: 30px;text-align: center;position: relative;margin: 0 4px;border-radius: 50%;display: inline-block;}
+.socail-icon li:hover{background-color:#FFC72C;}
+.socail-icon li:hover a i{color: #fff;}
+.socail-icon li a{position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);}
+.socail-icon li i{color: #16181A;}
+.footer-link-title i{display: none;}
+.footer-bottom{padding-top: 66px;}
+.site-info{color: rgba(255, 255, 255, 0.75);}
+.site-info a{color: rgba(255, 255, 255, 0.75);}
+.rights br{display: none;}
+/* Booking information */
+.page-banner{background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, #2F0A1C 0%, rgba(0, 0, 0, 0) 47.89%), radial-gradient(68.06% 253.54% at 9.58% 86.84%, #49132D 8.33%, rgba(112, 29, 69, 0.708333) 59.38%, rgba(112, 29, 69, 0) 100%);position: relative;}
+.page-banner-text{position: absolute;bottom: 70px;left: 0;right: 0;}
+.page-banner-text h2{text-transform: capitalize;}
+.page-banner-text .text-border-bottom:before{bottom: -30px;}
+.paragraph-medium{font-size: 16px;}
+.information{padding-bottom: 64px;}
+.information-top{margin-top: 75px;}
+.information-bottom{padding-bottom: 105px;}
+.information-block {padding: 44px;border: 1px solid #98774A;}
+.information-block p{color: #000;}
+.information-block p a{color:#FFC72C;}
+.information-block p a:hover{color:#98774A;}
+.paragaraph-medium p a{color:#FFC72C;}
+.paragaraph-medium p a:hover{color:#98774A;}
+.information-block ul{list-style: disc;padding-left: 20px;}
+.information-block li{color: #000;margin-bottom: 20px;}
+.information-block h5{color: #000;padding-bottom: 25px;} 
+.information-block b{font-weight: 600;}
+.information-block .pink-burgundy {color: #701D45;}
+.link{color: #000;text-decoration: underline;}
+.link:hover{color:#FFC72C;}
+.information-col-two .information-block{height: 100%;}
+.information-col-two .col-md-6:first-child{padding-right: 32px;}
+.information-col-two .col-md-6:last-child{padding-left: 32px;}
+.information .text-border-bottom:before{bottom: 8px;}
+/* More Helpful css */
+.more-helpful{background: linear-gradient(180deg, #3C1226 39.06%, #181214 100%);padding-top: 77px;padding-bottom: 77px;position: relative;}
+.more-helpful::before{content:"";
+    /* background-image:url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/more-info-pattern.png); */
+    background-image:url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/more-help-bg.svg);
+    background-size: 100% 90%;background-repeat: no-repeat;width: 100%;height: 100%;position:absolute;top: 0;}
+.more-helpful .text-border-bottom:before{bottom: -30px;}
+.more-col{margin-top: 36px;position: relative;}
+.more-col img{background: linear-gradient(28.86deg, rgba(0, 0, 0, 0.9) 15.99%, rgba(0, 0, 0, 0) 100%);}
+.more-text{position:absolute;bottom: 32px;left: 32px;right: 32px;}  
+.more-col .button{padding: 16px 24px;}
+.more-helpful .more-col .text-border-bottom:before{bottom: -15px;width: 150%;}
+.more-text h4{margin-bottom: 16px;}
+.more-text .button{margin-top: 16px;}
+.page-border-bottom{border-bottom: 1px solid #98774A;}
+/* Seat Plan */
+.seat-plan{padding-top: 70px;padding-bottom: 100px;}
+.seat-plan p{color: #000;}
+.seat-plan p a{color:#FFC72C;}
+.seat-plan p a:hover{color:#98774A;}
+.key-wrap{padding: 16px;background-color: #E7E9EC;color: #701D45;margin-top: 35px;max-width: 60%;}
+.key-wrap ul{margin-bottom: 0;}
+.key-wrap li{color: #701D45;}
+.key-wrap li:first-child{margin-bottom: 16px;}
+/* accessibility css */
+.information-block img{margin-bottom: 32px;}
+.page-template-accessibility .page-banner-text{bottom: 64px;}
+/* Contact css */
+.page-template-contact .map-sec{padding: 64px 0 74px;}
+.contact-email {border-top: 1px solid #98774A;padding-top: 30px;}
+.contact-email-col{margin-bottom: 30px;display: flex;flex-direction: column;}
+.contact-email a{color: #000;line-height: 1.2;}
+.contact-email p{color:#701D45;margin-bottom: 3px;font-weight: 400;}
+.contact-email-title{margin-bottom: 33px;color:#701D45;}
+.contact-email-title b{font-weight: 600;padding-left: 5px;}
+.contact.map-sec ul li a{padding-left: 30px;}
+.map-sec ul li a .text p{text-decoration: underline;color: #000;}
+/* 404 page */
+.error404 .site-header{background: linear-gradient(110.9deg, #16181A 22.87%, #2B2C2F 101.09%);}
+.error-404.not-found{background: linear-gradient(180deg, #3C1226 39.06%, #5B464D 100%);margin-top: 130px;min-height: 70vh;padding-top:10%;padding-bottom: 10%;}
+/* Search Page */
+.search-page{color: #000;}
+.search-page a{color: #000;}
+.search-page a:hover{color: #FFC72C;}
+.search .site-header{background: linear-gradient(110.9deg, #16181A 22.87%, #2B2C2F 101.09%);}
+.search .search-page{min-height: 70vh;margin-top: 180px;}
+@media screen and (max-width: 1450px){
+    .main-car{max-width: calc(100% - 12%);}
+    .bg-video-wrap{clip-path: ellipse(120% 91% at 76% 9%);}
+    .clip-border{clip-path: ellipse(120% 91% at 76% 9%);}
+    .highlights-patten::before{top: -66%;}
+    .newsletter-popup{top: 60%;}
+    .text-border-left:before{width: 72%;}
+    /* whats on css */
+    .whats-on:before{top: 20px;}
+}
+@media screen and (max-width: 1370px){
+    .main-car{max-width: calc(100% - 9.5%);}
+    .newsletter-left img{max-height: 100%;}
+}
+@media screen and (max-width: 1199px){
+    h1,.h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+    h2,.h2 {
+        font-size: 44px;
+        margin-bottom: 20px;
+    }
+    h3,.h3 {
+        font-size: 45px;
+        margin-bottom: 20px;
+    }
+    body{font-size: 16px;line-height: 1.5;}
+    .main-menu .desktop-menu ul li{padding: 0 18px;}
+    .container-inner{padding-left: 16px;padding-right: 16px;}
+    .highlights{padding-bottom: 70px;}
+    /* whats on Css */
+    /* .highlights-patten::before{display: none;} */
+    .whats-on:before{display: none;}
+    /* Support Css */
+    .support-hero.homepage .banner-text{top: 20%;right: 5%;}
+    /* Newsletter Css */
+    .newsletter-text-wrapper{padding: 50px 60px 50px 45px;}
+    .text-border-bottom:before{bottom: -16px;}
+    .newsletter-text-wrapper h4{margin-bottom: 35px;}
+    .highlight-text{padding: 20px;}
+    .main-car{max-width: calc(100% - 1.5%);}
+    .newsletter-popup{top: 58%;}
+    .venue-text{top: 22%;}
+    .key-wrap{max-width: 70%;}
+}
+@media screen and (max-width: 991px){
+    h1,.h1 {
+        font-size: 42px;
+    }
+    h2,.h2 {
+        font-size: 38px;
+    }
+    h3,.h3 {
+        font-size: 40px;
+    }
+    h4,.h4 {
+        font-size: 32px;
+    }
+    .container{padding-left:15px;padding-right: 15px;}
+    .mobile-menu {
+        position: fixed;
+        width: 100%;
+        height: calc(100vh - 70px);
+        bottom: 0;
+        right: 0;
+        z-index: 9;
+        max-width: 100%;
+        padding: 15px 15px 200px;
+        transition: all ease .4s;
+        transform: translateX(100%);
+        overflow: auto;
+        top: 96px;
+        overflow: hidden;
+    }
+    .mobile-menu nav.main-menu ul {flex-direction: column;}
+    .main-menu ul li a {font-size: 14px;padding: 16px 0;display: inline-block;}
+    .main-menu ul li {width: 100%;border-bottom:1px solid #98774A;}
+    .main-menu .mobile-menu ul li.fa-phone{display: none;}
+    .main-menu ul li:last-child{border-bottom: none;}
+    .accont-btn-wrpper{position: absolute;width: 90%;right: 0;left: 0;bottom: 15%;margin: auto;}
+    .mobile-menu-toggle-wrap{display: flex;justify-content: flex-end;position: relative;z-index: 99;}
+    .mobile-menu-toggle{width: 25px;height: 25px;}
+    .mobile-menu-toggle span {width: 100%;height: 2px;background: #F7F4FE;transition: all 0.3s;display: block;}
+    .mobile-menu-toggle span.two {margin: 4px 0;}
+    .mobile-menu-toggle.active .one {transform: rotate(45deg) translate(5px, 5px);}
+    .mobile-menu-toggle.active .two {opacity: 0;}
+    .mobile-menu-toggle.active .three {transform: rotate(-45deg) translate(3.5px, -3.5px);}
+    html.menu-open, html.menu-open body {overflow: hidden;}
+    .mobile-menu .button-wrap .button{width: 100%;display: flex;justify-content: center;} 
+    .mobile-menu.active {transform: translateX(0%);}
+    .mobile-menu .main-menu ul li:hover > a{color: #FFC72C;}
+    .mobile-menu .main-menu ul li.menu-item-has-children ul{position: static;width: 100%;visibility: visible;opacity: 1;}
+    .mobile-menu .main-menu ul li.menu-item-has-children ul li{border: 1px solid #98774A;background-color: transparent;text-align: left;padding: 0 20px;border-bottom: none;}
+    .mobile-menu .main-menu ul li.menu-item-has-children ul li:hover{background-color: #98774A;}
+    .mobile-menu .main-menu ul{padding-left: 0;margin-left: 0;}
+    .mobile-menu .main-menu ul li.fa-user{padding-left: 30px;margin-left: 0;}
+    .mobile-menu .main-menu ul li.fa-user:before{top: 18px;left: 0;}
+    .main-menu ul li{padding: 0;}
+    .main-menu .call-wrap{display: flex;justify-content: center;margin: 15px 0;}
+    .main-menu .call-wrap a{color: #FFC72C;}
+    .main-menu .call-wrap a:hover{color: #fff;}
+    .main-menu .call-wrap a i{margin-right: 10px;}
+    .custom-logo-link{max-width: 106px;}
+    .menu-open .site-header{background: rgba(0, 0, 0, 0.7);height: 100vh;backdrop-filter: blur(20px);overflow: hidden;}
+    .sub-menu{display: none;}
+    
+    /* newsletter css */
+    .newsletter-popup.newsletter{display: none;}
+    /* Support Css */
+    .support-hero.homepage .banner-text{top: 27%;}
+    /* Footer css */
+    .site-footer{padding-top: 56px;padding-bottom: 56px;}
+    .footer-block{padding:0 16px;}
+    .footer-links{margin-top: 32px;}
+    .footer-links li{padding-top: 16px;}
+    .footer-links-items{flex-direction: column;}
+    .footer-link-title{border-bottom: 1px solid #FFC72C;padding-bottom: 8px;font-size: 21px;}
+    .footer-link-title i{position: absolute;right: 20px;transform: rotate(270deg);font-size: 15px;display: inline-block;}
+    .footer-link-title.active i{transform: rotate(0deg);}
+    .footer-link-content{display: none;}
+    .footer-link-content ul{margin-bottom: 0;}
+    .footer-bottom{padding-left: 16px;padding-right: 16px;}
+    .rights br{display: inline-block;}
+    .footer-links h6{pointer-events: auto;}
+    /* more helpful Css */
+    .more-helpful::before{display: none;}
+    .main-menu ul li.menu-item-has-children{position: relative;}
+    .main-menu ul li.menu-item-has-children::before{right: 5px;top: 15px;}
+    .more-helpful .text-border-bottom:before{bottom: 20px;}
+    /* 404 page */
+    .error-404.not-found{margin-top:96px;}
+    /* search page css */
+    .search .search-page{margin-top: 150px;}
+    .key-wrap{max-width: 95%;}
+}
+@media screen and (max-width: 767px){
+    h1,.h1 {
+        font-size: 38px;
+        margin-bottom: 20px;
+    }
+    h2,.h2 {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    h3,.h3 {
+        font-size:30px;
+        margin-bottom: 20px;
+    }
+    h4,.h4 {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    h5,.h5 {
+        font-size: 24px;
+    }
+    h6,.h6 {
+        font-size: 16px;
+    }
+    .slick-arrow{top: 24%;}
+    .slick-prev{left:15px;}
+    .slick-next{right:15px;}
+    .text-border-bottom:before{bottom: 3px;}
+    
+    /* Banner Section */
+    .bg-video-wrap{clip-path: ellipse(90% 86% at 49% 10%);}
+    .clip-border{clip-path: ellipse(90% 86% at 49% 10%);}
+    .button{font-size: 14px;padding: 16px 28px;}
+    .text-border-left:before{width: 95%;bottom: -10px;}
+    .banner-text .btn-wrapper{margin-top: 24px;}
+    .banner-text h1{padding-bottom: 15px;}
+    .highlights-patten::before{background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/highlight-mobile-pattern-1.png);top:-57%;left: 3%;}
+    .hero-section img{max-height: 550px;}
+    /* Highlight Css */
+    .highlights{padding-top: 15px;}
+    .main-car{max-width: calc(100% - 2%);}
+    .highlight-text{padding: 12px;overflow: hidden;}
+    .highlight-text h6{font-size: 20px;}
+    .section.active .highlight-text h6{font-size: 30px;}
+    /* Whats up css */
+    .whats-on.homepage .post-image{max-height: 200px;}
+    .whats-on.homepage .post-card{margin-bottom: 15px;}
+    .whats-on-btn{margin-bottom:70px;}
+    /* Support Us css */
+    .support-hero.homepage{height: 400px;}
+    .support-hero.homepage .banner-text{right: auto;top: 10%;}
+    .support-hero.homepage .support-hero-right{right: 0;top: 15px;}
+    /* Venue Css */
+    .button{width: auto;}
+    .venue-row img{min-height: 600px;}
+    .venue-hire:before{height: 270px;}
+    .venue-text h3{margin-bottom: 0;}
+    /* Newsletter css */
+    .newsletter-text-wrapper{padding: 24px 16px 24px 16px;}
+    .newsletter-text-wrapper form{flex-direction: column;}
+    .newsletter-text-wrapper input[type="button"]{margin-top: 8px;}
+    .newsletter .col-md-6 {padding-left: 0;padding-right: 0;}
+    .newsletter input[type="submit"]{margin-top: 8px;}
+    /* Footer Css */
+    .rights br{display: inline-block;}
+    .footer-bottom{padding-top: 32px;}
+    /* inner page Banner */
+    .page-banner-text{bottom: 34px;}
+    .page-template-accessibility .page-banner-text{bottom: 34px;}
+    /* Bokkoing Information css */
+    .information-block{padding: 14px;}
+    .information{padding-bottom: 34px;}
+    .information-top{margin-top: 45px;}
+    .information-block p{font-size: 14px;}
+    .information-block li{font-size: 14px;}
+    .information-col-two .col-md-6:first-child{padding-right: 15px;padding-bottom: 34px;}
+    .information-col-two .col-md-6:last-child{padding-left: 15px;}
+    .information-block h5{padding-bottom: 20px;}
+    .information .text-border-bottom:before{bottom: 5px;}
+    .more-col {max-width: 55%;margin-left: auto;margin-right: auto;margin-top: 32px;}
+    .more-text{position:absolute;bottom: 16px;left: 16px;right: 55px;}
+    .more-helpful{padding-top: 44px;padding-bottom: 44px;}
+    .more-helpful .text-border-bottom:before{bottom: 20px;}
+    /* seat plan css */
+    .seat-plan{padding-top: 43px;padding-bottom: 56px;}
+    .seat-plan .row{flex-direction: column-reverse;}
+    /* accessibility css */
+    .information-block img{margin-bottom: 24px;width: 100%;object-fit: cover;}
+    .image-left .row{flex-direction: column-reverse;}
+    .section-two, .section-three, .section-four{display: none;}
+    .error-404.not-found{padding-top: 25%;}
+    .page-template-contact .map-sec{padding: 35px 0 35px;}
+    .key-wrap{max-width: 45%;}
+}
+@media screen and (max-width:690px){
+    .more-text{right: 25px;}
+    .key-wrap{max-width: 50%;}
+}
+@media screen and (max-width:567px){
+    .highlights-patten::before{top:-50%;left: 0;}
+    .more-text{right: 20px;}
+    .key-wrap{max-width: 60%;}
+}
+@media screen and (max-width: 480px){
+/* Banner Css */
+.bg-video-wrap{clip-path: ellipse(125% 86% at 49% 10%);height: 65vh;}
+.clip-border{clip-path: ellipse(125% 86% at 49% 10%);}
+.highlights-patten::before{top:-45%;}
+/* Venue Css */
+.venue-row img{min-height: 400px;}
+.text-border-bottom:before{bottom: 0;}
+.venue-text p{margin-top: 25px;}
+.venue-hire:before{top:-10px}
+.newsletter-text-wrapper h6{font-weight: 700;}
+/* Nesws Letter css */
+.newsletter-right:before{height: 260px;top: -9%;}
+.more-col {max-width: 100%;margin-left: auto;margin-right: auto;}
+/* Footer css */
+.footer-block{padding: 0;}
+.footer-bottom{padding-left: 0;padding-right: 0;}
+.key-wrap{max-width: 85%;}
+}
+@media screen and (max-width: 370px){
+    .btn-wrapper{justify-content: center;margin-left: -20px;}
+    .hero-section img{max-height: 500px;}
+    .highlights-patten::before{top: -33%;}
+    .bg-video-wrap{height: 75vh;}
+    .key-wrap{max-width: 100%;}
+}
+
+  
+  .page-wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+  
+  .content {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding-right: 12px;
+    padding-left: 12px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #4d4d4d;
+    text-decoration: none;
+  }
+
+
+  

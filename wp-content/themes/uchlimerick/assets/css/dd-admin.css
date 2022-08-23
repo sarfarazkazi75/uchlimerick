@@ -1,0 +1,99 @@
+.dd-progress {
+    margin-top: 20px;
+    padding: 0;
+    height: 30px;
+    overflow: hidden;
+    background: #e5e5e5;
+    border-radius: 6px;
+}
+
+.dd-bar {
+    position: relative;
+    float: left;
+    min-width: 1%;
+    height: 100%;
+    background: #007cba;
+}
+
+.dd-percent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    font-family: tahoma, arial, helvetica;
+    font-size: 12px;
+    color: white;
+}
+
+.d-none {
+    display: none;
+}
+
+.dd-log {
+    margin: 20px 0;
+    padding: 20px;
+    border: 10px solid #ddd;
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.property-imports .loader {
+    height: 8px;
+    width: 36px;
+    /* (6 * <margin: 2px>) + (3 * <width: 8px>) */
+}
+
+.property-imports .loader-box {
+    display: inline-block;
+    height: 8px;
+    width: 8px;
+    margin: 0px 2px;
+    background-color: rgb(0, 0, 0);
+    animation-name: fadeOutIn;
+    animation-duration: 500ms;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    border-radius: 10px;
+}
+
+.property-imports .loader-box:nth-child(1) {
+    animation-delay: 250ms;
+}
+
+/* (1/2) * <animation-duration: 500ms */
+.property-imports .loader-box:nth-child(2) {
+    animation-delay: 500ms;
+}
+
+/* (2/2) * <animation-duration: 500ms */
+.property-imports .loader-box:nth-child(3) {
+    animation-delay: 750ms;
+}
+.shows_sync_new_data,.shows_sync {
+    display: inline-block;
+    margin-right: 15px;
+}
+/* (3/2) * <animation-duration: 500ms */
+
+@keyframes fadeOutIn {
+    0% {
+        background-color: rgb(0, 0, 0);
+    }
+
+    100% {
+        background-color: rgba(0, 146, 255, 0);
+    }
+}
+.img_loader {
+    width: 15px;
+    margin-left: 5px;
+}
+form.property_sync_new_data,
+form.property_sync {
+    display: inline-block;
+}
+
+form.property_sync_new_data {
+    margin-right: 20px;
+}
