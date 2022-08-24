@@ -63,9 +63,8 @@
                                     set_transient($transient_key,$eventObj,HOUR_IN_SECONDS);
                                 }
                                 $eventObj      = get_transient( $transient_key );
-                                $show_date     = date( 'l jS F Y', strtotime( $eventObj['date_time'] ) );
+                                $show_date     = date( 'd M', strtotime( $eventObj['date_time'] ) );
                                 $book_ticket = $eventObj['url'];
-                                
                                 
                             }
                         }
@@ -94,7 +93,8 @@
                                         <?php
                                         if(isset($book_ticket)){
                                             ?>
-                                            <a href="<?php echo $book_ticket?>" class="button button-dark"><?php _e("Learn More",'uchlimerick') ?></a>
+                                            <a href="<?php echo $book_ticket; ?>" class="button button-dark"><?php _e("Book Tickets",'uchlimerick') ?></a>
+                                            <a href="<?php the_permalink(); ?>" class="button button-light"><?php _e("Learn More",'uchlimerick') ?></a>
                                         <?php
                                         }
                                         else{
