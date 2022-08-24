@@ -1,6 +1,7 @@
 /* support us page start  */
 html{ scroll-behavior: smooth;}
 .support-hero { position: relative; }
+.support-hero img, .support-hero video{max-height: 800px;}
 .support-hero::after { content: ''; position: absolute; top: 0; bottom: 0; width: 100%; left: 0%; background: linear-gradient(333.88deg, rgba(0, 0, 0, 0.2) 15.86%, rgba(0, 0, 0, 0) 39.37%), linear-gradient(278.45deg, rgba(58, 19, 39, 0.9) 31.04%, rgba(112, 29, 69, 0) 58.16%); transform: matrix(-1, 0, 0, 1, 0, 0);    /* z-index: -1; */ }
 ul.support-section-menu { margin-top: 50px; }
 .support-section-menu img.support-icon { width: 22px; margin-right: 17px; }
@@ -16,7 +17,7 @@ ul.support-section-menu li a:hover .support-rigth { filter: brightness(0) satura
 .pt-100 { padding-top: 100px; }
 .pb-100 { padding-bottom: 100px; }
 .two-col-left-col.colpe-left .button-dark {    font-weight: 500;}
-.page-template-Arrive-EatStay .banner-text,.page-template-support-us .banner-text {   top: 45%;}
+.page-template-Arrive-EatStay .banner-text,.page-template-support-us .banner-text { top: 35%;}
 /* two colum section Become a Friend */
 .two-colum-section h4 { color: #000; }
 .two-colum-section p { color: #000; }
@@ -41,7 +42,7 @@ a.support-logo { width: calc(100% / 4); margin: 0 45px; }
 .custom-border { width: calc(100% - 35%); background-color: #98774A; height: 1px; margin: 0 0 0 22px; }
 .mt-30 { margin-top: 30px; }
 a.support-logo img { opacity: 0.7; transition: all 0.4s; height: 73px; object-fit: cover;  filter: grayscale(100%);    }
-a.support-logo:hover img { opacity: 1; }
+a.support-logo:hover img { opacity: 1;filter: grayscale(0%);}
 
 /* support-helps  section  */
 .support-helps { background-color: rgba(231, 233, 236, 0.5); padding: 120px 0 130px; z-index: unset; background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/support-help-bg.svg); position: relative; background-repeat: no-repeat; background-size: contain; background-position-y: 27px; }
@@ -227,7 +228,7 @@ filter: brightness(0) saturate(100%) invert(15%) sepia(25%) saturate(5669%) hue-
 }
 .serch-main p {
     display: none;
-}
+}   
 section.no-results.not-found p {
     display: none;
 }
@@ -240,12 +241,15 @@ input.search-submit:hover{background-color: #FFC72C;}
 .two-col-left-col p a:hover{  color: #98774A;} 
 .testi-content p a { color: #FFC72C; font-size: 28px; line-height: 130%; transition: all 0.4s;}
 .testi-content p a:hover{ color: #fff;}
+.project-des a {
+    color: #fff;
+}
 /* media qury  */
 @media only screen and (max-width:1440px) {
     /* .section-bg-design {top: 21%; } */
     .book-inner:after { width: 75%; }
     .support-hero-right {    max-width: 437px;   }
-    .page-template-Arrive-EatStay .banner-text,.page-template-support-us .banner-text {   top: 35%;}
+    .page-template-Arrive-EatStay .banner-text,.page-template-support-us .banner-text {top: 35%;}
 }
 @media only screen and (max-width:1199px) {
     body { overflow-x: hidden; }

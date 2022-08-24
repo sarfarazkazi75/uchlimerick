@@ -22,8 +22,8 @@ if(class_exists('acf')){
 <section class="project-post-main-wrapper">
     <div class="container-inner">
         <div class="post-main-cover">
-            <div class="row">
-            <?php if ( have_posts() ) : 
+            <div class="row" id="show_project_content_wrap_full">
+                <?php if ( have_posts() ) : 
                     $i = 1; 
                     $temp_data = 1;
                      while ( have_posts() ) : the_post();
@@ -64,7 +64,7 @@ if(class_exists('acf')){
                      }
                     ?>    
                     <!-- do stuff ... -->
-                    <div class="<?php echo $class;?> order-md-<?php echo $i;?> order-<?php echo $i;?>">
+                    <div class="project_single_wrap <?php echo $class;?> order-md-<?php echo $i;?> order-<?php echo $i;?>">
                         <div class="<?php echo $inner_class;?>">
                             <div class="post-image">
                                 <?php the_post_thumbnail(); ?>
@@ -78,7 +78,7 @@ if(class_exists('acf')){
                 <?php  endif; ?>
             </div>
             <div class="load-more-btn text-center">
-                <a href="#" class="button-light button">Load More</a>
+                <a id="load_more_project" href="javascript:void(0);" class="button-light button" ><?php echo _('Load More');?></a>
             </div>
         </div>
     </div>

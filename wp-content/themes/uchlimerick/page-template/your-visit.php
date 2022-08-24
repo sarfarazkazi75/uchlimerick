@@ -1,10 +1,6 @@
 <?php /*Template Name: Your Visit */
     get_header();  
-    $main_title = get_field('main_title');
-    $card_1_image = get_field('card_1_image');
-    $card_1_title = get_field('card_1_title');    
-    $card_1_content = get_field('card_1_content');  
-    $card_1_link = get_field('card_1_link');    
+    $main_title = get_field('main_title');   
 ?>
 
 <section class="visit-main-wrapper">
@@ -44,7 +40,7 @@
                         <div class="visit-details">
                             <h4 class="text-border-bottom"><?php echo $card_title; ?></h4>
                             <?php echo $card_content; ?>
-                            <a href="<?php echo $card_link['url'];?>" class="button-light button"><?php echo $card_link['title'];?></a>
+                            <a href="<?php echo $card_link['url'];?>" target="<?php echo $card_link['target'];?>" class="button-light button"><?php echo $card_link['title'];?></a>
                         </div>
                     </div>
                   </div>

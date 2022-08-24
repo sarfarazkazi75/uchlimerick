@@ -171,23 +171,6 @@ function load_more_blog_posts()
 
             if( $cpt > $count && $cpt < $count+10 )
             {
-
-					// $more_posts .= '<div class="show_single_wrap '.$classes[$i%12].'">';                           
-					// $more_posts .= '<div class="post-card">';
-					// $more_posts .= '<div class="post-image">';
-					// $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' );
-					// $more_posts .= '<img src="'.$url.'" />';
-					// $more_posts .= '</div>';
-					// $more_posts .= '<div class="post-details">';
-					// $more_posts .= '<h6 class="text-border-bottom">'.get_the_title().'</h6>';
-					// $more_posts .= '<a class="post-date" href="'.get_the_permalink().'">02 Jan - 03 Feb</a>';
-					// $more_posts .= '<div class="btn-wrapper book-btn-cover">';
-					// $more_posts .= '<a href="#" class="button button-dark">Book Tickets</a>';
-					// $more_posts .= '<a href="'.get_the_permalink().'" class="button-light button">Learn More</a>';
-					// $more_posts .= '</div>';
-					// $more_posts .= '</div>';
-					// $more_posts .= '</div>';
-					// $more_posts .= '</div>';	
                     
 				    $more_posts .= '<div class="'.$class.' order-md-'.$i.' order-'.$i.'">';
                     $more_posts .= '<div class="'.$inner_class.'">';
@@ -217,6 +200,98 @@ function load_more_blog_posts()
 }
 add_action( 'wp_ajax_load_more_blog_posts', 'load_more_blog_posts' );
 add_action( 'wp_ajax_nopriv_load_more_blog_posts', 'load_more_blog_posts' );
+
+function load_more_project_posts()
+{
+    $count = $_POST["count"];
+
+    $cpt = 1;
+    $paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1;
+    $args = array(
+        'posts_per_page' => -1,
+        'post_type'   => 'project', // change the post type if you use a custom post type
+        'paged' => $paged,
+        'post_status' => 'publish',
+    );
+
+    $articles = new WP_Query( $args );
+
+    $ar_posts = array();
+	
+    if( $articles->have_posts() )
+    {
+        $i = 0; 
+        $temp_data = 0;
+        while( $articles->have_posts() )
+        {
+            $articles->the_post();
+            $class ='';
+            $inner_class ='';
+            $col_8_content ='';
+             if($temp_data == 1 || $temp_data == 7){
+                 $class = 'col-md-8';
+                 $col_8_content = '
+                    <div class="row">
+                         <div class="col-md-6">
+                             <h6 class="text-border-bottom">'.get_the_title().'</h6>
+                        </div>
+                        <div class="col-md-6">
+                        '.get_the_content().'
+                             
+                            <a class="post-date arrwo-has-link" href="'.get_permalink().'" target="blank">Read more</a>
+                        </div>
+                    </div>';
+                $temp_data ++ ;
+             }else{
+                $class = 'col-md-4';
+                $col_8_content= '
+                    <h4 class="text-border-bottom">'.get_the_title().'</h4>
+                    '.get_the_content().'
+                    <a class="post-date arrwo-has-link" href="'.get_permalink().'" target="blank">Read more</a>';
+                if($temp_data == 10){
+                    $temp_data = 0;
+                }
+                $temp_data ++ ;
+             }
+             if($i == 3){
+                 $inner_class='donate-cover bg-gold';
+             }elseif($i == 10){
+                $inner_class='donate-cover Become-friend-cover bg-light-gray';
+             }else{
+                $inner_class='post-card';
+             }
+            $more_posts = "";
+
+            if( $cpt > $count && $cpt < $count+10 )
+            {
+                    
+				    $more_posts .= '<div class="project_single_wrap '.$class.' order-md-'.$i.' order-'.$i.'">';
+                    $more_posts .= '<div class="'.$inner_class.'">';
+                    $more_posts .= '<div class="post-image">';
+                    $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'full' );
+                    $more_posts .= '<img src="'.$url.'" />';
+                    $more_posts .= '</div>';
+                    $more_posts .= '<div class="post-details">';
+                    $more_posts .= $col_8_content;
+                    $more_posts .= '</div>';
+                    $more_posts .= '</div>';
+                    $more_posts .= '</div>';
+
+
+                $ar_posts[] = $more_posts;
+
+                if( $cpt == $articles->found_posts )
+                    $ar_posts[] = "0";
+            }
+            $cpt++;
+            $i++;
+        }
+    }
+    echo json_encode($ar_posts);
+    die();
+}
+add_action( 'wp_ajax_load_more_project_posts', 'load_more_project_posts' );
+add_action( 'wp_ajax_nopriv_load_more_project_posts', 'load_more_project_posts' );
 
 
 // the ajax function

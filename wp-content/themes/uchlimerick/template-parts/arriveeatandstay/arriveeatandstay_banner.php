@@ -1,6 +1,8 @@
 <?php
     $banner_image = get_field('banner_image');
     $banner_title = get_field('banner_title');
+    $select_video_or_image = get_field('select_video_or_image');
+    $banner_desktop_image = get_field('banner_desktop_image');
     $banner_video = get_field('banner_video');
     $banner_right_image = get_field('banner_right_image');
     $get_here_title = get_field('get_here_title');
@@ -11,12 +13,25 @@
 <section class="support-hero">
     <img src="<?php echo $banner_image['url']; ?>"
         class="mobile-bgsupport" alt="" class="d-md-none">
-
-    <div class="support-video-wrap">
-        <video loop="" muted="" autoplay="" class="d-none d-md-flex">
-            <source src="<?php echo $banner_video ;?>" type="video/mp4"> 
-        </video>
-    </div>
+    <?php 
+        if( get_field('select_video_or_image') == 'image' ) {
+            ?>
+                <?php if($banner_desktop_image != ""): ?>
+                <img src="<?php echo $banner_desktop_image['url']; ?>" alt="<?php echo $banner_desktop_image['target']; ?>" >
+                <?php endif; ?>
+            <?php
+        }
+        if( get_field('select_video_or_image') == 'video' ) {
+            ?>
+                <div class="support-video-wrap">
+                    <video loop="" muted="" autoplay="" class="d-none d-md-flex">
+                        <source src="<?php echo $banner_video ;?>" type="video/mp4"> 
+                    </video>
+                </div>
+            <?php
+        }
+    ?>
+    
     <div class="support-hero-right">
         <img src="<?php echo $banner_right_image['url']; ?>" alt="">
     </div>

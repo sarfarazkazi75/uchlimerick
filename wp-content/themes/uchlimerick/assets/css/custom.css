@@ -214,7 +214,7 @@ a:visited,a:focus, a:active {text-decoration: none;outline: 0;color:#fff;}
 .btn-wrapper .button-dark{margin-right: 16px;}
 .load-more-btn a{font-size: 14px;}
 input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align: center;padding: 24px 36px;-webkit-transition: all .25s;-moz-transition: all .25s;-ms-transition: all .25s;-o-transition: all .25s;transition: all .25s;line-height: 1;display: inline-block;}
-
+.main-menu ul li a:visited, .main-menu ul li a:focus, .main-menu ul li a:active{color: #fff;}
 .two-colum-section .paragaraph-medium a{color: #FFC72C;}
 .two-colum-section .paragaraph-medium a:hover{color: #98774A;}
 .slick-slide{outline: 0;}
@@ -248,9 +248,9 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 .main-menu ul li.menu-item-has-children::before{content: "\f107";font-family: "Font Awesome 6 Free";font-weight: 900;position: absolute;right: 0px;color: #fff;font-size: 12px;}
 .main-menu .desktop-menu ul li.menu-item-has-children ul{position: absolute;top: 100%;width: 203px;margin: 0;left: 0%;visibility: hidden;opacity: 0;}
 /* .main-menu .desktop-menu ul li.menu-item-has-children ul::after{content: '';width: 160px;height: 1px;position: absolute;top: -20%;left: 0;background-color: #fff;} */
-.main-menu .desktop-menu ul li.menu-item-has-children::after{content: '';width: 160px;height: 1px;position: absolute;top: 106px;left: 0;background-color: #fff;display: none;}
+.main-menu .desktop-menu ul li.menu-item-has-children::after{content: '';width: 78%;height: 1px;position: absolute;top: 106px;left: 28px;background-color: #fff;display: none;}
 .main-menu .desktop-menu ul li.menu-item-has-children:hover::after{display: block;}
-.main-menu .desktop-menu ul li.menu-item-has-children ul li{border: 1px solid #98774A;background: rgba(0, 0, 0, 0.6);backdrop-filter: blur(20px);width: 100%;text-align: center;border-bottom: none;}
+.main-menu .desktop-menu ul li.menu-item-has-children ul li{border: 1px solid #98774A;background: rgba(0, 0, 0, 0.6);backdrop-filter: blur(20px);width: 100%;text-align: center;border-bottom: none;padding: 0;}
 .main-menu .desktop-menu ul li.menu-item-has-children ul li:last-child{border-bottom: 1px solid #98774A;}
 .main-menu .desktop-menu ul li.menu-item-has-children ul li a{color: #fff;padding: 16px 0px;display: inline-block;}
 .main-menu .desktop-menu ul li.menu-item-has-children ul li:hover{background-color: #FFC72C;}
@@ -297,19 +297,21 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 .section.active{width: 100vw!important;transition: 0.4s ease-in-out;}
 /* Whats on css */
 .whats-on{background: linear-gradient(180deg, #3C1226 39.06%, #181214 100%);position: relative;}
-.whats-on:before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/whats-on-pattern.png);background-size: contain;background-repeat: no-repeat;width: 100%;height: 100%;position: absolute;left: 0;top: 15px;}
+.whats-on:before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/whats-on-bg.svg);background-size: cover;background-repeat: no-repeat;width: 100%;height: 100%;position: absolute;left: 0;top: 15px;opacity: 0.4;}
 .section-title{display: flex;justify-content: space-between;margin-bottom: 70px;}
 .section-title.text-border-bottom:before{padding-top: 20px;}
 .whats-on h3{margin-bottom: 10px;}
 .whats-on .post-main-cover{border-bottom: none;}
 /* Support Css */
-.support-hero.homepage .banner-text{right: 12%;}
+.support-hero.homepage{max-height: 800px;}
+.support-hero.homepage video{max-height: 800px;}
+.support-hero.homepage .banner-text{right: 12%;top: 24%;}
 .support-hero.homepage::after{transform: matrix(1, 0, 0, 1, 0, 0);}
 .support-hero.homepage .support-hero-right{top: 46px;right: 0px;z-index: 1;}
 .support-hero .bg-main{height: 100%;object-fit: cover;}
 /* venue Hire css */
 .venue-hire{position: relative;}
-.venue-hire:before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/07/Venue-hire-patten.png);background-repeat: no-repeat;background-size:  cover;position: absolute;left: 0%;top: 0;width: 100%;height: 100%;z-index: 1;}
+.venue-hire:before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Venue-hire-patten.svg);background-repeat: no-repeat;background-size:  cover;position: absolute;left: 0%;top: 0;width: 100%;height: 100%;z-index: 1;opacity: 0.36;}
 .venue-row{position: relative;}
 .venue-text{position: absolute;top: 32%;bottom: 0;margin: auto;z-index: 1;}
 .venue-text h3{padding-bottom: 25px;margin-bottom: 0;border-bottom: 1px solid #98774A;}
@@ -318,7 +320,7 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 /* Newsletter css */
 .newsletter-left{position: relative;}
 .newsletter-left:before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/07/newsletter-patten-min.png);background-size: cover;background-repeat: no-repeat;position: absolute;left: 0;width: 100%;height: 100%;}
-.newsletter-left img{object-fit: initial;}
+.newsletter-left img{object-fit: initial;max-height: 480px;}
 .newsletter-right{background: #701D45;height: 100%;position: relative;display: flex;align-items: center;}
 .newsletter-text-wrapper{padding:80px 160px 80px 65px;position: relative;z-index: 2;}
 .newsletter-text-wrapper h4{font-family: 'Cormorant Garamond SemiBold';position: relative;}
@@ -338,7 +340,7 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 .footer-blocks{justify-content: space-between;margin-left: 0;margin-right: 0;}
 .footer-links-items{display: flex;flex-wrap: wrap;justify-content: space-between;}
 .footer-links li{padding-top: 24px;}
-.footer-links li a{font-size: 12px;font-weight: 400;}
+.footer-links li a{font-size: 12px;font-weight: 400;color: #fff;}
 .footer-links li a:hover{color:#FFC72C;}
 .footer-links h6{color:#FFC72C;font-family: 'Cormorant Garamond Medium';margin-bottom: 0;pointer-events: none;}
 .footer-logo-block{padding: 0;}
@@ -361,6 +363,7 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 .page-banner-text{position: absolute;bottom: 70px;left: 0;right: 0;}
 .page-banner-text h2{text-transform: capitalize;}
 .page-banner-text .text-border-bottom:before{bottom: -30px;}
+.page-banner.individ-hero img{max-height: 750px;object-position: top;}
 .paragraph-medium{font-size: 16px;}
 .information{padding-bottom: 64px;}
 .information-top{margin-top: 75px;}
@@ -385,9 +388,9 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 /* More Helpful css */
 .more-helpful{background: linear-gradient(180deg, #3C1226 39.06%, #181214 100%);padding-top: 77px;padding-bottom: 77px;position: relative;}
 .more-helpful::before{content:"";
-    /* background-image:url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/more-info-pattern.png); */
+   
     background-image:url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/more-help-bg.svg);
-    background-size: 100% 90%;background-repeat: no-repeat;width: 100%;height: 100%;position:absolute;top: 0;}
+    background-size: cover;background-repeat: no-repeat;width: 100%;height: 1300px;position:absolute;top: -290px;opacity: 0.4;}
 .more-helpful .text-border-bottom:before{bottom: -30px;}
 .more-col{margin-top: 36px;position: relative;}
 .more-col img{background: linear-gradient(28.86deg, rgba(0, 0, 0, 0.9) 15.99%, rgba(0, 0, 0, 0) 100%);}
@@ -441,6 +444,7 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 @media screen and (max-width: 1370px){
     .main-car{max-width: calc(100% - 9.5%);}
     .newsletter-left img{max-height: 100%;}
+    .banner-text{top: 28%;}
 }
 @media screen and (max-width: 1199px){
     h1,.h1 {
@@ -504,7 +508,7 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
         overflow: hidden;
     }
     .mobile-menu nav.main-menu ul {flex-direction: column;}
-    .main-menu ul li a {font-size: 14px;padding: 16px 0;display: inline-block;}
+    .main-menu ul li a {font-size: 14px;padding: 16px 0;display: inline-block;color: #fff;}
     .main-menu ul li {width: 100%;border-bottom:1px solid #98774A;}
     .main-menu .mobile-menu ul li.fa-phone{display: none;}
     .main-menu ul li:last-child{border-bottom: none;}
@@ -598,9 +602,10 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
     .button{font-size: 14px;padding: 16px 28px;}
     .text-border-left:before{width: 95%;bottom: -10px;}
     .banner-text .btn-wrapper{margin-top: 24px;}
-    .banner-text h1{padding-bottom: 15px;}
+    /* .banner-text h1{padding-bottom: 15px;} */
     .highlights-patten::before{background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/highlight-mobile-pattern-1.png);top:-57%;left: 3%;}
-    .hero-section img{max-height: 550px;}
+    /* .hero-section img{max-height: 550px;} */
+    .banner-text{top: 24%;}
     /* Highlight Css */
     .highlights{padding-top: 15px;}
     .main-car{max-width: calc(100% - 2%);}
@@ -668,7 +673,7 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 }
 @media screen and (max-width: 480px){
 /* Banner Css */
-.bg-video-wrap{clip-path: ellipse(125% 86% at 49% 10%);height: 65vh;}
+.bg-video-wrap{clip-path: ellipse(125% 86% at 49% 10%);height: 550px;}
 .clip-border{clip-path: ellipse(125% 86% at 49% 10%);}
 .highlights-patten::before{top:-45%;}
 /* Venue Css */
@@ -687,9 +692,9 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 }
 @media screen and (max-width: 370px){
     .btn-wrapper{justify-content: center;margin-left: -20px;}
-    .hero-section img{max-height: 500px;}
+    .hero-section img{max-height: 550px;min-height: 550px;}
     .highlights-patten::before{top: -33%;}
-    .bg-video-wrap{height: 75vh;}
+    .bg-video-wrap{height: 550px;}
     .key-wrap{max-width: 100%;}
 }
 
@@ -738,5 +743,7 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
     text-decoration: none;
   }
 
+
+  
 
   

@@ -11,9 +11,9 @@ $event_user_image = get_field('event_user_image');
                 <div class="two-col-left-col colpe-left">
                     <h4 class="text-border-bottom"><?php echo $event_title; ?></h4>
                     <?php echo $event_content;?>
-                    <?php if(!empty($event_file)){ ?>
-                    <a href="<?php echo $event_file['url']; ?>" target="<?php echo $event_file['target']; ?>" class="button button-dark text-center fw-medium" download="Technical Specs"><img src="<?php echo get_template_directory_uri(''); ?>/assets/images/download.svg" class="mr-3"><?php echo $event_file['title']; ?></a>
-                    <?php } ?>
+                    <?php if($event_file != ""): ?>
+                    <a href="<?php echo $event_file['url']; ?>"  class="button button-dark text-center fw-medium" download="Technical Specs"><img src="<?php echo get_template_directory_uri(''); ?>/assets/images/download.svg" class="mr-3"><?php echo $event_file['title']; ?></a>
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="col-lg-6">

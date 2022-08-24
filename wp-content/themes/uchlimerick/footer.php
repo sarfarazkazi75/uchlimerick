@@ -102,24 +102,36 @@ $footer_section5_menu_heading = get_field( 'footer_section5_menu_heading', 'opti
 									$youtube_link = get_field( 'youtube_link', 'options' );
 								?>
 								<ul>
+									<?php if($twitter_link != ""): ?>
 									<li>
 										<a href="<?php echo isset($twitter_link['url'])?$twitter_link['url']:'#'; ?>" target="<?php echo $twitter_link['target']; ?>"><i class="fa-brands fa-twitter"></i></a>
 									</li>
+									<?php endif; ?>
+									<?php if($facebook_link != ""): ?>
 									<li>
 										<a href="<?php echo isset($facebook_link['url'])?$facebook_link['url']:'#'; ?>"><i class="fa-brands fa-facebook-f"></i></a>
 									</li>
+									<?php endif; ?>
+									<?php if($instagram_link != ""): ?>
 									<li>
 										<a href="<?php echo isset($instagram_link['url'])?$instagram_link['url']:'#'; ?>"><i class="fa-brands fa-instagram"></i></a>
 									</li>
+									<?php endif; ?>
+									<?php if($linkedin_link != ""): ?>
 									<li>
 										<a href="<?php echo isset($linkedin_link['url'])?$linkedin_link['url']:'#'; ?>"><i class="fa-brands fa-linkedin-in"></i></a>
 									</li>
+									<?php endif; ?>
+									<?php if($tiktok_link != ""): ?>
 									<li>
 										<a href="<?php echo isset($tiktok_link['url'])?$tiktok_link['url']:'#'; ?>"><i class="fa-brands fa-tiktok"></i></a>
 									</li>
+									<?php endif; ?>
+									<?php if($youtube_link != ""): ?>
 									<li>
 										<a href="<?php echo isset($youtube_link['url'])?$youtube_link['url']:'#'; ?>"><i class="fa-brands fa-youtube"></i></a>
 									</li>
+									<?php endif; ?>
 								</ul>
 							</div>
 						</div>

@@ -284,6 +284,31 @@ $("#load_more_blog").click(function(){
     });
 });
 
+// LOAD MORE PROJECT POSTS
+$("#load_more_project").click(function(){
+  console.log('clicked');
+    $.post(ajaxurl,
+    {
+      'action': 'load_more_project_posts',
+      'count': $(".project_single_wrap").length
+    },
+    function(response)
+    {
+      
+      var posts = JSON.parse(response);
+      // console.log(posts);
+      for( var i = 0; i < posts.length; i++ )
+      {
+        if( posts[i] == "0" )
+          $("#load_more_project").fadeOut();
+        else
+          //$(".ajax_response").append(posts[i]);
+            $("#show_project_content_wrap_full").append(posts[i]);
+            console.log(posts);
+      }
+    });
+});
+
 function fetch(){
 
   jQuery.ajax({

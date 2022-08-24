@@ -141,7 +141,8 @@ input.empty { font-style: normal; font-weight: normal; text-decoration: inherit;
 .privacy-basic-text { max-width: 750px; margin: 0 auto; }
 .basic-page-text { padding: 100px 0 130px; color: rgba(0, 0, 0, 0.85); }
 .privacy-basic-text a { margin-top: 30px; }
-.privacy-basic-text li:not(:last-child) { list-style: disc; color: rgba(0, 0, 0, 0.85); margin-left: 30px; margin-bottom: 32px; line-height: 20px; }
+.privacy-basic-text li { list-style: auto; color: rgba(0, 0, 0, 0.85); margin-left: 30px; margin-bottom: 32px; line-height: 20px; }
+.privacy-basic-text li:last-child{ margin-bottom: 0;}
 .privacy-basic-text ul li::marker { color: rgba(0, 0, 0, 0.85); }
 .board-directors-header h5 { color: #701D45; }
 .board-directors-header { color: #701D45; }

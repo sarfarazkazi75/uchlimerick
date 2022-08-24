@@ -36,10 +36,11 @@
                                 <?php echo $booking_fees_data_right_desc; ?>
                             </div>
                         <?php endif; ?>
+                        <?php if($show_booking_fees_data_link == 1){ ?>
                         <?php if($booking_fees_data_link != ""): ?>
                         <a href="<?php echo $booking_fees_data_link['url']; ?>" target=" <?php echo $booking_fees_data_link['url']; ?>" class="bg-transparent button"><?php echo $booking_fees_data_link['title']; ?></a>
                         <?php endif; ?>
-
+                        <?php } ?>
                     </div>
                 </div>
             <?php } 
@@ -58,7 +59,7 @@
             <div class="paragaraph-medium">
                 <p><b class="pink-burgundy">*Standard Booking Fee:</b> €2.50 per ticket. (Booking fees include processing and service charges and are non-refundable)</p>
                 <p><b class="pink-burgundy">Postage Fee:</b> €1.50 charge if post is chosen as delivery method (postage fees are non-refundable)</p>
-                <p class="pink-burgundy">*Please note the above are “standard booking fees”. Some variations may apply. Please check event and booking fees at time of booking.</p>
+                <p class="pink-burgundy">*Please note the above are “standard booking fees�?. Some variations may apply. Please check event and booking fees at time of booking.</p>
             </div>
         </div>
         <div class="col-md-6">
@@ -70,7 +71,7 @@
                     <li>No booking fees apply for Groups of 10+</li>
                     <li>No booking fees apply for Friends of UCH</li>
                     <li>For further information on becoming a Friend of UCH please go to Play Your Part</li>
-                    <li>With the exception of “Family” tickets for Panto, concession tickets are otherwise not available for sale online and must be purchased via the Box Office</li>
+                    <li>With the exception of “Family�? tickets for Panto, concession tickets are otherwise not available for sale online and must be purchased via the Box Office</li>
                 </ul>
             </div>
         </div>

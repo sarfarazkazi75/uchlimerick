@@ -18,7 +18,7 @@
                             <div class="text-border-bottom-two">
                                 <h4><?php echo $resource_title; ?></h4>
                             </div>
-                            <a href="<?php echo $resource_link['url']; ?>" class="button-light button"><?php echo $resource_link['title']; ?></a>
+                            <a href="<?php echo $resource_link['url']; ?>" target="<?php echo $resource_link['target']; ?>" class="button-light button"><?php echo $resource_link['title']; ?></a>
                         </div>
                     </div>
                 </div>

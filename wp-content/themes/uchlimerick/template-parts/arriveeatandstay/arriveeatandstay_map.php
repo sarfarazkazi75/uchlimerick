@@ -14,12 +14,12 @@
                 </div> 
                 <?php echo $get_here_content; ?>                   
                 <ul class="d-md-block d-none">
-                    <li><a href="<?php echo $get_here_link; ?>">
+                    <li><a href="<?php echo $get_here_link; ?>" target="blank">
                         <span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/map-wine.svg" alt=""></span>
                         <span><?php echo $get_here_address; ?></a></span>
                     </li>
                 </ul>
-                <a href="<?php echo $get_here_link; ?>" class="button button-dark text-center">Open in Google Maps</a>
+                <a href="<?php echo $get_here_link; ?>" target="blank" class="button button-dark text-center"><?php echo _('Open in Google Maps');?></a>
             </div>
             <div class="col-md-6 ml-auto">
                 <div class="embed-responsive embed-responsive-1by1">

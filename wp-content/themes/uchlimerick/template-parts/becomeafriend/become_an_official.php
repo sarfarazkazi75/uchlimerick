@@ -8,7 +8,7 @@
                 $benefit_price = get_sub_field('benefit_price'); 
                 $book_ticket_link = get_sub_field('book_ticket_link'); 
                 $email_us_link = get_sub_field('email_us_link'); 
-                $call_us_link = get_sub_field('call_us_link'); 
+                $call_us_link = get_sub_field('call_us_text'); 
                 $benefit_box_title = get_sub_field('benefit_box_title'); 
                 $benefit_box = get_sub_field('benefit_box'); 
         ?>
@@ -45,31 +45,28 @@
                         <?php
                                 endwhile; endif;
                             ?>
-
-
                     </div>
                     <div class="row mb-4 mt-4 pt-2 btn-wrap">
                         <div class="col-md-6 mb-md-0 mb-2">
-                            <a href="<?php echo $book_ticket_link['url']; ?>"
+                            <a href="<?php echo $book_ticket_link['url']; ?>" target="<?php echo $book_ticket_link['target']; ?>"
                                 class="button button-dark text-center w-100"><?php echo $book_ticket_link['title'];?></a>
                         </div>
                         <div class="col-md-6 mb-md-0 mb-2">
-                            <a href="<?php echo $email_us_link['url']; ?>"
+                            <a href="<?php echo $email_us_link['url']; ?>" target="<?php echo $email_us_link['target']; ?>"
                                 class="bg-transparent button text-center w-100"><?php echo $email_us_link['title']; ?></a>
                         </div>
                     </div>
-                    <p>Call <a href="tel:<?php echo $call_us_link; ?>"><?php echo $call_us_link; ?></a> for further
-                        details or to join by phone</p>
+                    <p><?php echo _('Call');?> <a href="tel:<?php echo $call_us_link; ?>"><?php echo $call_us_link; ?></a> <?php echo _('for further details or to join by phone');?></p>
                 </div>
             </div>
-            
+            <?php if(!empty($benefit_box)){ ?>
                 <div class="col-md-6 aos-init aos-animate">
                     <div class="benifit-box">
                         <?php if($benefit_box_title != ""): ?><h5><?php echo $benefit_box_title; ?></h5><?php endif; ?>
                         <?php if($benefit_box != ""): ?><?php echo $benefit_box; ?><?php endif; ?>
                     </div>
                 </div>
-            
+            <?php } ?>
         </div>
         <?php } 
         } ?>
