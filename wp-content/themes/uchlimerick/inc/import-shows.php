@@ -443,6 +443,7 @@ class DD_import_shows {
                                 foreach ( $imported_shows_ids as $post ) {
                                     echo '<p>' . $post . '</p>';
                                 }
+                                /*
                                 $deleted_post = $this->remove_deleted_posts();
                                 if ( $deleted_post ) {
                                     ?>
@@ -452,6 +453,7 @@ class DD_import_shows {
                                         echo '<p>' . $post . '</p>';
                                     }
                                 }
+                                */
                                 }
                                 ?>
                                 </p>
