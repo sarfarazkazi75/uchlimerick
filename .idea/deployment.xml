@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="dddemo">
+    <serverData>
+      <paths name="dddemo">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/uchlimerick" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath path="/uchlimerick/wp-admin" />
+            <excludedPath path="/uchlimerick/wp-includes" />
+            <excludedPath path="/uchlimerick/wp-content/upgrade" />
+            <excludedPath path="/uchlimerick/wp-content/uploads" />
+            <excludedPath path="/uchlimerick/wp-content/plugins" />
+            <excludedPath path="/uchlimerick/wp-content/themes/twentytwenty" />
+            <excludedPath path="/uchlimerick/wp-content/themes/twentytwentyone" />
+            <excludedPath path="/uchlimerick/wp-content/themes/twentytwentytwo" />
+            <excludedPath local="true" path="$PROJECT_DIR$/wp-admin" />
+            <excludedPath local="true" path="$PROJECT_DIR$/wp-includes" />
+            <excludedPath local="true" path="$PROJECT_DIR$/wp-content/upgrade" />
+            <excludedPath local="true" path="$PROJECT_DIR$/wp-content/uploads" />
+            <excludedPath local="true" path="$PROJECT_DIR$/wp-content/plugins" />
+            <excludedPath local="true" path="$PROJECT_DIR$/wp-content/themes/twentytwenty" />
+            <excludedPath local="true" path="$PROJECT_DIR$/wp-content/themes/twentytwentyone" />
+            <excludedPath local="true" path="$PROJECT_DIR$/wp-content/themes/twentytwentytwo" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

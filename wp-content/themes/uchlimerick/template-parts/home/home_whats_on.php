@@ -1,9 +1,14 @@
+<?php
+    $home_whats_on_sec_ticket_book   = get_field( "home_whats_on_sec_ticket_book" );
+    $home_whats_on_sec_see_all_events = get_field("home_whats_on_sec_see_all_events" );
+    
+?>
 <section class="whats-on homepage">
     <div class="container-inner">
         <div class="section-title text-border-bottom">
             <h3 class="">What's On?</h3>
             <div class="">
-                <a href="#" class="button button-dark d-none d-md-block">Book Tickets HERE</a>
+                <?php if($home_whats_on_sec_ticket_book != ""): ?><a href="<?php echo $home_whats_on_sec_ticket_book['url']; ?>" target="<?php echo $home_whats_on_sec_ticket_book['target'];?>" class="button button-dark d-none d-md-block"><?php echo $home_whats_on_sec_ticket_book['title'];?></a><?php endif; ?>
             </div>
         </div>
         <div class="post-main-cover">
@@ -178,7 +183,7 @@
                     </div>
                 </div> -->
             </div>
-            <a href="<?php echo site_url( 'whats-on' ) ?>" class="button button-dark text-center w-100 mt-1 d-md-none whats-on-btn"><?php echo _e( 'See All Events', 'uchlimerick' ) ?></a>
+            <?php if($home_whats_on_sec_see_all_events != ""): ?><a href="<?php echo $home_whats_on_sec_see_all_events['url']; ?>" target="<?php echo $home_whats_on_sec_see_all_events['target']; ?>" class="button button-dark text-center w-100 mt-1 d-md-none whats-on-btn"><?php echo $home_whats_on_sec_see_all_events['title']; ?></a><?php endif; ?>
         </div>
     
     </div>

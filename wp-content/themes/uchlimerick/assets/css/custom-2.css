@@ -125,8 +125,8 @@
     content: "";
     position: absolute;
     right: 0;
-    background-image: url('https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/food-drink-bg.svg');
-    bottom: 0;
+    background-image: url('../images/food-drink-bg.svg');
+    bottom: -150px;
     z-index: -1;
     width: 100%;
     opacity: 0.8;
@@ -139,7 +139,7 @@
     content: "";
     position: absolute;
     right: 0;
-        background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/food-drink-bot.svg);
+    background-image: url('../images/food-drink-bot.svg');
     bottom: -430px;
     z-index: -1;
     opacity: 0.8;
@@ -194,7 +194,7 @@
     font-size: 12px;
     line-height: 130%;
 }
-.food-drink .food-drink-wrp p a{color:#FFC72C;}
+.food-drink .food-drink-wrp p a{color:#FFF;text-decoration: underline;}
 .food-drink .food-drink-wrp p a:hover{color:#98774A;}
 
 .food-drink .food-drink-wrp h6{
@@ -210,10 +210,12 @@
 .page-template-Arrive-EatStay .support-hero{
     overflow: hidden;
 }
+
 .food-drink .food-drink-wrp .text-border-bottom:before{
     bottom: 0;
     padding-top: 0;
 }
+
 .food-drink .food-drink-wrp .text-border-bottom{
     margin-bottom: 20px;
     padding-bottom: 5px;

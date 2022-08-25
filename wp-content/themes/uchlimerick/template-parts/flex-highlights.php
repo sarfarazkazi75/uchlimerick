@@ -1,5 +1,5 @@
 <?php $highlights_title = get_field('highlights_title', 'option'); ?>
-<section class="highlights">
+<section class="highlights highlights-patten">
    <div class="text-border-left">
       <div class="container-inner">
          <h3 class=""><?php echo $highlights_title; ?></h3>

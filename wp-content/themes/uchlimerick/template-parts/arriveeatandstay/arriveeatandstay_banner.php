@@ -11,27 +11,26 @@
     $spend_the_night = get_field('spend_the_night');
 ?>
 <section class="support-hero">
-    <img src="<?php echo $banner_image['url']; ?>"
-        class="mobile-bgsupport" alt="" class="d-md-none">
+    <img src="<?php echo $banner_image['url']; ?>" class="mobile-bgsupport" alt="" class="d-md-none">
     <?php 
         if( get_field('select_video_or_image') == 'image' ) {
             ?>
-                <?php if($banner_desktop_image != ""): ?>
-                <img src="<?php echo $banner_desktop_image['url']; ?>" alt="<?php echo $banner_desktop_image['target']; ?>" >
-                <?php endif; ?>
-            <?php
+    <?php if($banner_desktop_image != ""): ?>
+    <img src="<?php echo $banner_desktop_image['url']; ?>" class="d-none d-md-block img-100" alt="<?php echo $banner_desktop_image['alt']; ?>">
+    <?php endif; ?>
+    <?php
         }
-        if( get_field('select_video_or_image') == 'video' ) {
+        if( get_field('select_video_or_image') == 'video' ) {   
             ?>
-                <div class="support-video-wrap">
-                    <video loop="" muted="" autoplay="" class="d-none d-md-flex">
-                        <source src="<?php echo $banner_video ;?>" type="video/mp4"> 
-                    </video>
-                </div>
-            <?php
+    <div class="support-video-wrap">
+        <video loop="" muted="" autoplay="" class="d-none d-md-flex">
+            <source src="<?php echo $banner_video ;?>" type="video/mp4">
+        </video>
+    </div>
+    <?php
         }
     ?>
-    
+
     <div class="support-hero-right">
         <img src="<?php echo $banner_right_image['url']; ?>" alt="">
     </div>
@@ -49,14 +48,14 @@
                             class="support-icon" alt="righ-icon"> <?php echo $parking_your_car_title; ?><img
                             src="<?php echo get_template_directory_uri(); ?>/assets/images/right-chevrow-white.svg"
                             class="support-rigth" alt="righ-icon"></a></li>
-                <li><a href="#support3"><img
-                            src="<?php echo get_template_directory_uri(); ?>/assets/images/Tapas.svg"
-                            class="support-icon" alt="righ-icon"> <?php echo $food_and_drink['food_and_drink_title'] ; ?><img
+                <li><a href="#support3"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/Tapas.svg"
+                            class="support-icon" alt="righ-icon">
+                        <?php echo $food_and_drink['food_and_drink_title'] ; ?><img
                             src="<?php echo get_template_directory_uri(); ?>/assets/images/right-chevrow-white.svg"
                             class="support-rigth" alt="righ-icon"></a></li>
-                <li><a href="#support4"><img
-                            src="<?php echo get_template_directory_uri(); ?>/assets/images/Hotel.svg"
-                            class="support-icon" alt="righ-icon"><?php echo $spend_the_night['spend_the_night_title'] ; ?><img
+                <li><a href="#support4"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/Hotel.svg"
+                            class="support-icon"
+                            alt="righ-icon"><?php echo $spend_the_night['spend_the_night_title'] ; ?><img
                             src="<?php echo get_template_directory_uri(); ?>/assets/images/right-chevrow-white.svg"
                             class="support-rigth" alt="righ-icon"></a></li>
             </ul>

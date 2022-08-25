@@ -236,13 +236,14 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 .nav-menu{display: flex;align-items: center;justify-content: flex-end;flex-direction: row;}
 .main-menu .desktop-menu ul{margin-bottom: 0;}
 .main-menu .desktop-menu ul li{display: inline-block;padding: 0 28px;}
+.main-menu .desktop-menu ul li.support-us{padding-right: 0;}
 .main-menu .desktop-menu ul li a{color: #fff;}
 .main-menu .desktop-menu ul li a:hover{color: #FFC72C;}
 .main-menu .desktop-menu ul li.fa-phone a{color: #FFC72C;}
 .main-menu .desktop-menu ul li.fa-phone a:hover{color: #fff;}
 .main-menu .desktop-menu ul li.fa-phone:hover:before{color: #fff;}
 .main-menu .desktop-menu ul li.fa-phone{padding-right: 10px;color: #FFC72C;position: relative;}
-.main-menu .desktop-menu ul li.fa-phone:before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/call-icon.svg);width: 18px;height: 18px;position: absolute;left: -7px;top: -3px;background-size: cover;background-repeat: no-repeat;}
+.main-menu .desktop-menu ul li.fa-phone:before{content: '';background-image: url(../images/call-icon.svg);width: 18px;height: 18px;position: absolute;left: -7px;top: -3px;background-size: cover;background-repeat: no-repeat;}
 .main-menu .desktop-menu ul li.menu-item-has-children{position: relative;padding-top: 55px;padding-bottom: 55px;transition: 0.45s ease-in-out;}
 .main-menu .desktop-menu ul li.menu-item-has-children:hover ul{visibility: visible;opacity: 1;}
 .main-menu ul li.menu-item-has-children::before{content: "\f107";font-family: "Font Awesome 6 Free";font-weight: 900;position: absolute;right: 0px;color: #fff;font-size: 12px;}
@@ -255,7 +256,7 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 .main-menu .desktop-menu ul li.menu-item-has-children ul li a{color: #fff;padding: 16px 0px;display: inline-block;}
 .main-menu .desktop-menu ul li.menu-item-has-children ul li:hover{background-color: #FFC72C;}
 .main-menu ul li.fa-user{position: relative;margin-left: 28px;}
-.main-menu ul li.fa-user:before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/user.svg);width: 24px;height: 24px;position: absolute;left: -7px;top: -3px;background-size: cover;background-repeat: no-repeat;}
+.main-menu ul li.fa-user:before{content: '';background-image: url(../images/user.svg);width: 24px;height: 24px;position: absolute;left: -7px;top: -3px;background-size: cover;background-repeat: no-repeat;}
 .main-menu ul li.fa-user:hover:before{color: #FFC72C;}
 .header-right{display: flex;justify-content: flex-end;}
 .site-header.fixed{background: linear-gradient(110.9deg, rgba(22, 24, 26, 0.8) 22.87%, rgba(43, 44, 47, 0.8) 101.09%);position: fixed;top:0; left:0;width: 100%;}
@@ -267,8 +268,8 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 .clip-border {position: absolute;top: 0px;left: 0px;right: 0px;bottom: 1px;background: white;-webkit-clip-path: ellipse(120% 87% at 76% 9%);clip-path: ellipse(120% 87% at 76% 9%);}
  video{min-width: 100%;min-height: 85vh;z-index: 1;width: 100%;object-fit: cover;}
 .overlay{width: 100%;height: 100%;position: absolute;top: 0;left: 0;bottom:0;z-index: 2;background: linear-gradient(333.88deg, rgba(0, 0, 0, 0.2) 15.86%, rgba(0, 0, 0, 0) 39.37%), linear-gradient(278.45deg, rgba(58, 19, 39, 0.9) 31.04%, rgba(112, 29, 69, 0) 58.16%);transform: matrix(-1, 0, 0, 1, 0, 0);pointer-events: none;}
-.banner-text{position: absolute;top:18%;z-index: 2;}
-.banner-text h1{font-family: 'Cormorant Garamond SemiBold';display: inline-block;text-transform: uppercase;}
+.banner-text{position: absolute;top:22%;z-index: 2;}
+.banner-text h1{font-family: 'Cormorant Garamond SemiBold';display: inline-block;text-transform: uppercase;font-size: 75px;}
 .banner-text p{margin-bottom: 0;}
 .banner-text .btn-wrapper{margin-top: 35px;}
 .banner-text .btn-wrapper .button-dark{margin-right: 16px;}
@@ -283,7 +284,7 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 .section img{height: 495px;}
 .highlights{position: relative;background: linear-gradient(360deg, #3C1226 39.06%, #181214 100%);padding-bottom: 114px;}
 .highlights-patten{padding-top: 50px;}
-.highlights-patten::before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/banner-highlight-patten.png);background-repeat: no-repeat;background-size: contain;width: 100%;height: 855px;position: absolute;left: 0;top:-59%;pointer-events: none;}
+.highlights-patten::before{content: '';background-image: url(../images/banner-highlight-patten.svg);background-repeat: no-repeat;background-size: cover;width: 100%;height: 1150px;position: absolute;left: 0;top:-95%;pointer-events: none;opacity: 0.35;}
 .highlight-text{position: absolute;bottom:0;padding: 35px;left: 0;right: 0;max-width: 300px;}
 .car-wrappper{display: flex;justify-content: flex-end;}
 .main-car{width: 100%;max-width: calc(100% - 21%);padding-top: 25px;}
@@ -297,7 +298,7 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 .section.active{width: 100vw!important;transition: 0.4s ease-in-out;}
 /* Whats on css */
 .whats-on{background: linear-gradient(180deg, #3C1226 39.06%, #181214 100%);position: relative;}
-.whats-on:before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/whats-on-bg.svg);background-size: cover;background-repeat: no-repeat;width: 100%;height: 100%;position: absolute;left: 0;top: 15px;opacity: 0.4;}
+.whats-on:before{content: '';background-image: url(../images/whats-on-bg.svg);background-size: cover;background-repeat: no-repeat;width: 100%;height: 100%;position: absolute;left: 0;top: 15px;opacity: 0.4;}
 .section-title{display: flex;justify-content: space-between;margin-bottom: 70px;}
 .section-title.text-border-bottom:before{padding-top: 20px;}
 .whats-on h3{margin-bottom: 10px;}
@@ -311,7 +312,7 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 .support-hero .bg-main{height: 100%;object-fit: cover;}
 /* venue Hire css */
 .venue-hire{position: relative;}
-.venue-hire:before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Venue-hire-patten.svg);background-repeat: no-repeat;background-size:  cover;position: absolute;left: 0%;top: 0;width: 100%;height: 100%;z-index: 1;opacity: 0.36;}
+.venue-hire:before{content: '';background-image: url(../images/Venue-hire-patten.svg);background-repeat: no-repeat;background-size:  cover;position: absolute;left: 0%;top: 0;width: 100%;height: 100%;z-index: 1;opacity: 0.35;}
 .venue-row{position: relative;}
 .venue-text{position: absolute;top: 32%;bottom: 0;margin: auto;z-index: 1;}
 .venue-text h3{padding-bottom: 25px;margin-bottom: 0;border-bottom: 1px solid #98774A;}
@@ -319,12 +320,12 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 .venue-row img{max-height: 800px;}
 /* Newsletter css */
 .newsletter-left{position: relative;}
-.newsletter-left:before{content: '';background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/07/newsletter-patten-min.png);background-size: cover;background-repeat: no-repeat;position: absolute;left: 0;width: 100%;height: 100%;}
-.newsletter-left img{object-fit: initial;max-height: 480px;}
+.newsletter-left:before{content: '';background-image: url(../images/newsletter-patten-min.png);background-size: cover;background-repeat: no-repeat;position: absolute;left: 0;width: 100%;height: 100%;}
+.newsletter-left img{object-fit: initial;max-height: 100%;}
 .newsletter-right{background: #701D45;height: 100%;position: relative;display: flex;align-items: center;}
 .newsletter-text-wrapper{padding:80px 160px 80px 65px;position: relative;z-index: 2;}
 .newsletter-text-wrapper h4{font-family: 'Cormorant Garamond SemiBold';position: relative;}
-.newsletter-right:before{content:'';background:url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/07/newsletter-bg-min.png) no-repeat;width: 100%;height: 100%;background-size: cover;position: absolute;left:0%;}
+.newsletter-right:before{content:'';background:url(../images/newsletter-bg.svg) no-repeat;width: 100%;height: 100%;background-size: cover;position: absolute;left:0%;opacity: 0.5;}
 .newsletter input[type="button"]{color: #FFFFFF;font-size: 14px;padding: 17px 22px;line-height: 1;background-color: #98774A;display: inline-block;border: none;border-radius: 0;}
 .newsletter input[type="button"]:hover{background-color: #FFC72C;}
 .newsletter input[type="submit"]{color: #FFFFFF;font-size: 14px;padding: 17px 22px;line-height: 1;background-color: #98774A;display: inline-block;border: none;border-radius: 0;}
@@ -359,21 +360,30 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 .site-info a{color: rgba(255, 255, 255, 0.75);}
 .rights br{display: none;}
 /* Booking information */
-.page-banner{background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, #2F0A1C 0%, rgba(0, 0, 0, 0) 47.89%), radial-gradient(68.06% 253.54% at 9.58% 86.84%, #49132D 8.33%, rgba(112, 29, 69, 0.708333) 59.38%, rgba(112, 29, 69, 0) 100%);position: relative;}
+.page-banner{position: relative;}
+.page-banner::before{content: '';background: linear-gradient(0deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), linear-gradient(180deg, #2F0A1C 0%, rgba(0, 0, 0, 0) 47.89%), radial-gradient(57.78% 204.87% at 9.58% 86.84%, #49132D 0%, rgba(112, 29, 69, 0.708333) 57.81%, rgba(112, 29, 69, 0) 100%);position: absolute;
+    top: 0;bottom: 0;width: 100%;left: 0%;}
 .page-banner-text{position: absolute;bottom: 70px;left: 0;right: 0;}
 .page-banner-text h2{text-transform: capitalize;}
 .page-banner-text .text-border-bottom:before{bottom: -30px;}
 .page-banner.individ-hero img{max-height: 750px;object-position: top;}
 .paragraph-medium{font-size: 16px;}
-.information{padding-bottom: 64px;}
+.information{margin-bottom: 64px;}
 .information-top{margin-top: 75px;}
 .information-bottom{padding-bottom: 105px;}
-.information-block {padding: 44px;border: 1px solid #98774A;}
+.information-block {padding: 44px;border: 1px solid #98774A;height: 100%;}
 .information-block p{color: #000;}
-.information-block p a{color:#FFC72C;}
-.information-block p a:hover{color:#98774A;}
-.paragaraph-medium p a{color:#FFC72C;}
+.information-block p a{color: #000;text-decoration: underline;}
+.information-block p a:hover{color: #98774A;}
+.information-block li a{color: #000;text-decoration: underline;}
+.information-block li a:hover{color: #98774A;}
+.paragaraph-medium p a{color:#000;text-decoration: underline;}
 .paragaraph-medium p a:hover{color:#98774A;}
+.paragaraph-medium p span a{color:#000;text-decoration: underline;}
+.paragaraph-medium p span a:hover{color:#98774A;}
+.information-block li a{color:#000;text-decoration: underline;}
+.information-block li a:hover{color:#98774A;}
+.information.image-left .row{flex-direction: row-reverse;}
 .information-block ul{list-style: disc;padding-left: 20px;}
 .information-block li{color: #000;margin-bottom: 20px;}
 .information-block h5{color: #000;padding-bottom: 25px;} 
@@ -388,8 +398,7 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 /* More Helpful css */
 .more-helpful{background: linear-gradient(180deg, #3C1226 39.06%, #181214 100%);padding-top: 77px;padding-bottom: 77px;position: relative;}
 .more-helpful::before{content:"";
-   
-    background-image:url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/more-help-bg.svg);
+    background-image:url(../images/more-help-bg.svg);
     background-size: cover;background-repeat: no-repeat;width: 100%;height: 1300px;position:absolute;top: -290px;opacity: 0.4;}
 .more-helpful .text-border-bottom:before{bottom: -30px;}
 .more-col{margin-top: 36px;position: relative;}
@@ -410,7 +419,8 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 .key-wrap li{color: #701D45;}
 .key-wrap li:first-child{margin-bottom: 16px;}
 /* accessibility css */
-.information-block img{margin-bottom: 32px;}
+.information-block img{margin-bottom: 32px;width: 100%;object-fit: cover;}
+.information-block .col-md-6 img{width: 100%;height: 100%;object-fit: cover;}
 .page-template-accessibility .page-banner-text{bottom: 64px;}
 /* Contact css */
 .page-template-contact .map-sec{padding: 64px 0 74px;}
@@ -421,16 +431,34 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
 .contact-email-title{margin-bottom: 33px;color:#701D45;}
 .contact-email-title b{font-weight: 600;padding-left: 5px;}
 .contact.map-sec ul li a{padding-left: 30px;}
+.contact.map-sec ul li a:hover p{color: #98774A;}
+.contact-email a:hover{color: #98774A;}
 .map-sec ul li a .text p{text-decoration: underline;color: #000;}
 /* 404 page */
 .error404 .site-header{background: linear-gradient(110.9deg, #16181A 22.87%, #2B2C2F 101.09%);}
 .error-404.not-found{background: linear-gradient(180deg, #3C1226 39.06%, #5B464D 100%);margin-top: 130px;min-height: 70vh;padding-top:10%;padding-bottom: 10%;}
 /* Search Page */
-.search-page{color: #000;}
-.search-page a{color: #000;}
+.search-page{color: #000;background-color:#3C1226;}
+.search-page a{color: #fff;}
+.search-page a h5{border-bottom: 1px solid #98774A;padding-bottom: 10px;}
 .search-page a:hover{color: #FFC72C;}
+.search-page p{color: #fff;}
 .search .site-header{background: linear-gradient(110.9deg, #16181A 22.87%, #2B2C2F 101.09%);}
 .search .search-page{min-height: 70vh;margin-top: 180px;}
+.page-template-about .venue-hire{margin-top: 100px;}
+.accordion-box .content p{width: 100%;}
+.accordion-box .content p a{color: #000;text-decoration: underline;}
+.accordion-box .content p a:hover{color: #98774A;}
+.img-with-text p a{color: #000;text-decoration: underline;}
+.img-with-text p a:hover{color: #98774A;}
+.tax-project_cat{background-color:#3C1226;}
+.about-two-colum-section p a{color: #000;text-decoration: underline;}
+.about-two-colum-section p a:hover{color: #98774A;}
+.about-two-colum-section p a span{color: #000;text-decoration: underline;}
+.about-two-colum-section p a:hover{color: #98774A;}
+@media screen and (min-width: 1600px){
+    .newsletter-left img{object-fit: initial;max-height: 480px;}
+}
 @media screen and (max-width: 1450px){
     .main-car{max-width: calc(100% - 12%);}
     .bg-video-wrap{clip-path: ellipse(120% 91% at 76% 9%);}
@@ -567,6 +595,7 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
     /* search page css */
     .search .search-page{margin-top: 150px;}
     .key-wrap{max-width: 95%;}
+    .page-template-about .venue-hire{margin-top: 80px;}
 }
 @media screen and (max-width: 767px){
     h1,.h1 {
@@ -601,10 +630,8 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
     .clip-border{clip-path: ellipse(90% 86% at 49% 10%);}
     .button{font-size: 14px;padding: 16px 28px;}
     .text-border-left:before{width: 95%;bottom: -10px;}
-    .banner-text .btn-wrapper{margin-top: 24px;}
-    /* .banner-text h1{padding-bottom: 15px;} */
-    .highlights-patten::before{background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/highlight-mobile-pattern-1.png);top:-57%;left: 3%;}
-    /* .hero-section img{max-height: 550px;} */
+    .banner-text .btn-wrapper{margin-top: 24px;} 
+    .highlights-patten::before{background-image: url(../images/highlight-mobile-pattern-1.png);top:-57%;left: 3%;}
     .banner-text{top: 24%;}
     /* Highlight Css */
     .highlights{padding-top: 15px;}
@@ -637,12 +664,14 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
     /* inner page Banner */
     .page-banner-text{bottom: 34px;}
     .page-template-accessibility .page-banner-text{bottom: 34px;}
+    .page-banner::before{background: linear-gradient(54.11deg, #401027 12.6%, rgba(112, 29, 69, 0.85) 43.26%, rgba(112, 29, 69, 0.15) 86.18%);}
     /* Bokkoing Information css */
     .information-block{padding: 14px;}
     .information{padding-bottom: 34px;}
     .information-top{margin-top: 45px;}
     .information-block p{font-size: 14px;}
     .information-block li{font-size: 14px;}
+   
     .information-col-two .col-md-6:first-child{padding-right: 15px;padding-bottom: 34px;}
     .information-col-two .col-md-6:last-child{padding-left: 15px;}
     .information-block h5{padding-bottom: 20px;}
@@ -655,12 +684,13 @@ input[type="submit"]{color: #FFFFFF;font-size: 14px;font-weight: 400;text-align:
     .seat-plan{padding-top: 43px;padding-bottom: 56px;}
     .seat-plan .row{flex-direction: column-reverse;}
     /* accessibility css */
-    .information-block img{margin-bottom: 24px;width: 100%;object-fit: cover;}
+    .information-block img{margin-bottom: 24px;width: 100%;object-fit: cover;height: 100%;}
     .image-left .row{flex-direction: column-reverse;}
     .section-two, .section-three, .section-four{display: none;}
     .error-404.not-found{padding-top: 25%;}
     .page-template-contact .map-sec{padding: 35px 0 35px;}
     .key-wrap{max-width: 45%;}
+    .page-template-about .venue-hire{margin-top: 45px;}
 }
 @media screen and (max-width:690px){
     .more-text{right: 25px;}

@@ -246,7 +246,7 @@ $("#load_more").click(function(){
     {
       
       var posts = JSON.parse(response);
-      console.log(posts);
+      // console.log(posts);
       for( var i = 0; i < posts.length; i++ )
       {
         if( posts[i] == "0" )
@@ -254,6 +254,7 @@ $("#load_more").click(function(){
         else
           //$(".ajax_response").append(posts[i]);
             $("#show_content_wrap_full").append(posts[i]);
+            console.log(posts);
           
       }
     });
@@ -296,7 +297,7 @@ $("#load_more_project").click(function(){
     {
       
       var posts = JSON.parse(response);
-      // console.log(posts);
+      console.log(response);
       for( var i = 0; i < posts.length; i++ )
       {
         if( posts[i] == "0" )
@@ -309,9 +310,11 @@ $("#load_more_project").click(function(){
     });
 });
 
-function fetch(){
 
-  jQuery.ajax({
+
+$(document).ready(function() {
+  $("#keyword").keyup(function() {
+    jQuery.ajax({
       url: ajaxurl,
       type: 'post',
       data: { action: 'data_fetch', keyword: jQuery('#keyword').val() },
@@ -329,5 +332,6 @@ function fetch(){
           
       }
   });
+  });
+});
 
-}

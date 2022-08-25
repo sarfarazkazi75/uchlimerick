@@ -26,11 +26,11 @@
                             <h6 class="subtitle mb-2"><?php echo $subtitle;?></h6>
                             <h4 class="title mb-md-3 mb-4"><?php echo $title;?></h4>
                         <?php if($extra_content_add == 1) { ?>
-                            <div class="d-md-block d-none">
+                            <div class="d-md-block">
                                 <p><?php echo $extra_content;?></p>
                             </div>
                             <?php } ?>
-                            <div class="sponser-detail d-md-none">
+                            <div class="sponser-detail">
                                 <div class="row justify-content-between mb-md-4 mb-3">
                                     <div class="col-6">
                                         <label class="mb-0 fw-bold color-black"><?php echo _('Type');?></label>

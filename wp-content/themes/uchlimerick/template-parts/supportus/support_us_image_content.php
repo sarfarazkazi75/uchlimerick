@@ -1,7 +1,7 @@
 <div class="section-wrapper">
     <div class="section-bg-design">
-        <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/two-colm-bg.png"
-            alt="bg-desing">
+    <?php $background_image = get_field('background_image'); ?> 
+        <img src="<?php echo $background_image['url']; ?>" alt="<?php echo $background_image['alt']; ?>">
     </div>
     <?php if(have_rows('image_text_data')) : $i=1;
         while(have_rows('image_text_data')) : the_row();     
@@ -19,7 +19,7 @@
                 <div class="col-lg-6">
                     <div class="two-col-right-img">
                         <?php if($support_image != ""): ?>
-                            <img src="<?php echo $support_image['url']; ?>" alt="">
+                        <img src="<?php echo $support_image['url']; ?>" alt="">
                         <?php endif; ?>
                     </div>
                 </div>
@@ -28,7 +28,8 @@
                         <h4 class="text-border-bottom"><?php echo $support_title; ?></h4>
                         <?php echo $support_description; ?>
                         <?php if($support_link != ""): ?>
-                        <a href="<?php echo $support_link['url'] ;?>" target="<?php $support_link['target']; ?>" class="button button-dark"><?php echo $support_link['title']; ?></a><?php endif; ?>
+                        <a href="<?php echo $support_link['url'] ;?>" target="<?php $support_link['target']; ?>"
+                            class="button button-dark"><?php echo $support_link['title']; ?></a><?php endif; ?>
                     </div>
                 </div>
 
@@ -44,13 +45,14 @@
                         <h4 class="text-border-bottom"><?php echo $support_title; ?></h4>
                         <?php echo $support_description; ?>
                         <?php if($support_link != ""): ?>
-                        <a href="<?php echo $support_link['url'] ;?>" target="<?php $support_link['target']; ?>" class="button button-dark"><?php echo $support_link['title']; ?></a><?php endif; ?>
+                        <a href="<?php echo $support_link['url'] ;?>" target="<?php $support_link['target']; ?>"
+                            class="button button-dark"><?php echo $support_link['title']; ?></a><?php endif; ?>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="two-col-right-img">
                         <?php if($support_image != ""): ?>
-                            <img src="<?php echo $support_image['url']; ?>" alt="">
+                        <img src="<?php echo $support_image['url']; ?>" alt="">
                         <?php endif; ?>
                     </div>
                 </div>

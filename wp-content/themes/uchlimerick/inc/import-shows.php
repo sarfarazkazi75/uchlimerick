@@ -27,9 +27,12 @@ class DD_import_shows {
         
         $response  = wp_remote_get( $import_property_url );
         $body      = wp_remote_retrieve_body( $response );
+        
+        $xml = new SimpleXMLElement( $body, LIBXML_NOCDATA );
+        $json = json_encode( $xml );
+        $showObj = json_decode( $json,TRUE );
         $xml       = $this->XMLtoArray( $body );
         $shows_arr = $xml['venues']['venue']['shows']['show'];
-        
         $split_data = $this->splitMyArray( $shows_arr, 5 );
         $i_key      = 1;
         foreach ( $split_data as $key => $p_array ) {
@@ -132,10 +135,10 @@ class DD_import_shows {
     
     public function general_admin_notice_dd() {
         if ( isset( $_REQUEST['dd-msg'] ) ) {
-            if ( $_REQUEST['dd-msg'] == 'success' ) {
+            if (  isset($_REQUEST['dd-msg'] ) && $_REQUEST['dd-msg'] == 'success' ) {
                 $message = 'Data Refresh from API';
             }
-             if ( $_REQUEST['dd-import'] == 'success' ) {
+             if ( isset($_REQUEST['dd-import'] ) && $_REQUEST['dd-import'] == 'success' ) {
                 $message = 'DATA Imported';
             }
             
@@ -309,12 +312,16 @@ class DD_import_shows {
                                             }
                                             $meta_values['events'] = $bind_event;
                                         }
-                                        
+                                        if(isset($meta_values['properties']) && !empty($meta_values['properties'])){
+                                            if(isset($meta_values['properties']['property'])){
+                                                $meta_values['properties'] = reset($meta_values['properties']['property']);
+                                                $meta_values['uchlimerick_post_show_video'] = $meta_values['properties']['value'];
+                                            }
+                                        }
+    
                                         if ( $meta_values ) {
                                             $attachments_urls = [];
                                             foreach ( $meta_values as $dmeta_key => $dmeta_value ) {
-                                                
-                                                
                                                 
                                                 if ( $dmeta_key == 'images' ) {
                                                     unset( $meta_value[ $dmeta_key ] );
@@ -335,10 +342,9 @@ class DD_import_shows {
                                                 }
                                                 update_field( $dmeta_key, $dmeta_value, $post_id );
                                             }
+                                            update_post_meta($post_id,'api_meta_values',$meta_values);
                                         }
                                         if ( $attachments_urls ) {
-    
-                                            $att         = [];
                                             $args        = [
                                                 'post_type'      => 'attachment',
                                                 'posts_per_page' => - 1,
@@ -353,45 +359,10 @@ class DD_import_shows {
                                                 }
                                             }
                                             update_post_meta($post_id,'attachments_urls',$attachments_urls);
-                                            /*
-                                            foreach ( $attachments_urls as $att_key => $att_url ) {
-                                                if($att_key > 0){
-                                                    continue;
-                                                }
-                                                $file_array = [];
-                                                $tmp        = download_url( $att_url, 800 );
-//                                                preg_match( '/[^\?]+\.(jpg|jpe|jpeg|gif|png|pdf)/i', $att_url, $matches );
-                                                $file_array['name']     = basename( $att_url );
-                                                $file_array['tmp_name'] = $tmp;
-                                                
-                                                if ( is_wp_error( $tmp ) ) {
-                                                    @unlink( $file_array['tmp_name'] );
-                                                    $file_array['tmp_name'] = '';
-                                                    return;
-                                                }
-                                                $media_id = media_handle_sideload( $file_array, $post_id );
-                                                if ( ! is_wp_error( $media_id ) ) {
-                                                    if ( $att_key[0] ) {
-                                                        update_post_meta( $post_id, '_thumbnail_id', $media_id );
-                                                    }
-                                                    $att['images'][] = [ 'image' => $media_id ];
-                                                } else {
-                                                    @unlink( $file_array['tmp_name'] );
-                                                    return;
-                                                }
-                                            }
-                                            
-                                            if ( $att ) {
-                                                foreach ( $att as $att_meta_key => $att_meta_value ) {
-                                                    update_field( $att_meta_key, $att_meta_value, $post_id );
-                                                }
-                                            }
-                                            */
                                         }
                                         
                                         update_option( 'imported_posts', $imported_posts );
                                         update_option( 'imported_shows_ids', $imported_shows_ids );
-                                        
                                     }
                                     update_option( 'all_imported_shows_ids', $all_imported_shows_ids );
                                     ?>

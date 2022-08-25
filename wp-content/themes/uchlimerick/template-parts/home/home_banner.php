@@ -13,8 +13,8 @@
                     <span class="banner-border"></span>
                     <p data-aos="fade-up"><?php echo $banner_details['banner_subtitle']; ?></p>
                     <div class="btn-wrapper" data-aos="fade-up">
-                          <a href="<?php echo $banner_details['book_ticket_link']['url']; ?>" class="button button-dark"><?php echo $banner_details['book_ticket_link']['title']; ?></a>
-                          <a href="<?php echo $banner_details['support_us_link']['url']; ?>" class="button-light button"><?php echo $banner_details['support_us_link']['title']; ?></a>
+                          <a href="<?php echo $banner_details['book_ticket_link']['url']; ?>" target="<?php echo $banner_details['book_ticket_link']['target']; ?>" class="button button-dark"><?php echo $banner_details['book_ticket_link']['title']; ?></a>
+                          <a href="<?php echo $banner_details['support_us_link']['url']; ?>" target="<?php echo $banner_details['support_us_link']['target']; ?>" class="button-light button"><?php echo $banner_details['support_us_link']['title']; ?></a>
                     </div>
                 </div>
             </div>

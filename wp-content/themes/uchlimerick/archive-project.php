@@ -64,7 +64,7 @@ if(class_exists('acf')){
                      }
                     ?>    
                     <!-- do stuff ... -->
-                    <div class="project_single_wrap <?php echo $class;?> order-md-<?php echo $i;?> order-<?php echo $i;?>">
+                    <div class="project_single_wrap <?php echo $class;?>">
                         <div class="<?php echo $inner_class;?>">
                             <div class="post-image">
                                 <?php the_post_thumbnail(); ?>
@@ -77,9 +77,11 @@ if(class_exists('acf')){
                     <?php $i++; endwhile; ?>
                 <?php  endif; ?>
             </div>
+            <?php if ($i >=10) { ?>
             <div class="load-more-btn text-center">
                 <a id="load_more_project" href="javascript:void(0);" class="button-light button" ><?php echo _('Load More');?></a>
             </div>
+            <?php } ?>
         </div>
     </div>
 </section>

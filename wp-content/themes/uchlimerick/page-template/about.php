@@ -9,6 +9,7 @@ if(!empty($about_con)){
        $con   = $val['inner_content'];
        $img   = $val['inner_image'];
        $classs='';
+       $padding_class='';
        $outer_class_1= '';
        $outer_class_2= '';
        if($key % 2 == 0){
@@ -23,8 +24,11 @@ if(!empty($about_con)){
         if($key == 1){
             get_template_part( 'template-parts/single_show', 'quote_section' ); //Quote component
         }
+        if($key == 0){
+            $padding_class= "section-bottom-padding";
+        }
         ?>
-        <section class="about-two-colum-section pt-100">
+        <section class="about-two-colum-section pt-100 <?php echo $padding_class;?>">
         <div class="container-inner">
             <div class="row align-items-center">
                 <div class="col-lg-6 <?php echo $outer_class_1;?> order-1 ">

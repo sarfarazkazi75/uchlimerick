@@ -1,9 +1,6 @@
 <?php /*Template Name: What’s-On */
    get_header();
-    
 ?>
-
-
 <section class="whats-on-section">
     <div class="container-inner">
         <div class="nav-border text-border-bottom">
@@ -24,7 +21,7 @@
                                         if( $terms = get_terms( array( 'taxonomy' => 'genre', 'orderby' => 'name' ) ) ) : 
                                         echo '<div class="nav-select">';
                                         echo '<select name="genrefilter" id="" onchange="this.form.submit()">';
-                                        echo '<option value="">Gener</option>';
+                                        echo '<option value="">Genre</option>';
                                             foreach ( $terms as $term ) :                                        
                                                 ?>
                                                 <option value="<?php echo $term->term_id; ?>" <?php selected( isset($_REQUEST['genrefilter']) ? $_REQUEST['genrefilter'] : '', $term->term_id ); ?>><?php echo $term->name; ?></option>
@@ -36,7 +33,7 @@
                                             <?php
                                         endif;
                                         
-                                        if( $terms = get_terms( array( 'taxonomy' => 'gift_idea', 'orderby' => 'name' ) ) ) : 
+                                        /*if( $terms = get_terms( array( 'taxonomy' => 'gift_idea', 'orderby' => 'name' ) ) ) : 
                                         echo '<div class="nav-select">';
                                         echo '<select name="gift_ideafilter" id="" onchange="this.form.submit()">';
                                         echo '<option value="">Gift Idea</option>';
@@ -49,7 +46,7 @@
                                             echo '</div>';   
                                             ?>                                                                            
                                             <?php
-                                        endif; 
+                                        endif; */
                                         
                                         if( $terms = get_terms( array( 'taxonomy' => 'month', 'orderby' => 'name' ) ) ) : 
                                         echo '<div class="nav-select">';
@@ -75,8 +72,8 @@
                                     <button type="submit"><i class="fa fa-search"></i></button>
                                 </form> -->
 
-                                <form>
-                                    <input type="text" name="keyword" id="keyword" placeholder="Search Brand Name…" onkeyup="fetch()"></input>
+                                <form class="example">
+                                    <input type="text" name="keyword" id="keyword" placeholder="Search"></input>
                                 </form>
 
                             </div>
@@ -95,7 +92,7 @@
 <section class="">
     <div class="container-inner">
         <div class="post-main-cover">
-            <div class="row" id="show_content_wrap_full">
+            <div class="row testing_class_1" id="show_content_wrap_full">
 
                         <?php 
                         global $wp_query;
@@ -120,12 +117,12 @@
                                     'terms' => $gen_cat_id,
                                     'operator' => $gen_cat_id ? 'IN' : 'NOT IN'
                                 ),
-                                array(
-                                'taxonomy' => 'gift_idea',
-                                'field' => 'id',
-                                'terms' => $gift_idea_cat_id,
-                                'operator' => $gift_idea_cat_id ? 'IN' : 'NOT IN'
-                                ),
+                                // array(
+                                // 'taxonomy' => 'gift_idea',
+                                // 'field' => 'id',
+                                // 'terms' => $gift_idea_cat_id,
+                                // 'operator' => $gift_idea_cat_id ? 'IN' : 'NOT IN'
+                                // ),
                                 array(
                                 'taxonomy' => 'month',
                                 'field' => 'id',
@@ -144,35 +141,81 @@
                         $wp_query=new WP_Query( $args );
                         $count = $GLOBALS['wp_query']->post_count;
                         $i=0;
-                        $classes = array('col-md-8 order-md-1 order-2', 'col-md-4 order-md-2 order-1', 'col-md-4 order-md-3 order-4', 'col-md-4 order-md-4 order-3', 'col-md-4 order-md-5 order-5', 'col-md-4 order-md-6 order-6', 'col-md-8 order-md-7 order-7', 'col-md-4 order-md-8 order-9', 'col-md-4 order-md-9 order-10', 'col-md-4 order-md-10 order-8', 'col-md-8 order-md-11 order-11', 'col-md-4 order-md-12 d-md-block d-none order-12');
+                        // $classes = array('col-md-8 order-md-1 order-2', 'col-md-4 order-md-2 order-1', 'col-md-4 order-md-3 order-4', 'col-md-4 order-md-4 order-3', 'col-md-4 order-md-5 order-5', 'col-md-4 order-md-6 order-6', 'col-md-8 order-md-7 order-7', 'col-md-4 order-md-8 order-9', 'col-md-4 order-md-9 order-10', 'col-md-4 order-md-10 order-8', 'col-md-8 order-md-11 order-11', 'col-md-4 order-md-12 d-md-block d-none order-12');
+                        $classes = array('col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4');
 			            if ( $wp_query->have_posts() ){
                             while ( $wp_query->have_posts() ) :
                                 $wp_query->the_post();   
-                                
+                                global $post;
                                 $uchlimerick_post_show_start_date = get_field("uchlimerick_post_show_start_date");
                                 $date_uchlimerick_post_show_start_date = date("j M", strtotime($uchlimerick_post_show_start_date));
             
                                 $uchlimerick_post_show_end_date = get_field("uchlimerick_post_show_end_date");
                                 $date_uchlimerick_post_show_end_date = date("j M", strtotime($uchlimerick_post_show_end_date));   
                                 $uchlimerick_post_show_book_ticket_link = get_field("uchlimerick_post_show_book_ticket_link");
+
+                                $events    = get_post_meta( $post->ID, 'events', TRUE );
+                                $price_obj = $event_prices = [];
+                                if ( $events ) {
+                                    $event = isset( $events[0] ) ? $events[0] : [];
+                                    if ( $event ) {
+                                        $event_id      = $event['ID'];
+                                        $transient_key = $event_id . '_' . $post->ID;
+                                        if(empty(get_transient($transient_key))){
+                                            $import_property_url = 'https://uch.ticketsolve.com/shows/1173630311/events/' . $event_id . '.xml';
+                                            $response            = wp_remote_get( $import_property_url );
+                                            $body                = wp_remote_retrieve_body( $response );
+                                            $xml = new SimpleXMLElement( $body, LIBXML_NOCDATA );
+                                            $json = json_encode( $xml );
+                                            $eventObj = json_decode( $json,TRUE );
+                                            set_transient($transient_key,$eventObj,HOUR_IN_SECONDS);
+                                        }
+                                        $eventObj      = get_transient( $transient_key );
+                                        $show_date     = date( 'd M', strtotime( $eventObj['date_time'] ) );
+                                        $book_ticket = $eventObj['url'];
+                                        
+                                    }
+                                }
                                                           
                         ?>                         
                              
-                        <div class="show_single_wrap <?php echo $classes[$i%12]; ?>">                           
+                        <div class="show_single_wrap testing_class_2 <?php echo $classes[$i%12]; ?>">                           
                             <div class="post-card">
                                 <div class="post-image">
                                     <?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' ); ?>
+                                    <?php
+                                    $attachment_urls = get_post_meta( $post->ID, 'attachments_urls', TRUE );
+                                    if ( isset( $attachment_urls[0] ) ) {
+                                        $url = $attachment_urls[0];
+                                    }
+                                    ?>
                                     <img src="<?php echo $url ?>" />
                                 </div>
                                 <div class="post-details">
                                     <h6 class="text-border-bottom"><?php the_title(); ?></h6>
                                     <a class="post-date" href="<?php the_permalink(); ?>">
-                                        <!-- 02 Jan - 03 Feb -->
-                                        <?php echo $date_uchlimerick_post_show_start_date. ' - ' . $date_uchlimerick_post_show_end_date; ?>
+                                        <!-- 05 Jan - 06 Feb -->
+                                        <?php //echo $date_uchlimerick_post_show_start_date. ' - ' . $date_uchlimerick_post_show_end_date; ?>
+                                        <?php echo $show_date; ?>
                                     </a>
                                     <div class="btn-wrapper book-btn-cover">
-                                        <a href="<?php if ($uchlimerick_post_show_book_ticket_link) { echo $uchlimerick_post_show_book_ticket_link['url']; }  ?>" target="<?php if ($uchlimerick_post_show_book_ticket_link) { echo $uchlimerick_post_show_book_ticket_link['target']; }  ?>"  class="button button-dark">Book Tickets</a>
-                                        <a href="<?php the_permalink(); ?>" class="button-light button">Learn More</a>
+                                    <?php
+                                        if(isset($book_ticket)){
+                                            ?>
+                                            <a href="<?php echo $book_ticket; ?>" class="button button-dark"><?php _e("Book Tickets",'uchlimerick') ?></a>
+                                            <a href="<?php the_permalink(); ?>" class="button button-light"><?php _e("Learn More",'uchlimerick') ?></a>
+                                            <?php
+                                        }
+                                        else{
+                                            ?>
+                                            <a href="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
+                                                echo $uchlimerick_post_show_book_ticket_link['url'];
+                                            } ?>" target="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
+                                                echo $uchlimerick_post_show_book_ticket_link['target'];
+                                            } ?>" class="button button-dark">Book Tickets</a> <a href="<?php the_permalink(); ?>" class="button-light button">Learn More</a>
+                                            <?php
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>                           
@@ -187,9 +230,11 @@
                         } ?>
 
             </div>
-            <div class="load-more-btn text-center">
-                <a id="load_more" href="javascript:void(0);" class="button-light button">Load more</a>
-            </div>
+            <?php if ($i >=10) { ?>
+                <div class="load-more-btn text-center testing_class_3">
+                    <a id="load_more" href="javascript:void(0);" class="button-light button">Load more</a>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </section>
@@ -221,7 +266,7 @@
                         <div class="visit-details">
                             <h4 class="text-border-bottom"><?php echo $card_title; ?></h4>
                             <?php echo $card_content; ?>
-                            <a href="<?php echo $card_link['url'];?>" class="button-light button"><?php echo $card_link['title'];?></a>
+                            <a href="<?php echo $card_link['url'];?>" target="<?php echo $card_link['target'];?>" class="button-light button"><?php echo $card_link['title'];?></a>
                         </div>
                     </div>
                   </div>

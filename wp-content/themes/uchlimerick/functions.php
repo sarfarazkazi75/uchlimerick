@@ -301,3 +301,15 @@ function dd($data = false, $flag = false, $display = false)
 }
 
 include_once 'inc/import-shows.php';
+
+/*-------------Disable single page view & Show archive pages-----------*/
+add_action( 'template_redirect', 'single_faq_redirect' );
+function single_faq_redirect()
+{
+	if ( ! is_singular( 'faq' ) )
+		return;
+
+	wp_redirect( get_post_type_archive_link( 'faq' ), 301 );
+	exit;
+}
+

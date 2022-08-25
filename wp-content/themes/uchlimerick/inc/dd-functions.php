@@ -54,10 +54,11 @@ function load_more_shows()
     $count = $_POST["count"];
 
     $cpt = 1;
-
+    $paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1;
     $args = array(
         'posts_per_page' => -1,
         'post_type'   => 'show', // change the post type if you use a custom post type
+        'paged' => $paged,
         'post_status' => 'publish',
     );
 
@@ -65,34 +66,92 @@ function load_more_shows()
 
     $ar_posts = array();
 	$i=0;
-	$classes = array('col-md-8 order-md-1 order-2', 'col-md-4 order-md-2 order-1', 'col-md-4 order-md-3 order-4', 'col-md-4 order-md-4 order-3', 'col-md-4 order-md-5 order-5', 'col-md-4 order-md-6 order-6', 'col-md-8 order-md-7 order-7', 'col-md-4 order-md-8 order-9', 'col-md-4 order-md-9 order-10', 'col-md-4 order-md-10 order-8', 'col-md-8 order-md-11 order-11', 'col-md-4 order-md-12 d-md-block d-none order-12');
+	// $classes = array('col-md-8 order-md-1 order-2', 'col-md-4 order-md-2 order-1', 'col-md-4 order-md-3 order-4', 'col-md-4 order-md-4 order-3', 'col-md-4 order-md-5 order-5', 'col-md-4 order-md-6 order-6', 'col-md-8 order-md-7 order-7', 'col-md-4 order-md-8 order-9', 'col-md-4 order-md-9 order-10', 'col-md-4 order-md-10 order-8', 'col-md-8 order-md-11 order-11', 'col-md-4 order-md-12 d-md-block d-none order-12');
+    $classes = array('col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4');
+
     if( $articles->have_posts() )
     {
         while( $articles->have_posts() )
         {
             $articles->the_post();
 
+            global $post;
+            $uchlimerick_post_show_start_date      = get_field( "uchlimerick_post_show_start_date" );
+            $date_uchlimerick_post_show_start_date = date( "j M", strtotime( $uchlimerick_post_show_start_date ) );
+            
+            $uchlimerick_post_show_end_date      = get_field( "uchlimerick_post_show_end_date" );
+            $date_uchlimerick_post_show_end_date = date( "j M", strtotime( $uchlimerick_post_show_end_date ) );
+            
+            $uchlimerick_post_show_book_ticket_link = get_field( "uchlimerick_post_show_book_ticket_link" );
+            
+            $events    = get_post_meta( $post->ID, 'events', TRUE );
+            $price_obj = $event_prices = [];
+            if ( $events ) {
+                $event = isset( $events[0] ) ? $events[0] : [];
+                if ( $event ) {
+                    $event_id      = $event['ID'];
+                    $transient_key = $event_id . '_' . $post->ID;
+                    if(empty(get_transient($transient_key))){
+                        $import_property_url = 'https://uch.ticketsolve.com/shows/1173630311/events/' . $event_id . '.xml';
+                        $response            = wp_remote_get( $import_property_url );
+                        $body                = wp_remote_retrieve_body( $response );
+                        $xml = new SimpleXMLElement( $body, LIBXML_NOCDATA );
+                        $json = json_encode( $xml );
+                        $eventObj = json_decode( $json,TRUE );
+                        set_transient($transient_key,$eventObj,HOUR_IN_SECONDS);
+                    }
+                    $eventObj      = get_transient( $transient_key );
+                    $show_date     = date( 'd M', strtotime( $eventObj['date_time'] ) );
+                    $book_ticket = $eventObj['url'];
+                    
+                }
+            }
+
             $more_posts = "";
 
             if( $cpt > $count && $cpt < $count+12 )
-            {
+            {					
 
-					$more_posts .= '<div class="show_single_wrap '.$classes[$i%12].'">';                           
-					$more_posts .= '<div class="post-card">';
-					$more_posts .= '<div class="post-image">';
-					$url = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' );
-					$more_posts .= '<img src="'.$url.'" />';
-					$more_posts .= '</div>';
-					$more_posts .= '<div class="post-details">';
-					$more_posts .= '<h6 class="text-border-bottom">'.get_the_title().'</h6>';
-					$more_posts .= '<a class="post-date" href="'.get_the_permalink().'">02 Jan - 03 Feb</a>';
-					$more_posts .= '<div class="btn-wrapper book-btn-cover">';
-					$more_posts .= '<a href="#" class="button button-dark">Book Tickets</a>';
-					$more_posts .= '<a href="'.get_the_permalink().'" class="button-light button">Learn More</a>';
-					$more_posts .= '</div>';
-					$more_posts .= '</div>';
-					$more_posts .= '</div>';
-					$more_posts .= '</div>';					
+                    $more_posts .= '<div class="show_single_wrap '.$classes[ $i % 12 ].'">';
+                    $more_posts .= '<div class="post-card">';
+                    $more_posts .= '<div class="post-image">';                                    
+                    $url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ), 'thumbnail' );                                    
+                    $attachment_urls = get_post_meta( $post->ID, 'attachments_urls', TRUE );
+                    if ( isset( $attachment_urls[0] ) ) {
+                        $url = $attachment_urls[0];
+                    }
+                                    
+                    $more_posts .= '<img src="'.$url.'"/>';
+                    $more_posts .= '</div>';
+                    $more_posts .= '<div class="post-details">';
+                    $more_posts .= '<h6 class="text-border-bottom"><a href="'.get_the_permalink().'" style="color: #fff">'.get_the_title().'</a></h6>';
+                    $more_posts .= '<a class="post-date" href="'.get_the_permalink().'">';
+                    $more_posts .= $show_date;
+                    $more_posts .= '</a>';
+                    $more_posts .= '<div class="btn-wrapper book-btn-cover">';                                      
+                    if(isset($book_ticket)){
+                    
+                        $more_posts .= '<a href="'.$book_ticket.'" class="button button-dark">Book Tickets</a>';
+                        $more_posts .= '<a href="'.get_the_permalink().'" class="button button-light">Learn More</a>';
+                        
+                    }
+                    else{                
+
+                        if ( $uchlimerick_post_show_book_ticket_link ) {
+                            
+                            $more_posts .='<a href="'.$uchlimerick_post_show_book_ticket_link['url'].'" target="'.$uchlimerick_post_show_book_ticket_link['target'].'" class="button button-dark">Book Tickets</a>';
+                            
+                            $more_posts .= '<a href="'.get_the_permalink().'" class="button-light button">Learn More</a>';
+                            
+                        }                        
+                        
+                    }
+                                        
+                                    
+                    $more_posts .= '</div>';
+                    $more_posts .= '</div>';
+                    $more_posts .= '</div>';
+                    $more_posts .= '</div>';
 
                 $ar_posts[] = $more_posts;
 
@@ -172,7 +231,7 @@ function load_more_blog_posts()
             if( $cpt > $count && $cpt < $count+10 )
             {
                     
-				    $more_posts .= '<div class="'.$class.' order-md-'.$i.' order-'.$i.'">';
+				    $more_posts .= '<div class="'.$class.'">';
                     $more_posts .= '<div class="'.$inner_class.'">';
                     $more_posts .= '<div class="post-image">';
                     $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'full' );
@@ -220,12 +279,16 @@ function load_more_project_posts()
 	
     if( $articles->have_posts() )
     {
-        $i = 0; 
-        $temp_data = 0;
+        $i = 1; 
+        $temp_data = 1;
         while( $articles->have_posts() )
         {
             $articles->the_post();
-            $class ='';
+            
+            $more_posts = "";
+            if( $cpt > $count && $cpt < $count+10 )
+            {
+                $class ='';
             $inner_class ='';
             $col_8_content ='';
              if($temp_data == 1 || $temp_data == 7){
@@ -260,12 +323,9 @@ function load_more_project_posts()
              }else{
                 $inner_class='post-card';
              }
-            $more_posts = "";
 
-            if( $cpt > $count && $cpt < $count+10 )
-            {
                     
-				    $more_posts .= '<div class="project_single_wrap '.$class.' order-md-'.$i.' order-'.$i.'">';
+				    $more_posts .= '<div class="project_single_wrap '.$class.'">';
                     $more_posts .= '<div class="'.$inner_class.'">';
                     $more_posts .= '<div class="post-image">';
                     $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'full' );
@@ -299,23 +359,80 @@ add_action('wp_ajax_data_fetch' , 'data_fetch');
 add_action('wp_ajax_nopriv_data_fetch','data_fetch');
 function data_fetch(){
 	$i=0;
-	$classes = array('col-md-8 order-md-1 order-2', 'col-md-4 order-md-2 order-1', 'col-md-4 order-md-3 order-4', 'col-md-4 order-md-4 order-3', 'col-md-4 order-md-5 order-5', 'col-md-4 order-md-6 order-6', 'col-md-8 order-md-7 order-7', 'col-md-4 order-md-8 order-9', 'col-md-4 order-md-9 order-10', 'col-md-4 order-md-10 order-8', 'col-md-8 order-md-11 order-11', 'col-md-4 order-md-12 d-md-block d-none order-12');
+	// $classes = array('col-md-8 order-md-1 order-2', 'col-md-4 order-md-2 order-1', 'col-md-4 order-md-3 order-4', 'col-md-4 order-md-4 order-3', 'col-md-4 order-md-5 order-5', 'col-md-4 order-md-6 order-6', 'col-md-8 order-md-7 order-7', 'col-md-4 order-md-8 order-9', 'col-md-4 order-md-9 order-10', 'col-md-4 order-md-10 order-8', 'col-md-8 order-md-11 order-11', 'col-md-4 order-md-12 d-md-block d-none order-12');
+    $classes = array('col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4');
     $the_query = new WP_Query( array( 'posts_per_page' => 12, 's' => esc_attr( $_POST['keyword'] ), 'post_type' => 'show' ) );
     if( $the_query->have_posts() ) :
-        while( $the_query->have_posts() ): $the_query->the_post(); ?>
+        while( $the_query->have_posts() ): $the_query->the_post(); 
+        
+        global $post;
+        $uchlimerick_post_show_start_date      = get_field( "uchlimerick_post_show_start_date" );
+        $date_uchlimerick_post_show_start_date = date( "j M", strtotime( $uchlimerick_post_show_start_date ) );
+        
+        $uchlimerick_post_show_end_date      = get_field( "uchlimerick_post_show_end_date" );
+        $date_uchlimerick_post_show_end_date = date( "j M", strtotime( $uchlimerick_post_show_end_date ) );
+        
+        $uchlimerick_post_show_book_ticket_link = get_field( "uchlimerick_post_show_book_ticket_link" );
+        
+        $events    = get_post_meta( $post->ID, 'events', TRUE );
+        $price_obj = $event_prices = [];
+        if ( $events ) {
+            $event = isset( $events[0] ) ? $events[0] : [];
+            if ( $event ) {
+                $event_id      = $event['ID'];
+                $transient_key = $event_id . '_' . $post->ID;
+                if(empty(get_transient($transient_key))){
+                    $import_property_url = 'https://uch.ticketsolve.com/shows/1173630311/events/' . $event_id . '.xml';
+                    $response            = wp_remote_get( $import_property_url );
+                    $body                = wp_remote_retrieve_body( $response );
+                    $xml = new SimpleXMLElement( $body, LIBXML_NOCDATA );
+                    $json = json_encode( $xml );
+                    $eventObj = json_decode( $json,TRUE );
+                    set_transient($transient_key,$eventObj,HOUR_IN_SECONDS);
+                }
+                $eventObj      = get_transient( $transient_key );
+                $show_date     = date( 'd M', strtotime( $eventObj['date_time'] ) );
+                $book_ticket = $eventObj['url'];
+                
+            }
+        }        
+        ?>
             
-                        <div class="show_single_wrap <?php echo $classes[$i%12]; ?>">                           
+                        <div class="show_single_wrap from_data_fetch <?php echo $classes[$i%12]; ?>">                           
                             <div class="post-card">
                                 <div class="post-image">
-                                    <?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' ); ?>
+                                    <?php 
+                                        $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' ); 
+                                        $attachment_urls = get_post_meta( $post->ID, 'attachments_urls', TRUE );
+                                        if ( isset( $attachment_urls[0] ) ) {
+                                            $url = $attachment_urls[0];
+                                        }                                    
+                                    ?>
                                     <img src="<?php echo $url ?>" />
                                 </div>
                                 <div class="post-details">
                                     <h6 class="text-border-bottom"><?php the_title(); ?></h6>
-                                    <a class="post-date" href="<?php the_permalink(); ?>">02 Jan - 03 Feb</a>
+                                    <a class="post-date" href="<?php the_permalink(); ?>">
+                                        <?php echo $show_date; ?>
+                                    </a>
                                     <div class="btn-wrapper book-btn-cover">
-                                        <a href="#" class="button button-dark">Book Tickets</a>
-                                        <a href="<?php the_permalink(); ?>" class="button-light button">Learn More</a>
+                                    <?php
+                                        if(isset($book_ticket)){
+                                            ?>
+                                            <a href="<?php echo $book_ticket; ?>" class="button button-dark"><?php _e("Book Tickets",'uchlimerick') ?></a>
+                                            <a href="<?php the_permalink(); ?>" class="button button-light"><?php _e("Learn More",'uchlimerick') ?></a>
+                                            <?php
+                                        }
+                                        else{
+                                            ?>
+                                            <a href="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
+                                                echo $uchlimerick_post_show_book_ticket_link['url'];
+                                            } ?>" target="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
+                                                echo $uchlimerick_post_show_book_ticket_link['target'];
+                                            } ?>" class="button button-dark">Book Tickets</a> <a href="<?php the_permalink(); ?>" class="button-light button">Learn More</a>
+                                            <?php
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>                           
@@ -327,3 +444,15 @@ function data_fetch(){
 
     die();
 }
+
+
+// add_action( 'admin_init', 'hide_editor' );
+// function hide_editor() {
+//   $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;
+//   if( !isset( $post_id ) ) return;
+//   $pagetitle = get_the_title($post_id);
+//   if($post_id == '21'){
+//     remove_post_type_support('page', 'editor');
+//   }
+// }
+

@@ -45,6 +45,7 @@ $query = new WP_query($args);
         <?php
         if($events)
         {
+            $events = array_reverse($events);
             foreach ($events as $event){
                 $title         = $event['name'];
                 $book_ticket   = $event['url'];

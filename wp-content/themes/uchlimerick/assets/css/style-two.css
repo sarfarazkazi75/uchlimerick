@@ -10,7 +10,7 @@ ul.support-section-menu li { margin-bottom: 23px; }
 ul.support-section-menu li a { font-size: 28px; line-height: 36px; font-weight: 400; transition: all 0.4s; text-transform: capitalize; color: #fff;}
 ul.support-section-menu li a:hover { color: #FFC72C; }
 ul.support-section-menu li a:hover .support-rigth { filter: brightness(0) saturate(100%) invert(91%) sepia(48%) saturate(6377%) hue-rotate(323deg) brightness(94%) contrast(113%); }
-.support-hero-right { position: absolute; right: 0; width: 100%; max-width: 537px; height: 100%; top: 106px; bottom: 0; object-fit: cover; z-index: 3; }
+.support-hero-right { position: absolute; right: 0; width: 100%; max-width: 537px; height: 100%; top: 106px; bottom: 0; object-fit: cover; z-index: 3; opacity: 0.4;}
 .support-hero .bg-main { width: 100%; }
 .mobile-bgsupport { display: none; }
 .support-video-wrap .support-hero video { width: 100%; min-height: unset; }
@@ -45,7 +45,10 @@ a.support-logo img { opacity: 0.7; transition: all 0.4s; height: 73px; object-fi
 a.support-logo:hover img { opacity: 1;filter: grayscale(0%);}
 
 /* support-helps  section  */
-.support-helps { background-color: rgba(231, 233, 236, 0.5); padding: 120px 0 130px; z-index: unset; background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/support-help-bg.svg); position: relative; background-repeat: no-repeat; background-size: contain; background-position-y: 27px; }
+
+.support-helps { background-color: rgba(231, 233, 236, 0.5); padding: 120px 0 130px; z-index: unset;
+     background-image: url('../images/support-help-bg.svg');
+      position: relative; background-repeat: no-repeat; background-size: contain; background-position-y: 27px; }
 .support-helps:before { content: ''; position: absolute; inset: 0; background-color: rgba(231, 233, 236, 0.7); }
 .support-helps h4 { color: #701D45; }
 .all-project-btn { text-align: right; }
@@ -59,26 +62,49 @@ a.support-logo:hover img { opacity: 1;filter: grayscale(0%);}
 .project-des { padding: 17px 16px; background-color: #701D45; }
 .project-des h6 { font-size: 24px; line-height: 28px; font-weight: 600; margin-bottom: 8px;}
 .read-btn { color: #FFC72C !important; font-size: 12px; }
-.card-img { overflow: hidden; }
+.card-img { overflow: hidden; border-radius: 0;}
 .card-img:hover img { transform: scale(1.2); }
-.card-img img { transition: all 0.4s; }
+.card-img img { transition: all 0.4s; width: 100%; height: 100%; object-fit: cover;}
 /* support us page End  */
 
 /* individual-show page start ///////////// */
 .individual-hero { width: 100%; height: 100vh; }
 .small-yellow { font-size: 12px; text-transform: uppercase; line-height: 15px; color: #FFC72C; }
-.individ-hero .page-banner-text { bottom: 72px; }
-.right-book-box { display: flex; justify-content: end; padding: 25px; background: rgba(91, 70, 77, 0.65); backdrop-filter: blur(25px); max-width: 434px; margin-left: auto; }
-.indi-destail { min-height: 76px; margin-bottom: 32px; }
+.date-book .small-yellow { margin-bottom: 5px;}
+.individ-hero .page-banner-text { bottom: 72px; z-index: 1;}
+.right-book-box { display: flex; justify-content: center; padding: 25px; background: rgba(91, 70, 77, 0.65); backdrop-filter: blur(25px); max-width: 435px; margin-left: auto; }
+.single-show .right-book-box{ max-width: 414px;}
+.indi-destail { 
+    /* min-height: 76px;  */
+    margin-bottom: 32px;
+ }
+/* .indi-destail { min-height: 76px; margin-bottom: 32px; } */
 .date-book span { display: block; font-family: 'Rubik'; font-style: normal; font-weight: 300; font-size: 16px; line-height: 130%; }
 .me-15 { margin-right: 15px; }
 .individual-socail { position: absolute; top: 149px; right: 165px; }
 .individual-socail .socail-icon ul { display: flex; align-items: center; justify-content: end; }
 .date-book .button-dark { padding: 24px 50px; }
-.indi-destail { display: flex; justify-content: space-between; }
+.indi-destail .des-text span br {
+    display: block;
+}
+.des-text br {
+    display: none;
+}
+.indi-destail { display: flex; justify-content: space-between; align-items: self-start;}
 .des-text { flex-direction: column; display: flex; justify-content: end; }
 .individual-socail ul p { margin-bottom: 0; margin-right: 16px; }
 .individual-socail ul li { background-color: #fff; }
+.individ-hero:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    left: 0%;
+    background: linear-gradient(333.88deg, rgba(0, 0, 0, 0.2) 15.86%, rgba(0, 0, 0, 0) 39.37%), linear-gradient(278.45deg, rgba(58, 19, 39, 0.9) 31.04%, rgba(112, 29, 69, 0) 58.16%);
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+}
+
 /* individual-show page End   */
 
 /* about inner section start  */
@@ -113,9 +139,13 @@ section.youtube-video { margin-bottom: 95px; }
 /* .page-id-190{ background: #E7E9EC; } */
 .bg-gray { background: #E7E9EC; }
 .bg-dark { background: linear-gradient(90.01deg, #1B2229 0.01%, #3C3E4D 99.99%); }
-.testimoniyal { padding-top: 102px; padding-bottom: 104px;  background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/support-help-bg.svg); 
-    background-repeat: no-repeat; background-size: cover; background-position: center; position: relative; z-index: 2;}
-  .page-template-become-friend .testimoniyal:after { content: ''; position: absolute; inset: 0; background-color: rgba(231, 233, 236, 0.7); z-index: -1; }
+.testimoniyal { padding-top: 102px; padding-bottom: 104px; 
+    background-image: url('../images/support-help-bg.svg'); 
+ 
+    background-repeat: no-repeat!important; background-size: cover!important; background-position: center; position: relative; z-index: 2;}
+  .page-template-become-friend .testimoniyal:after { content: ''; position: absolute; inset: 0;
+opacity: 0.7;
+      z-index: -1; }
 .per-name p { text-transform: uppercase; font-size: 12px; font-weight: 400; letter-spacing: 0.1em;}
 .page-id-111 .per-name p,
 .page-id-190 .per-name p { color: #701D45;  margin-bottom: 0; font-family: 'Rubik';}
@@ -135,8 +165,7 @@ section.youtube-video { margin-bottom: 95px; }
 .testimona-cover { max-width: 886px; margin: 0 auto; }
 .duble-cort-top { position: absolute; top: 9px; left: -49px; }
 .duble-cort-bot { position: absolute; bottom: 64px; right: -49px; }
-/* .page-id-111  .duble-cort,
-.page-id-190 .duble-cort { filter: brightness(0) saturate(100%) invert(15%) sepia(59%) saturate(2016%) hue-rotate(301deg) brightness(95%) contrast(95%); } */
+
 
 /* book now start  */
 .book-now { width: 100%; margin: 0 auto; overflow: hidden; }
@@ -144,6 +173,7 @@ section.youtube-video { margin-bottom: 95px; }
 .book-title { max-width: 1140px; margin: 0 auto; padding: 0 15px; }
 .book-inner:after { content: ''; background: #98774A; width: 65%; height: 1px; position: absolute; right: 0; top: 65%; }
 .custom-container ul { padding: 0; max-width: 1110px; margin: 0 auto; display: flex; flex-flow: wrap; align-items: center; }
+/* align-items: self-start; */
 .custom-container ul li { display: inline-block; color: #737B7D; font-size: 18px; text-transform: capitalize; }
 .custom-container ul li .button { font-size: 14px; line-height: 18px; }
 .table-row ul li:first-child { width: 30%; color: #737B7D; font-weight: 700; }
@@ -158,9 +188,12 @@ section.youtube-video { margin-bottom: 95px; }
 .custom-container .table-row:first-child ul li { color: #fff; font-weight: 400; text-transform: uppercase; letter-spacing: 0.1em; font-family: 'Rubik'; font-size: 12px; }
 .custom-container .table-row:nth-child(1) { border-top: unset; }
 
-/* You might also like sdection */
+/* You might also like section */
 .you-might-like { padding: 158px 0; background: linear-gradient(180deg, #3C1226 39.06%, #181214 100%); position: relative; }
-.you-might-like::before { content: ""; background-image: url(https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/more-info-pattern.png); background-size: cover; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute; transform: translateY(-130px); }
+.you-might-like::before { content: "";
+    background-image: url('../images/more-info-pattern.png');
+       opacity: 0.4;
+      background-size: cover; background-repeat: no-repeat; width: 100%; height: 100%; position: absolute; transform: translateY(-130px); }
 .you-might-like .post-details h6 { font-size: 28px; line-height: 105%; font-weight: 600; }
 
 /* become a friend page start //////// */
@@ -178,7 +211,7 @@ section.youtube-video { margin-bottom: 95px; }
 .bg-dark .per-name h4 { color: #FFC72C; }
 .per-name h4 {  margin-bottom: 16px;}
 /* Become a Corporate Friend sectuon  */
-.become-text { color: #fff; padding-top: 96px; position: relative; padding-bottom: 125px; }
+.become-text { color: #fff; padding-top: 96px; position: relative; padding-bottom: 123px; }
 .become-text h4 { color: #fff; }
 .become-text p { color: #fff; }
 .page-template-become-friend .become-ofc .section-header p a{ text-decoration: none;}
@@ -212,7 +245,7 @@ section.youtube-video { margin-bottom: 95px; }
 .page-template-Corporate-Member .testimoniyal .testimona-cover .duble-cort{
 filter: brightness(0) saturate(100%) invert(15%) sepia(25%) saturate(5669%) hue-rotate(306deg) brightness(90%) contrast(92%);
 }
-.search-submit {
+.search-no-results .search-submit {
     /* color: #FFFFFF; */
     font-size: 14px;
     padding: 17px 22px;
@@ -222,32 +255,31 @@ filter: brightness(0) saturate(100%) invert(15%) sepia(25%) saturate(5669%) hue-
     border: none;
     border-radius: 0;
 }
-.serch-main {
-    text-align: center;
-    margin-bottom: 30px;
-}
-.serch-main p {
-    display: none;
-}   
-section.no-results.not-found p {
-    display: none;
-}
-
-.serch-main form label input{ padding: 15px 14px; height: 55px;}
-input.search-submit{ background-color: #98774A; transition: all 0.4s; display: inline-block;}
-.serch-main input[type="submit"]{ padding: 20px 36px;}
-input.search-submit:hover{background-color: #FFC72C;}
-.two-col-left-col p a {   color: #FFC72C;   transition: all 0.4s;}
+.search-no-results .serch-main {   text-align: center;}
+.search-no-results p {  color: #000;}   
+.search-results{background-color:#3C1226;}
+.search-results .serch-main{min-height: 500px;}
+.search-no-results .serch-main form label input{ padding: 18px 14px;border-radius: 0;}
+.search-no-results input.search-submit{ background-color: #98774A; transition: all 0.4s; display: inline-block;}
+.search-no-results .serch-main input[type="submit"]{ padding: 21px 36px 18px 36px;}
+.search-no-results .page-content{min-height: 70vh;margin-top: 180px;}
+.search-no-results .search-form{display: flex;justify-content: center;}
+.search-no-results .search-form label{margin-bottom: 0;}
+.search-no-results input.search-submit:hover{background-color: #FFC72C;}
+.two-col-left-col p a {   color: #000;   transition: all 0.4s; text-decoration: underline;}
 .two-col-left-col p a:hover{  color: #98774A;} 
 .testi-content p a { color: #FFC72C; font-size: 28px; line-height: 130%; transition: all 0.4s;}
-.testi-content p a:hover{ color: #fff;}
-.project-des a {
-    color: #fff;
-}
+.testi-content p a:hover{ color: #fff; }
+.project-des a {   color: #fff;}
+.single-post .project-des{ min-height: 114px;}
+.per-name a{ color: #FFC72C; font-size: 28px; line-height: 36px; display: block; font-weight: 400;}
+.single-show .table-row ul li:first-child{ padding-right: 10px;}
+.video-cover iframe {    width: 100%;}
+
 /* media qury  */
 @media only screen and (max-width:1440px) {
     /* .section-bg-design {top: 21%; } */
-    .book-inner:after { width: 75%; }
+    .book-inner:after { width: 73%; }
     .support-hero-right {    max-width: 437px;   }
     .page-template-Arrive-EatStay .banner-text,.page-template-support-us .banner-text {top: 35%;}
 }
@@ -256,11 +288,14 @@ input.search-submit:hover{background-color: #FFC72C;}
     .support-hero-right { max-width: 361px; }
     a.support-logo { width: calc(100% / 4); margin: 0 31px; }
     .right-book-box:after { left: 0; }
-    .indi-destail { min-height: 96px; }
+    /* .indi-destail { min-height: 96px; } */
     .custom-container ul { padding: 0 15px; }
     .individual-socail { right: 10px; }
     .individ-hero .page-banner-text { bottom: 23px; }
     .serch-main{ margin-top: 55px;}
+   .single-show .individ-hero .individual-socail {
+        top: 129px;
+    }
 }
 @media (max-width:991px) and (min-width:768px) {
     .date-book .button-dark { padding: 20px 28px; }
@@ -268,6 +303,11 @@ input.search-submit:hover{background-color: #FFC72C;}
     .indi-cta { display: flex; justify-content: space-between; }
     .you-might-like .post-details h6 { font-size: 24px; line-height: 101%; }
     .individ-hero { height: 800px;  }
+    .single-post .project-des {   min-height: 120px;    }
+    .page-template-Arrive-EatStay .banner-text, .page-template-support-us .banner-text {    top: 26%;}
+    .single-show .date-book {      width: 100%;    }
+    .single-show  .indi-cta .button-dark {    width: 47%;    }
+    body .page-banner.individ-hero img {  max-height: unset;    }
 }
 @media only screen and (max-width:991px) {
     .support-hero-right { max-width: 247px; top: 0; }
@@ -302,9 +342,9 @@ input.search-submit:hover{background-color: #FFC72C;}
     .goes-left { margin-bottom: 24px; }
     .list-careers-post .cont-991 .row { margin: 0 0 24px 0; padding-bottom: 26px; }
     .individual-socail { display: none; }
-    .indi-destail { min-height: 120px; }
+    /* .indi-destail { min-height: 120px; } */
     .you-might-like { padding: 80px 0; }
-    .testi-content h5{ font-size: 24px;}
+    .testi-content h5,.per-name a{ font-size: 24px;}
     .list-careers-post .btn-row .button{   padding: 24px 38px;}
     section.youtube-video {  margin-bottom: 60px;    }
     .des-text:last-child{ text-align: end;}
@@ -312,9 +352,7 @@ input.search-submit:hover{background-color: #FFC72C;}
     .page-template-support-us .two-colum-section:last-child {     padding-bottom: 60px;    }
     a.read-btn img { display: unset; }
     .support-helps .text-border-bottom{ padding-bottom: 0;}
-    .serch-main {
-        margin-top: 24px;
-    }
+    .serch-main {    margin-top: 24px;    }
 }
 @media only screen and (max-width:767px) {
     ul.support-section-menu li a { font-size: 14px; line-height: 21px; font-weight: 300; }
@@ -325,6 +363,7 @@ input.search-submit:hover{background-color: #FFC72C;}
     .support-hero-right { max-width: 182px; top: 0; }
     .support-hero { height: 500px; }
     .support-video-wrap video { min-height: 82vh; }
+    .per-name a{ font-size: 18px; line-height: 23px;}
     .two-col-left-col { padding-bottom: 24px; }
     p { font-size: 14px; line-height: 18px; }
     .two-colum-section h4 { font-weight: 700; font-size: 24px; }
@@ -340,12 +379,10 @@ input.search-submit:hover{background-color: #FFC72C;}
     .supporters-logo-row { border-bottom: unset; position: relative; }
     .supporters-logo-row::after { content: ''; position: absolute; bottom: 0; left: 15px; right: 15px;  height: 1px; background-color: #98774A; }
     .our-supporters { overflow: hidden; }
-
     .indi-destail { display: none; }
     .date-book .button { padding: 16px 16px; }
     .date-book .button-dark { padding: 16px 26px; }
     .individual-hero-bottom { bottom: 0; }
-    .individual-hero { height: 91vh; background-image: url('https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/indi-mobile-bg.png') !important; }
     .left-title { position: relative; z-index: 1; padding: 28px 0; }
     .left-title::after { content: ''; background: #701D45; top: 0; left: -16px; right: -16px; bottom: 0; position: absolute; z-index: -1; }
     .about-price-list { margin-bottom: 40px; }
@@ -383,13 +420,15 @@ input.search-submit:hover{background-color: #FFC72C;}
     .goes-img-design { position: absolute; right: 0; left: 41px; width: 100%; bottom: 14%; object-fit: cover; z-index: 5; transform: rotate(48deg); }
     .test-img-cover { margin-right: 0; margin-bottom: 16px; }
     .become-text { padding-top: 56px; padding-bottom: 47px; }
-    .become-text h4 { margin-bottom: 48px; }
+    .become-text h4 { margin-bottom: 24px; }
+    .page-template-become-friend .become-text .two-col-left-col p{ margin-bottom: 24px;}
     .become-text .two-col-left-col { padding-bottom: 47px; }
+     .page-template-become-friend .become-text .two-col-left-col { padding-bottom: 0px; }
     .become-text .goes-img-design { display: none; }
     .font-style h6 { font-size: 18px; line-height: 23px; }
     .font-style a { font-size: 18px; line-height: 23px; }
     /* .testimonal-bg { padding: 80px 0; background-image: url('https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/work-us-mobile-bg.png') !important; } */
-    .testimonal-bg { padding: 80px 0; background-image: url('https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/work-us-mobile-bg.png') !important; }
+    .testimonal-bg { padding: 80px 0; background-image: url('../images/work-us-mobile-bg.svg') !important; }
     .btn-row { display: flex; flex-direction: column-reverse; }
     .list-btn { margin-bottom: 15px; }
     .btn-row .button { width: 100%; text-align: center; }
@@ -416,7 +455,9 @@ input.search-submit:hover{background-color: #FFC72C;}
     .testi-content h3, .testi-content h6{ margin-bottom: 16px;}
     .two-col-right-img img{ min-height: auto;}
     .page-template-Venue-Hire .two-col-left-col p {    margin-bottom: 29px;    }
-
+    .page-template-Arrive-EatStay .banner-text, .page-template-support-us .banner-text {    top: 27%;    }
+    .page-template-about .page-banner img{max-height: 300px;}
+    .custom-container .table-row:first-child ul li:last-child{ display: none;}
 }
 @media only screen and (max-width:575px) {
 
@@ -439,5 +480,9 @@ input.search-submit:hover{background-color: #FFC72C;}
 }
 @media only screen and (max-width:480px) {
     .individ-hero .page-banner-text { position: unset; }
-    .me-15 { margin-right: 20px; }
+    .me-15 { margin-right: 7px; }
+    .search-no-results .search-form{ flex-direction: column;}
+    .search-no-results .search-form label {    margin-bottom: 20px;    }
+    .search-no-results .serch-main form label input {   padding: 14px; width: 100%;    }
+    .video-cover iframe{ height: 161px;}
 }

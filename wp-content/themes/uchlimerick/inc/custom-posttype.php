@@ -86,6 +86,8 @@ function custome_post_type_init() {
             'menu_name'         => __( 'Show Category' ),
           );
     $args = array(
+            "public" => true,
+            "publicly_queryable" => false,
             'hierarchical'      => true,
             'labels'            => $labels,
             'show_ui'           => true,
@@ -112,6 +114,8 @@ function custome_post_type_init() {
 
 
     $args_genre = array(
+            "public" => true,
+            "publicly_queryable" => false,
             'hierarchical'      => true,
             'labels'            => $labels_genre,
             'show_ui'           => true,
@@ -139,6 +143,8 @@ function custome_post_type_init() {
 
 
     $args_gift_idea = array(
+            "public" => true,
+            "publicly_queryable" => false,
             'hierarchical'      => true,
             'labels'            => $labels_gift_idea,
             'show_ui'           => true,
@@ -167,6 +173,8 @@ function custome_post_type_init() {
 
 
     $args_month = array(
+            "public" => true,
+            "publicly_queryable" => false,
             'hierarchical'      => true,
             'labels'            => $labels_month,
             'show_ui'           => true,
@@ -224,6 +232,8 @@ function custome_post_type_init() {
           );
 
            $args = array(
+            "public" => true,
+            "publicly_queryable" => false,
             'hierarchical'      => true,
             'labels'            => $labels,
             'show_ui'           => true,
@@ -277,6 +287,8 @@ function custome_post_type_init() {
           );
 
            $args = array(
+            "public" => true,
+            "publicly_queryable" => false,
             'hierarchical'      => true,
             'labels'            => $labels,
             'show_ui'           => true,

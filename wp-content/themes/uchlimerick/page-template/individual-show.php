@@ -2,9 +2,9 @@
 
 <!-- individual hero section  -->
 <section class="page-banner individ-hero">
-    <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/individual-bg.png" alt=""
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/individual-bg.png" alt=""
         class="d-none d-md-block img-100">
-    <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/indivisul-mobi-bg.png" alt=""
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/indivisul-mobi-bg.png" alt=""
         class="d-md-none img-100">
     <div class="individual-socail">
         <div class="container-inner">
@@ -153,8 +153,7 @@
         <div class="video-cover">
             <video src="https://designsupply-web.com/samplecontent/vender/codepen/20181014.mp4"></video>
             <a href="#" class="video-play"> <img
-                    src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/play-icon.png"
-                    alt="ply-icon"></a>
+                    src="<?php echo get_template_directory_uri(); ?>/assets/images/play-icon.png" alt="ply-icon"></a>
         </div>
     </div>
 </section>
@@ -210,8 +209,7 @@
                         social occasions, made to feel very much part of UCH, and the satisfaction of supporting a local
                         award winning Concert Hall, and its great staff! I’m delighted to be a Friend</h5>
                     <div class="duble-cort duble-cort-bot d-block d-lg-none d-md-none">
-                        <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/bot-q.png"
-                            alt="bot-icon">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bot-q.png" alt="bot-icon">
                     </div>
 
                 </div>
@@ -222,12 +220,10 @@
                     </div>
                 </div>
                 <div class="duble-cort duble-cort-top">
-                    <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/top-q.png"
-                        alt="top-icon">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/top-q.png" alt="top-icon">
                 </div>
                 <div class="duble-cort duble-cort-bot d-none d-lg-block d-md-block">
-                    <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/bot-q.png"
-                        alt="bot-icon">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bot-q.png" alt="bot-icon">
                 </div>
 
             </div>
@@ -247,14 +243,13 @@
                         supporting a local award winning Concert Hall, and its great staff! I’m delighted to be a Friend
                     </h5>
                     <div class="duble-cort duble-cort-bot d-block d-lg-none d-md-none">
-                        <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/unnamed-file-1.png"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/unnamed-file-1.png"
                             alt="bot-icon">
                     </div>
                 </div>
                 <div class="img-namedes">
                     <div class="test-img-cover">
-                        <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Ellipse-1.png"
-                            alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Ellipse-1.png" alt="">
                     </div>
                     <div class="per-name">
                         <h4 style="color: #FFC72C;">Breda Deedigan </h4>
@@ -263,11 +258,11 @@
                 </div>
 
                 <div class="duble-cort duble-cort-top">
-                    <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/unnamed-file.png"
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/unnamed-file.png"
                         alt="top-icon">
                 </div>
                 <div class="duble-cort duble-cort-bot d-none d-lg-block d-md-block">
-                    <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/unnamed-file-1.png"
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/unnamed-file-1.png"
                         alt="bot-icon">
                 </div>
             </div>
@@ -346,7 +341,7 @@
             <div class="col-lg-4 col-md-4">
                 <div class="post-card" data-aos="fade-up">
                     <div class="post-image">
-                        <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Rectangle-1088-5.png"
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/Rectangle-1088-5.png"
                             alt="">
                     </div>
                     <div class="post-details">
@@ -363,8 +358,7 @@
             <div class="col-lg-4 col-md-4">
                 <div class="post-card" data-aos="fade-up">
                     <div class="post-image">
-                        <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/face-box.png"
-                            alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/face-box.png" alt="">
                     </div>
                     <div class="post-details">
                         <h6 class="text-border-bottom">Concert or Event Title comes here and can go over two lines and
@@ -380,8 +374,7 @@
             <div class="col-lg-4 col-md-4">
                 <div class="post-card" data-aos="fade-up">
                     <div class="post-image">
-                        <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/like-bg.png"
-                            alt="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/like-bg.png" alt="">
                     </div>
                     <div class="post-details">
                         <h6 class="text-border-bottom">Concert or Event Title comes here and can go over two lines and
@@ -404,8 +397,8 @@
     <div class="row g-md-0">
         <div class="col-md-6 p-md-0">
             <div class="newsletter-left img-100-wrapper">
-                <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/07/newsletter-min.png"
-                    alt="image" title="image" class="img-100">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/newsletter-min.png" alt="image"
+                    title="image" class="img-100">
             </div>
         </div>
         <div class="col-md-6 p-md-0">

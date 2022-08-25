@@ -1,13 +1,28 @@
 <?php 
+    $select_video_or_image = get_field('select_video_or_image');
+    $support_us_desktop_image = get_field('support_us_desktop_image');
     $support_us_video = get_field('support_us_video'); 
     $support_us_mobile_image = get_field('support_us_mobile_image'); 
     $support_us_image = get_field('support_us_image'); 
 ?>
 
 <section class="support-hero homepage">
+    <?php 
+        if( get_field('select_video_or_image') == 'image' ) {
+            ?>
+    <?php if($support_us_desktop_image != ""): ?>
+        <img src="<?php echo $support_us_desktop_image['url']; ?>" class="d-none d-md-block img-100" alt="<?php echo $support_us_desktop_image['alt']; ?>">
+    <?php endif; ?>
+    <?php
+        }
+        if( get_field('select_video_or_image') == 'video' ) {   
+            ?>
     <video loop muted autoplay class="d-none d-md-flex"> 
         <source src="<?php echo $support_us_video; ?>" type="video/mp4">
     </video>
+    <?php
+        }
+    ?>
     <img src="<?php echo $support_us_mobile_image['url']; ?>" class="mobile-bgsupport" alt="">
     <div class="support-video-wrap"></div>
     <div class="support-hero-right">
@@ -15,14 +30,14 @@
     </div>
     <div class="container-inner">
         <div class="banner-text">
-            <h3 class="text-border-bottom">Support Us</h3>
+            <h3 class="text-border-bottom"><?php echo _('Support Us'); ?></h3>
             <ul class="support-section-menu">
                 <li><?php if(have_rows('banner_support_link' , '19')) { 
                     while(have_rows('banner_support_link' , '19')) { the_row(); 
                         $icon = get_sub_field('icon' , '19'); 
                         $support_link = get_sub_field('support_link' , '19'); 
                 ?> 
-                            <li><a href="<?php echo $support_link['url']; ?>">
+                            <li><a href="<?php echo $support_link['url']; ?>" target="<?php echo $support_link['target']; ?>">
                                 <img src="<?php echo $icon['url']; ?>"
                                 class="support-icon" alt="righ-icon"> <?php echo $support_link['title']; ?>
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/right-chevrow-white.svg"

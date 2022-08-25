@@ -48,12 +48,12 @@
                            	)
                            );
                            ?>
-                        <?php if($header_book_tickets_button != ""): ?><a href="<?php echo $header_book_tickets_button['url']; ?>" class="button button-dark"><?php echo $header_book_tickets_button['title']; ?></a><?php endif; ?>
+                        <?php if($header_book_tickets_button != ""): ?><a href="<?php echo $header_book_tickets_button['url']; ?>" target="<?php echo $header_book_tickets_button['target']; ?>" class="button button-dark"><?php echo $header_book_tickets_button['title']; ?></a><?php endif; ?>
                      </div>
                   </div>
                   <div class="header-right-mobile d-lg-none">
                      <div class="mobile-menu-toggle-wrap">
-                        <a href="#" class="mobile-menu-toggle">
+                        <a href="<?php echo site_url(); ?>" class="mobile-menu-toggle">
                         <span class="one"></span>
                         <span class="two"></span>
                         <span class="three"></span>
@@ -71,10 +71,10 @@
                               ?>
                      </nav>
                      <div class="button-wrap">
-                        <?php if($header_book_tickets_button != ""): ?><a href="<?php echo $header_book_tickets_button['url']; ?>" class="button button-dark"><?php echo $header_book_tickets_button['title']; ?></a><?php endif; ?>
+                        <?php if($header_book_tickets_button != ""): ?><a href="<?php echo $header_book_tickets_button['url']; ?>" target="<?php echo $header_book_tickets_button['target']; ?>"  class="button button-dark"><?php echo $header_book_tickets_button['title']; ?></a><?php endif; ?>
                      </div>
                      <div class="call-wrap">
-                        <?php if($header_phone_number != ""): ?><a href="tel:<?php echo $header_phone_number; ?>"><i class="fa-solid fa-phone"></i><?php echo $header_phone_number; ?></a><?php endif; ?>
+                        <?php if($header_phone_number != ""): ?><a href="tel:<?php echo $header_phone_number; ?>" ><i class="fa-solid fa-phone"></i><?php echo $header_phone_number; ?></a><?php endif; ?>
                      </div>
                   </div>
                </div>

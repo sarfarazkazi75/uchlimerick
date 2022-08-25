@@ -4,6 +4,7 @@
     $hero_image = get_field('hero_image'); 
 ?>
 <section class="support-hero">
+    <!-- <img src="" alt="" class="d-none d-md-block img-100"> -->
     <img src="<?php echo $banner_image['url']; ?>" class="mobile-bgsupport" alt="">
     <div class="support-video-wrap">
         <video loop="" muted="" autoplay="" class="d-none d-md-flex">
