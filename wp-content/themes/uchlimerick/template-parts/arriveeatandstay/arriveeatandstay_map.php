@@ -10,12 +10,12 @@
         <div class="row align-items-center">
             <div class="col-xl-5 col-md-6 mb-md-0 mb-4 pb-md-0 pb-2">
                 <div class="section-header">
-                    <h5 class="text-border-bottom pb-xl-4 pb-lg-2 pb-md-0 pb-3 mb-lg-5 section-title"><?php echo $get_here_title; ?></h5>
+                    <h4 class="text-border-bottom pb-xl-4 pb-lg-2 pb-md-0 pb-3 mb-lg-5 section-title"><?php echo $get_here_title; ?></h4>
                 </div> 
                 <?php echo $get_here_content; ?>                   
                 <ul class="d-md-block d-none">
                     <li><a href="<?php echo $get_here_link; ?>" target="blank">
-                        <span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/map-wine.svg" alt=""></span>
+                        <span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/map-wine.svg" alt=""></span> 
                         <span><?php echo $get_here_address; ?></a></span>
                     </li>
                 </ul>

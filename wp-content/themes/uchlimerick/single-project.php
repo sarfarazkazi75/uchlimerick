@@ -37,9 +37,10 @@
 
             $project_post= array(
 
-                         'post_type'=>'project',
+                        'post_type'=>'project',
                         'post_status'=>'publish',
-                        'posts_per_page'=>3
+                        'posts_per_page'=>3,
+                        'post__not_in' => array(1795, 1796)
                        
             );
 
@@ -61,7 +62,7 @@ if ( $the_query->have_posts() ) {
     <div class="container-inner">
         <div class="row text-border-bottom">
             <div class="col-lg-6 col-md-6">
-                <h4><?php  _e('How your support helps')?></h4>
+                <h3><?php  _e('How your support helps')?></h3>
             </div>
             <div class="col-lg-6 col-md-6 d-lg-block d-md-block d-none">
                 <div class="all-project-btn">
@@ -99,7 +100,7 @@ wp_reset_postdata();
         </div>
         <div class="col-12 d-lg-none d-md-none d-block">
             <div class="all-project-btn">
-                <a href="#" class="bg-transparent button">View All Projects</a>
+                <a href="<?php echo home_url('/Project')?>" class="bg-transparent button"><?php _e('View All Projects','uchlimerick');?></a>
             </div>
         </div>
 

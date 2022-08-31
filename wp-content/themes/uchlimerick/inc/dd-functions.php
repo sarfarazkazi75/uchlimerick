@@ -65,16 +65,22 @@ function load_more_shows()
     $articles = new WP_Query( $args );
 
     $ar_posts = array();
-	$i=0;
+	$i=1;
+    $a = '';
 	// $classes = array('col-md-8 order-md-1 order-2', 'col-md-4 order-md-2 order-1', 'col-md-4 order-md-3 order-4', 'col-md-4 order-md-4 order-3', 'col-md-4 order-md-5 order-5', 'col-md-4 order-md-6 order-6', 'col-md-8 order-md-7 order-7', 'col-md-4 order-md-8 order-9', 'col-md-4 order-md-9 order-10', 'col-md-4 order-md-10 order-8', 'col-md-8 order-md-11 order-11', 'col-md-4 order-md-12 d-md-block d-none order-12');
-    $classes = array('col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4');
+    $classes = array('col-md-4','col-md-4','col-md-4','col-md-4','col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4', 'col-md-4', 'col-md-4');
 
     if( $articles->have_posts() )
     {
         while( $articles->have_posts() )
         {
             $articles->the_post();
-
+            if ($i==1 || $i==7 || $i==11 || $i==17 || $i==21 || $i==27 || $i==31 || $i==37 || $i==41 || $i==47 || $i==51 || $i==57 || $i==61 || $i==67 || $i==71 || $i==77 || $i==81 || $i==87 || $i==91 || $i==97 || $i==101 || $i==107 ) {
+                $class = 'col-md-8';
+            }
+            else {
+                $class = 'col-md-4';
+            }
             global $post;
             $uchlimerick_post_show_start_date      = get_field( "uchlimerick_post_show_start_date" );
             $date_uchlimerick_post_show_start_date = date( "j M", strtotime( $uchlimerick_post_show_start_date ) );
@@ -109,10 +115,10 @@ function load_more_shows()
 
             $more_posts = "";
 
-            if( $cpt > $count && $cpt < $count+12 )
+            if( $cpt > $count && $cpt < $count+14 )
             {					
 
-                    $more_posts .= '<div class="show_single_wrap '.$classes[ $i % 12 ].'">';
+                    $more_posts .= '<div class="show_single_wrap load_more_dd_functions '.$class.'">';
                     $more_posts .= '<div class="post-card">';
                     $more_posts .= '<div class="post-image">';                                    
                     $url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ), 'thumbnail' );                                    
@@ -124,7 +130,7 @@ function load_more_shows()
                     $more_posts .= '<img src="'.$url.'"/>';
                     $more_posts .= '</div>';
                     $more_posts .= '<div class="post-details">';
-                    $more_posts .= '<h6 class="text-border-bottom"><a href="'.get_the_permalink().'" style="color: #fff">'.get_the_title().'</a></h6>';
+                    $more_posts .= '<a href="'.get_the_permalink().'" style="color: #fff"><h6 class="text-border-bottom">'.get_the_title().'</h6></a>';
                     $more_posts .= '<a class="post-date" href="'.get_the_permalink().'">';
                     $more_posts .= $show_date;
                     $more_posts .= '</a>';
@@ -411,7 +417,9 @@ function data_fetch(){
                                     <img src="<?php echo $url ?>" />
                                 </div>
                                 <div class="post-details">
-                                    <h6 class="text-border-bottom"><?php the_title(); ?></h6>
+                                    <h6 class="text-border-bottom">
+                                        <a href="<?php the_permalink(); ?>" style="color: #fff"><?php the_title(); ?></a>
+                                    </h6>
                                     <a class="post-date" href="<?php the_permalink(); ?>">
                                         <?php echo $show_date; ?>
                                     </a>
@@ -445,7 +453,75 @@ function data_fetch(){
     die();
 }
 
+// the ajax function
+add_action('wp_ajax_faq_search_data' , 'faq_search_data');
+add_action('wp_ajax_nopriv_faq_search_data','faq_search_data');
+function faq_search_data(){
+	$i=0;
+    $the_query = new WP_Query( array( 'posts_per_page' => 5, 's' => esc_attr( $_POST['faq_search'] ), 'post_type' => 'faq' ) );
+    if( $the_query->have_posts() ){
+        while( $the_query->have_posts() ): $the_query->the_post(); 
+        $helpfull = get_field('uchlimerick_faq_did_you_find_this_helpful');        
+       
+        ?>
+            <div class="faq-search-lorem search_results" id="<?php echo get_the_ID(); ?>">
+                <h5><?php echo get_the_title(); ?></h5>
+                <p><?php echo get_the_content(); ?></p>
+                <div class="help-full-cover">
+                    <?php echo _('Did you find this helpful?'); ?>
+                    <?php if($helpfull == 1){ ?>
+                    <div class="help-full-thumbh">
+                        <span class="thumbh-like active">
+                            <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Vector-8.png" alt="">
+                        </span>
+                        <span class="thumbh-like ">
+                            <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Vector-9.png" alt="">
+                        </span>
+                    </div>
+                    <?php } else { ?>
+                    <span class="thumbh-like">
+                            <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Vector-8.png" alt="">
+                        </span>
+                        <span class="thumbh-like active">
+                            <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Vector-9.png" alt="">
+                        </span>
+                    <?php } ?>
+                </div>
+            </div>            
+		<?php $i++; ?>
+        <?php endwhile;
+        wp_reset_postdata();  
+    }
+    else {
+        echo "<h5 class='no_results_faq_h5' style='color: #000;'>"."Oops, we couldn’t find what you were looking for."."</h5>";
+        echo "<p class='no_results_faq_p' style='color: #000;'>"."Check our dropdown menu for answers to frequently asked questions.."."</p>";
+        echo '<div class="contact-link">';
+        echo _('Couldn&lsquo;t find your answer?'); 
+        ?>
+        <a href="<?php echo site_url('contact'); ?>"><?php echo _('Contact Us'); ?></a>
+        <?php
+        echo '</div>';
+    }
 
+    die();
+}
+
+add_action('pre_get_posts', 'uch_no_sticky_posts_query');
+function uch_no_sticky_posts_query($query)
+{
+  if (is_home() && $query->is_main_query()) {
+    $query->set('post__not_in', get_option('sticky_posts'));
+  }
+}
+
+function exclude_single_post_cpt($query) {
+    if (is_post_type_archive('project') && $query->is_main_query() && !is_admin() ) {
+      $query->set('post__not_in', array(1795, 1796));
+    }
+  }
+  
+  add_action('pre_get_posts', 'exclude_single_post_cpt');
+  
 // add_action( 'admin_init', 'hide_editor' );
 // function hide_editor() {
 //   $post_id = $_GET['post'] ? $_GET['post'] : $_POST['post_ID'] ;

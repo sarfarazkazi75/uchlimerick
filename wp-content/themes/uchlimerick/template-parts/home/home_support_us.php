@@ -37,9 +37,9 @@
                         $icon = get_sub_field('icon' , '19'); 
                         $support_link = get_sub_field('support_link' , '19'); 
                 ?> 
-                            <li><a href="<?php echo $support_link['url']; ?>" target="<?php echo $support_link['target']; ?>">
+                            <li><a href="#support<?php echo get_row_index();?>">
                                 <img src="<?php echo $icon['url']; ?>"
-                                class="support-icon" alt="righ-icon"> <?php echo $support_link['title']; ?>
+                                class="support-icon" alt="righ-icon"> <?php echo $support_link; ?>
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/right-chevrow-white.svg"
                                 class="support-rigth" alt="righ-icon"></a>
                             </li> 

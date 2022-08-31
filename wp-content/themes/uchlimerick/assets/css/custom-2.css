@@ -9,6 +9,11 @@
 .food-drink.light .text-border-bottom h5 {
     color: #000;
 }
+.sponser-detail .fw-bold
+{
+       font-size: 18px;
+       line-height: 23px;
+   }
 .map-sec p,
 .accordion-box .content p,
 .img-with-text p,
@@ -107,7 +112,7 @@
 }
 .food-drink {
     background: linear-gradient(0deg, #3C1226 39.06%, #181214 100%);
-    padding: 95px 0 100px;
+    padding: 96px 0 160px;
     z-index: 1;
     overflow: hidden;
 }
@@ -260,7 +265,8 @@
 }
 .img-with-text.dark .img-list li h6{
     font-family: 'Rubik';
-    font-size: 16px;
+    font-size: 18px;
+    line-height: 23px;
 }
 .img-with-text.dark .img-list li:not(:last-child){
     margin-bottom: 40px;
@@ -496,7 +502,7 @@
         padding: 30px 0;
     }
     .accordion-box .title {
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 300;
     }
     .accordion-box .title-wrp{
@@ -509,6 +515,11 @@
         height: 21px;
         left: 10px;
         top: 5px;
+    }
+    .sponser-detail .fw-bold
+ {
+        font-size: 14px;
+        line-height: 18px;
     }
     .accordion-sec {
         padding-bottom: 30px;
@@ -582,6 +593,21 @@
         margin-bottom: 16px;
     }
     .food-drink::before{ display: none;}
+    .become-ofc .benifit-box ul li {
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .become-ofc .section-header p{ font-size: 14px; line-height: 18px;}
+   .section-header .color-black {
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .img-with-text.dark .img-list li h6 {
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .food-drink::before{opacity: 0.35;}
+    .food-drink::after{opacity: 0.35;}
 }
 
 

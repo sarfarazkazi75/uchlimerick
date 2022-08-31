@@ -97,7 +97,7 @@
                             <p>Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam no suscipit quaerendum. At nam minimum ponderum.</p>
                         </div>
                     </div>
-                    <div class="col-lg-4 text-right align-items-end mt-4 mt-md-0">
+                    <div class="col-lg-4 col-md-6 text-right align-items-end mt-4 mt-md-0">
                         <a href="#" class="button button-dark">Read More</a>
                     </div>
                 </div>

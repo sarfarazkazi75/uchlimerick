@@ -236,7 +236,7 @@ $(".accordion-box > a").on("click", function() {
 
 // LOAD MORE SHOW POSTS
 $("#load_more").click(function(){
-  console.log('clicked');
+  console.log('clicked');  
     $.post(ajaxurl,
     {
       'action': 'load_more_shows',
@@ -255,6 +255,14 @@ $("#load_more").click(function(){
           //$(".ajax_response").append(posts[i]);
             $("#show_content_wrap_full").append(posts[i]);
             console.log(posts);
+            $('.post-details h6.text-border-bottom').each(function(i, obj) {
+              var output = ($(this).text()).replace(
+                              /(\w)(\w*)/g,
+                              (_, firstChar, rest) => firstChar + rest.toLowerCase()
+                            );
+              $(this).text(output);
+              // console.log(output);
+          });
           
       }
     });
@@ -333,5 +341,84 @@ $(document).ready(function() {
       }
   });
   });
+
+  $("#faq_search").keyup(function() {
+    jQuery.ajax({
+      url: ajaxurl,
+      type: 'post',
+      data: { action: 'faq_search_data', faq_search: jQuery('#faq_search').val() },
+      success: function(data) {
+          var faq_search = jQuery('#faq_search').val();
+          if (faq_search == '') {
+              jQuery('#faq_content_wrap_full').empty();
+          } else {
+              jQuery('#faq_content_wrap_full').empty();
+              jQuery('#faq_content_wrap_full').html( data );
+          }
+          jQuery('#faq_content_wrap_full').empty();
+          jQuery('#faq_content_wrap_full').html( data );
+          console.log(jQuery('#faq_search').val());
+          
+      }
+  });
+  });
+
+
+  $('.post-details h6.text-border-bottom').each(function(i, obj) {
+      var output = ($(this).text()).replace(
+                      /(\w)(\w*)/g,
+                      (_, firstChar, rest) => firstChar + rest.toLowerCase()
+                    );
+      $(this).text(output);
+      // console.log(output);
+  });
+
+  $('.section .highlight .highlight-text h6.text-border-bottom').each(function(i, obj) {
+      var output = ($(this).text()).replace(
+                      /(\w)(\w*)/g,
+                      (_, firstChar, rest) => firstChar + rest.toLowerCase()
+                    );
+      $(this).text(output);
+      // console.log(output);
+  }); 
+  
+  $('.page-banner-text .left-title h4').each(function(i, obj) {
+      var output = ($(this).text()).replace(
+                      /(\w)(\w*)/g,
+                      (_, firstChar, rest) => firstChar + rest.toLowerCase()
+                    );
+      $(this).text(output);
+      // console.log(output);
+  });   
+
+  $(".section, .donate_div, .become_a_friend_div").click(function(){
+      window.location = $(this).attr("data-href");
+      return false;
+  });  
+
+  function scrollNav() {
+    $('.support-section-menu li a').click(function(){
+      
+      $('html, body').stop().animate({
+        scrollTop: $($(this).attr('href')).offset().top - 145
+      }, 300);
+      return false;
+    });
+  }
+  scrollNav();
+
+
 });
 
+
+$(".fancybox-img").click( function( e ) {
+  if ( window.innerWidth > 991 ) {
+      e.stopPropagation();
+      e.preventDefault();
+  }
+})
+
+$(".fancybox-img").fancybox( {
+  margin     : 100,
+  autoSize   : true,
+});

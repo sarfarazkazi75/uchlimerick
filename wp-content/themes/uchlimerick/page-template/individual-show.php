@@ -32,7 +32,7 @@
                 <div class="col-md-6">
                     <div class="left-title">
                         <p class="small-yellow">UCH presents</p>
-                        <h4>Show/Event Name that has a gigantic title and a really big description</h4>
+                        <h3>Show/Event Name that has a gigantic title and a really big description</h3>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -151,7 +151,7 @@
 <section class="youtube-video">
     <div class="container-inner">
         <div class="video-cover">
-            <video src="https://designsupply-web.com/samplecontent/vender/codepen/20181014.mp4"></video>
+            <video autoplay src="https://designsupply-web.com/samplecontent/vender/codepen/20181014.mp4"></video>
             <a href="#" class="video-play"> <img
                     src="<?php echo get_template_directory_uri(); ?>/assets/images/play-icon.png" alt="ply-icon"></a>
         </div>
@@ -198,7 +198,7 @@
     </div>
 </section>
 
-<!--Quote component   2 -->
+<!-- 
 <section class="testimoniyal" style="background-color:#E7E9EC;">
     <div class="container-inner">
         <div class="testimona-cover">
@@ -231,7 +231,7 @@
     </div>
 </section>
 
-<!--Quote component   3 -->
+
 <section class="testimoniyal"
     style="background-image:url('https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/dark-gold-design.png'); background-color:#343a40; ">
     <div class="container-inner">
@@ -269,7 +269,7 @@
         </div>
     </div>
 </section>
-<!--Quote component  4-->
+
 <section class="testimoniyal "
     style="background-image:url('https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/dark-gold-design.png'); background-color:#343a40;">
     <div class="container-inner">
@@ -281,7 +281,7 @@
 
         </div>
     </div>
-</section>
+</section> -->
 
 
 <!-- book now section  -->
@@ -305,7 +305,7 @@
                 <li>Event / Show Name</li>
                 <li>11 feb 2023</li>
                 <li>7:30pm</li>
-                <li><a href="#" class="bg-transparent button"> book ticket</a></li>
+                <li><a href="#" class="bg-transparent button"> book tickets</a></li>
 
             </ul>
         </div>
@@ -315,7 +315,7 @@
 
                 <li>12 feb 2023</li>
                 <li>7:30pm</li>
-                <li><a href="#" class="bg-transparent button"> book ticket</a></li>
+                <li><a href="#" class="bg-transparent button"> book tickets</a></li>
 
             </ul>
         </div>
@@ -324,7 +324,7 @@
                 <li>Event / Show Name</li>
                 <li>13 feb 2023</li>
                 <li>7:30pm</li>
-                <li><a href="#" class="bg-transparent button"> book ticket</a></li>
+                <li><a href="#" class="bg-transparent button"> book tickets</a></li>
 
             </ul>
         </div>

@@ -20,8 +20,9 @@
                     // 'taxonomy' => 'whats-on',
                     'post_status'    => 'publish',
                     'posts_per_page' => 5,
+                    'post__not_in' => array(1702,1735),
                 ] );
-                
+                $show_date='';
                 $i       = 0;
                 $classes = [
                     'col-md-8 order-md-1 order-2',
@@ -91,15 +92,20 @@
                                 <div class="post-details">
                                     <h6 class="text-border-bottom"><a href="<?php the_permalink(); ?>" style="color: #fff"><?php the_title(); ?></a></h6>
                                     <a class="post-date" href="<?php the_permalink(); ?>">
-                                        <!-- 02 Jan - 03 Feb -->
-                                        <?php echo $show_date; ?>
+                                                    <?php if ($show_date != ' ') {
+                                                    echo '<p>'.$show_date.'</p>';
+                                                    } 
+                                                    else {
+                                                    echo '<p>'.$date_uchlimerick_post_show_start_date.'</p>';
+                                                    }
+                                                    ?> 
                                     </a>
                                     <div class="btn-wrapper book-btn-cover">
                                         <?php
                                         if(isset($book_ticket)){
                                             ?>
                                             <a href="<?php echo $book_ticket; ?>" class="button button-dark"><?php _e("Book Tickets",'uchlimerick') ?></a>
-                                            <a href="<?php the_permalink(); ?>" class="button button-light"><?php _e("Learn More",'uchlimerick') ?></a>
+                                            <a href="<?php the_permalink(); ?>" class="button button-light"><?php _e("More Info",'uchlimerick') ?></a>
                                             <?php
                                         }
                                         else{
@@ -108,7 +114,7 @@
                                                 echo $uchlimerick_post_show_book_ticket_link['url'];
                                             } ?>" target="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
                                                 echo $uchlimerick_post_show_book_ticket_link['target'];
-                                            } ?>" class="button button-dark">Book Tickets</a> <a href="<?php the_permalink(); ?>" class="button-light button">Learn More</a>
+                                            } ?>" class="button button-dark">Book Tickets</a> <a href="<?php the_permalink(); ?>" class="button-light button">More Info</a>
                                             <?php
                                         }
                                         ?>

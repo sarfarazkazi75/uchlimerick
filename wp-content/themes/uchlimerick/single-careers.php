@@ -25,16 +25,16 @@ $apply_for_this_job_email   = !empty($apply_for_this_job_email) ? $apply_for_thi
                 <h2><?php echo $title; ?></h2>
             </div>
             <div class="pt-xl-2">
-                <a href="mailto:<?php echo $apply_for_this_job_email; ?>?subject=<?php echo $title; ?>" class="button button-dark fw-medium text-center"><?php echo  _('Apply for this Job');?></a>
+                <a href="mailto:<?php echo $apply_for_this_job_email; ?>?subject=<?php echo $title = str_ireplace(array( '/', '&','#038;'),'',$title);?>" class="button button-dark fw-medium text-center"><?php echo  _('Apply for this Job');?></a>
             </div>
         </div>
     </div>
 </section>
-<section class="project-post pt-100 pb-100">
+<section class="project-post pb-100">
     <div class="container-inner">
         <div class="post-container">
             <?php echo $content; ?>
-            <a href="mailto:<?php echo $apply_for_this_job_email; ?>?subject=<?php echo $title; ?>" class="button button-dark fw-medium text-center text-white"><?php echo  _('Apply for this Job');?></a>
+            <a href="mailto:<?php echo $apply_for_this_job_email; ?>?subject=<?php echo $title = str_ireplace(array( '/', '&','#038;'),'',$title); ?>" class="button button-dark fw-medium text-center text-white"><?php echo  _('Apply for this Job');?></a>
         </div>
     </div>
 </section>

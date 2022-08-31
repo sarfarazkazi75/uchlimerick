@@ -54,7 +54,7 @@
                             <?php if($post_subtitle != ""): ?><p><?php echo $post_subtitle; ?></p><?php endif; ?>
                         </div>
                     </div>
-                    <div class="col-lg-4 text-right align-items-end mt-4 mt-md-0">
+                    <div class="col-lg-4 col-md-6 text-right align-items-end mt-4 mt-md-0">
                         <?php if($post_link != ""): ?><a href="<?php echo $post_link['url']; ?>" target="<?php echo $post_link['target']; ?>" class="button button-dark"><?php echo $post_link['title']; ?></a><?php endif; ?>
                     </div>
                 </div>

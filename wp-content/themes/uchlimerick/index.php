@@ -38,24 +38,51 @@ get_template_part('template-parts/blog/blog', 'banner_section'); //banner sectio
                         $temp_data ++ ;
                      }
                      if($i == 3){
-                         $inner_class='donate-cover bg-gold';
-                     }elseif($i == 10){
-                        $inner_class='donate-cover Become-friend-cover bg-light-gray';
-                     }else{
-                        $inner_class='post-card';
-                     }
-                    ?>    
-				    <!-- do stuff ... -->
-				    <div class="blog_single_wrap <?php echo $class;?> ">
-                        <div class="<?php echo $inner_class;?>">
-                            <div class="post-image">
-                                <?php the_post_thumbnail(); ?>
+                         $inner_class='donate-cover bg-gold'; 
+                         
+                         ?>
+                            <div class="blog_single_wrap donate_div <?php echo $class;?> "  data-href="<?php echo get_permalink(1786); ?>">
+                                <div class="<?php echo $inner_class;?>">
+                                    <div class="post-image">
+                                        <?php the_post_thumbnail(1786); ?>
+                                    </div>
+                                    <div class="post-details">
+                                        <?php echo '<h4 class="text-border-bottom">'.get_the_title(1786).'</h4>'
+                                                    .'<p>'.get_post_field('post_content', 1786).'</p>'.
+                                                    '<a class="post-date arrwo-has-link" href="'.get_permalink(1786).'" target="blank">Read more</a>'; 
+                                        ?>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="post-details">
-                              <?php echo $col_8_content;?>
-                             </div>
-                        </div>
-                   </div>
+                     <?php }elseif($i == 10){
+                        $inner_class='donate-cover Become-friend-cover bg-light-gray'; ?>
+                            <div class="blog_single_wrap become_a_friend_div <?php echo $class;?> " data-href="<?php echo get_permalink(1789); ?>">
+                                <div class="<?php echo $inner_class;?>">
+                                    <div class="post-image">
+                                        <?php the_post_thumbnail(1789); ?>
+                                    </div>
+                                    <div class="post-details">
+                                        <?php echo '<h4 class="text-border-bottom">'.get_the_title(1789).'</h4>'
+                                                    .'<p>'.get_post_field('post_content', 1789).'</p>'.
+                                                    '<a class="post-date arrwo-has-link" href="'.get_permalink(1789).'" target="blank">Read more</a>'; 
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>                     
+                     <?php }else{
+                        $inner_class='post-card'; ?>
+                            <div class="blog_single_wrap from_else <?php echo $class;?> ">
+                                <div class="<?php echo $inner_class;?>">
+                                    <div class="post-image">
+                                        <?php the_post_thumbnail(); ?>
+                                    </div>
+                                    <div class="post-details">
+                                    <?php echo $col_8_content;?>
+                                    </div>
+                                </div>
+                            </div>
+                     <?php }
+                    ?>    
 				    <?php $i++; endwhile; ?>
 				<?php  endif; ?>
             </div>

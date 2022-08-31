@@ -5,7 +5,7 @@
     <div class="container-inner">
         <div class="support-heding-row">
             <div class="our-supporters-sub">
-                <h4><?php echo $supporter_title; ?></h4>
+                <h3><?php echo $supporter_title; ?></h3>
             </div>
             <div class="custom-border"></div>
         </div>
@@ -17,9 +17,10 @@
                     $supporters_logo_link = get_sub_field('supporters_logo_link');
             ?>
             <?php if($supporters_logo_link != ""): ?>
-                <a href="<?php $supporters_logo_link['url']; ?>" target="<?php $supporters_logo_link['target']; ?>" class="support-logo" data-aos="fade-left">
+            <a href="<?php $supporters_logo_link['url']; ?>" target="<?php $supporters_logo_link['target']; ?>"
+                class="support-logo" data-aos="fade-left">
                 <img src="<?php echo $supporters_logo['url']; ?>" alt="logo-1">
-                </a>
+            </a>
             <?php endif; ?>
             <?php } 
             } ?>

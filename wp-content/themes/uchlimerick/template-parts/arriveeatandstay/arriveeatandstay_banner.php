@@ -36,7 +36,7 @@
     </div>
     <div class="container-inner">
         <div class="banner-text">
-            <h4 class="text-border-bottom"><?php echo $banner_title; ?></h4>
+            <h3 class="text-border-bottom"><?php echo $banner_title; ?></h3>
             <ul class="support-section-menu">
                 <li><a href="#support1"><img
                             src="<?php echo get_template_directory_uri(); ?>/assets/images/Locationon.svg"

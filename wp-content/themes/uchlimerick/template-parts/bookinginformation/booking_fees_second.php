@@ -4,19 +4,19 @@
     $section_2_right_data = get_field('section_2_right_data');
     $section_2_link = get_field('section_2_link');
 ?>
-<section class="information" data-aos="fade-up">
+<section class="information" >
     <div class="container-inner">
     <div class="information-block">
     <div class="text-border-bottom">
     <h5><?php echo $section_2_title; ?></h5>
     </div>
     <div class="row ">
-        <div class="col-md-6">
+        <div class="col-md-6" data-aos="fade-up">
             <div class="paragaraph-medium">
                 <?php echo $section_2_left_data; ?>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" data-aos="fade-up">
             <div class="paragaraph-medium">
                 <?php echo $section_2_right_data; ?>
             </div>

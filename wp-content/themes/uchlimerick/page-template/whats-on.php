@@ -89,7 +89,7 @@
     </div>
 </section>
 
-<section class="">
+<section class="what-on-wrapper">
     <div class="container-inner">
         <div class="post-main-cover">
             <div class="row testing_class_1" id="show_content_wrap_full">
@@ -97,12 +97,15 @@
                         <?php 
                         global $wp_query;
                         $temp=$wp_query;
+                        $do_not_duplicate = array();
+                        $do_not_duplicate2[] = array();                        
                         $paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1;
                         $args = array(
                             'post_type' => 'show',
                             'post_status' => 'publish',
                             'paged' => $paged,
                             'posts_per_page' => 12,
+                            'post__not_in' => array(1702, 1735),
                         );
                      if (isset($_REQUEST['genrefilter'])) {
 
@@ -141,19 +144,21 @@
                         $wp_query=new WP_Query( $args );
                         $count = $GLOBALS['wp_query']->post_count;
                         $i=0;
+                        
                         // $classes = array('col-md-8 order-md-1 order-2', 'col-md-4 order-md-2 order-1', 'col-md-4 order-md-3 order-4', 'col-md-4 order-md-4 order-3', 'col-md-4 order-md-5 order-5', 'col-md-4 order-md-6 order-6', 'col-md-8 order-md-7 order-7', 'col-md-4 order-md-8 order-9', 'col-md-4 order-md-9 order-10', 'col-md-4 order-md-10 order-8', 'col-md-8 order-md-11 order-11', 'col-md-4 order-md-12 d-md-block d-none order-12');
                         $classes = array('col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4');
 			            if ( $wp_query->have_posts() ){
                             while ( $wp_query->have_posts() ) :
                                 $wp_query->the_post();   
                                 global $post;
+                                $inner_class ='';
                                 $uchlimerick_post_show_start_date = get_field("uchlimerick_post_show_start_date");
                                 $date_uchlimerick_post_show_start_date = date("j M", strtotime($uchlimerick_post_show_start_date));
             
                                 $uchlimerick_post_show_end_date = get_field("uchlimerick_post_show_end_date");
                                 $date_uchlimerick_post_show_end_date = date("j M", strtotime($uchlimerick_post_show_end_date));   
                                 $uchlimerick_post_show_book_ticket_link = get_field("uchlimerick_post_show_book_ticket_link");
-
+                                $show_date='';
                                 $events    = get_post_meta( $post->ID, 'events', TRUE );
                                 $price_obj = $event_prices = [];
                                 if ( $events ) {
@@ -176,50 +181,114 @@
                                         
                                     }
                                 }
+                                if($i == 2){
+                                    $inner_class='donate-cover bg-gold';
+                                    $donate_post = get_post(1702);
+                                    $title = '<h4 class="text-border-bottom">'.$donate_post->post_title.'</h4>';                                    
+                                    $permalink = get_permalink($donate_post); 
+                                    
+                                    ?>
+                                    <div class="show_single_wrap donate_div <?php echo $classes[$i%12]; ?>" data-href="<?php echo get_permalink(1702); ?>">                           
+                                        <div class="<?php echo $inner_class;?>">
+                                            <div class="post-image">
+                                                <?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' ); ?>
+                                                <?php
+                                                $attachment_urls = get_post_meta( $post->ID, 'attachments_urls', TRUE );
+                                                if ( isset( $attachment_urls[0] ) ) {
+                                                    $url = $attachment_urls[0];
+                                                }
+                                                ?>
+                                                <img src="<?php echo $url ?>" />
+                                            </div>
+                                            <div class="post-details">
+                                                <h4 class="text-border-bottom"><a href="<?php echo get_permalink(1702); ?>" style="color: #fff"><?php echo get_the_title(1702); ?></a></h4>                                            
+                                                <p><?php echo get_post_field('post_content', 1702); ?></p>
+                                                <a class="post-date arrwo-has-link" href="<?php echo get_permalink(1702); ?>" target="blank">Read more</a>                                                
+                                            </div>
+                                        </div>                           
+                                    </div>
+                                <?php }elseif($i == 9){
+                                   $inner_class='donate-cover Become-friend-cover bg-light-gray';
+                                   $become_a_friend_post = get_post(1735);
+                                   $title = '<h4 class="text-border-bottom">'.$become_a_friend_post->post_title.'</h4>';
+                                   $permalink = get_permalink($become_a_friend_post); ?>
+                                    <div class="show_single_wrap become_a_friend_div <?php echo $classes[$i%12]; ?>" data-href="<?php echo get_permalink(1735); ?>">                           
+                                        <div class="<?php echo $inner_class;?>">
+                                            <div class="post-image">
+                                                <?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' ); ?>
+                                                <?php
+                                                $attachment_urls = get_post_meta( $post->ID, 'attachments_urls', TRUE );
+                                                if ( isset( $attachment_urls[0] ) ) {
+                                                    $url = $attachment_urls[0];
+                                                }
+                                                ?>
+                                                <img src="<?php echo $url ?>" />
+                                            </div>
+                                            <div class="post-details">                                                
+                                                <h4 class="text-border-bottom"><a href="<?php echo get_permalink(1735); ?>" style="color: #fff"><?php echo get_the_title(1735); ?></a></h4>                                            
+                                                <p><?php echo get_post_field('post_content', 1735); ?></p>
+                                                <a class="post-date arrwo-has-link" href="<?php echo get_permalink(1735); ?>" target="blank">Read more</a>                                                                                                
+                                            </div>
+                                        </div>                           
+                                    </div>
+                                <?php }else{
+                                   $inner_class='post-card';
+                                   $title = '<h6 class="text-border-bottom">'.get_the_title().'</h6>';
+                                   $permalink = get_permalink(); ?>
+                                    <div class="show_single_wrap test_from_whatson_template <?php echo $classes[$i%12]; ?>">                           
+                                        <div class="<?php echo $inner_class;?>">
+                                            <div class="post-image">
+                                                <?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' ); ?>
+                                                <?php
+                                                $attachment_urls = get_post_meta( $post->ID, 'attachments_urls', TRUE );
+                                                if ( isset( $attachment_urls[0] ) ) {
+                                                    $url = $attachment_urls[0];
+                                                }
+                                                ?>
+                                                <img src="<?php echo $url ?>" />
+                                            </div>
+                                            <div class="post-details">
+                                            <a href="<?php echo $permalink; ?>" style="color: #fff"><?php echo $title; ?></a>
+                                                <a class="post-date" href="<?php echo $permalink; ?>">
+                                                    <!-- 05 Jan - 06 Feb -->
+                                                    <?php //echo $date_uchlimerick_post_show_start_date. ' - ' . $date_uchlimerick_post_show_end_date; ?>
+                                                    <?php //echo $show_date; ?>
+                                                    <?php if ($show_date != ' ') {
+                                                    echo '<p>'.$show_date.'</p>';
+                                                    } 
+                                                    else {
+                                                    echo '<p>'.$date_uchlimerick_post_show_start_date.'</p>';
+                                                    }
+                                                    ?>                                                    
+                                                </a>
+                                                <div class="btn-wrapper book-btn-cover">
+                                                <?php
+                                                    if(isset($book_ticket)){
+                                                        ?>
+                                                        <a href="<?php echo $book_ticket; ?>" class="button button-dark"><?php _e("Book Tickets",'uchlimerick') ?></a>
+                                                        <a href="<?php echo $permalink; ?>" class="button button-light"><?php _e("Learn More",'uchlimerick') ?></a>
+                                                        <?php
+                                                    }
+                                                    else{
+                                                        ?>
+                                                        <a href="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
+                                                            echo $uchlimerick_post_show_book_ticket_link['url'];
+                                                        } ?>" target="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
+                                                            echo $uchlimerick_post_show_book_ticket_link['target'];
+                                                        } ?>" class="button button-dark">Book Tickets</a> <a href="<?php echo $permalink; ?>" class="button-light button">Learn More</a>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </div>                           
+                                    </div>                                
+                                <?php }
+
                                                           
                         ?>                         
-                             
-                        <div class="show_single_wrap testing_class_2 <?php echo $classes[$i%12]; ?>">                           
-                            <div class="post-card">
-                                <div class="post-image">
-                                    <?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' ); ?>
-                                    <?php
-                                    $attachment_urls = get_post_meta( $post->ID, 'attachments_urls', TRUE );
-                                    if ( isset( $attachment_urls[0] ) ) {
-                                        $url = $attachment_urls[0];
-                                    }
-                                    ?>
-                                    <img src="<?php echo $url ?>" />
-                                </div>
-                                <div class="post-details">
-                                    <h6 class="text-border-bottom"><?php the_title(); ?></h6>
-                                    <a class="post-date" href="<?php the_permalink(); ?>">
-                                        <!-- 05 Jan - 06 Feb -->
-                                        <?php //echo $date_uchlimerick_post_show_start_date. ' - ' . $date_uchlimerick_post_show_end_date; ?>
-                                        <?php echo $show_date; ?>
-                                    </a>
-                                    <div class="btn-wrapper book-btn-cover">
-                                    <?php
-                                        if(isset($book_ticket)){
-                                            ?>
-                                            <a href="<?php echo $book_ticket; ?>" class="button button-dark"><?php _e("Book Tickets",'uchlimerick') ?></a>
-                                            <a href="<?php the_permalink(); ?>" class="button button-light"><?php _e("Learn More",'uchlimerick') ?></a>
-                                            <?php
-                                        }
-                                        else{
-                                            ?>
-                                            <a href="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
-                                                echo $uchlimerick_post_show_book_ticket_link['url'];
-                                            } ?>" target="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
-                                                echo $uchlimerick_post_show_book_ticket_link['target'];
-                                            } ?>" class="button button-dark">Book Tickets</a> <a href="<?php the_permalink(); ?>" class="button-light button">Learn More</a>
-                                            <?php
-                                        }
-                                        ?>
-                                    </div>
-                                </div>
-                            </div>                           
-                        </div>  
+  
+                        
                         <?php $i++; ?>          
                         <?php endwhile; ?>       
 						<?php wp_reset_query(); ?>        

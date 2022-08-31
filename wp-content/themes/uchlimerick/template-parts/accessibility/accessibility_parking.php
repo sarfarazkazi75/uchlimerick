@@ -16,7 +16,7 @@
                         $first_class="image-left";
                     } 
                     if($temp == 0){ ?>
-                            <div class="col-md-12 information <?php echo $first_class; ?>">
+                            <div class="col-md-12 information <?php echo $first_class; ?>" data-aos="fade-up">
                                 <div class="information-block">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -38,7 +38,7 @@
                             </div>
 
                  <?php  $temp++; } else { ?>
-                             <div class="col-md-6 information">
+                             <div class="col-md-6 information" data-aos="fade-up">
                                 <div class="information-block">
                                   <?php echo wp_get_attachment_image($accessibility_image['ID'], 'full','',array('class'=>'')); ?>
                                     <div class="text-border-bottom">

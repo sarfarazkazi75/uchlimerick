@@ -9,7 +9,7 @@
                     ?> 
                          <div class="accordion-box">
                             <a href="javascript:void(0);" class="position-relative title-wrp d-block">
-                                <?php if($accordion_title != ""): ?><span class="h6 fw-bold title color-black"><?php echo $accordion_title; ?></span><?php endif; ?>
+                                <?php if($accordion_title != ""): ?><span class="h6  title color-black"><?php echo $accordion_title; ?></span><?php endif; ?>
 
                                 <div class="accordion-sign closed">
                                     <div class="horizontal"></div>

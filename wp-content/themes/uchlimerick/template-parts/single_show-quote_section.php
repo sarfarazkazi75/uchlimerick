@@ -16,23 +16,30 @@ $section_numbe    = get_field('quote_choose_section_number', $data);
 $section_title    = get_field('quote_choose_section_title', $data);
 
 if($choose_section == 0 || $choose_section == 1 || $choose_section == 2 ){ ?>
-<section class="testimoniyal" style="background:url('<?php echo $Background_Image;?>'), <?php echo $Background_Color;?>">
+<section class="testimoniyal" style="background-color:<?php echo $Background_Color;?>">
+<?php if(!empty($Background_Image)){ ?>
+    <div class="background-shape">
+     <img src="<?php echo $Background_Image['url']; ?>" alt="" class="d-md-block d-none">
+    </div>
+<?php } ?>
+
     <div class="container-inner">
         <div class="testimona-cover">
             <div class="testimo-row">
-
                 <?php if($choose_section == 2){ ?>
                     <div class="testi-content">
                     <h5><?php echo $content;?></h5>
                     <div class="duble-cort duble-cort-bot d-block d-lg-none d-md-none">
-                        <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/unnamed-file-1.png" alt="bot-icon">
+
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/unnamed-file-1.png" alt="bot-icon">
                     </div>
                 </div>
                <?php  } else { ?>
                 <div class="testi-content" style="color: #000;">
                     <h5><?php echo $content;?></h5>
                     <div class="duble-cort duble-cort-bot d-block d-lg-none d-md-none">
-                        <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/bot-q.png"alt="bot-icon">
+
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bot-q.png" alt="bot-icon">
                     </div>
                 </div>
                 <?php } ?>
@@ -46,7 +53,7 @@ if($choose_section == 0 || $choose_section == 1 || $choose_section == 2 ){ ?>
                   };?>
                 <div class="img-namedes">
                     <?php if($profile_img != ""): ?><div class="test-img-cover"> <?php echo wp_get_attachment_image($profile_img['ID'], 'full'); ?></div><?php endif; ?>
-                    <div class="per-name"> <h4 style="color:<?php echo $c;?>;"><?php echo $profile_title;?></h4>
+                    <div class="per-name" style="color:<?php echo $c;?>;"> <h4><?php echo $profile_title;?></h4>
                         <p><?php echo $job_desciption;?></p></div>
                 </div>
                 <?php } else { ?>
@@ -60,17 +67,19 @@ if($choose_section == 0 || $choose_section == 1 || $choose_section == 2 ){ ?>
 
                 <?php if($choose_section == 2){ ?>
                     <div class="duble-cort duble-cort-top">
-                    <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/unnamed-file.png" alt="top-icon">
+   
+                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/unnamed-file.png" alt="top-icon">
                     </div>
                     <div class="duble-cort duble-cort-bot d-none d-lg-block d-md-block">
-                        <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/unnamed-file-1.png" alt="bot-icon">
+              
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/unnamed-file-1.png" alt="bot-icon">
                     </div>
                 <?php  } else { ?>
                 <div class="duble-cort duble-cort-top">
-                    <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/top-q.png"alt="top-icon">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/top-q.png" alt="top-icon">
                 </div>
-                <div class="duble-cort duble-cort-bot d-none d-lg-block d-md-block">
-                    <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/bot-q.png"alt="bot-icon">
+                <div class="duble-cort duble-cort-bot d-none d-lg-block d-md-block">  
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/images/bot-q.png" alt="bot-icon">
                 </div>
                 <?php } ?>
 
@@ -80,8 +89,8 @@ if($choose_section == 0 || $choose_section == 1 || $choose_section == 2 ){ ?>
 </section>
 <?php }
 if($choose_section == 3){ ?>
-<section class="testimoniyal" style="background:url('<?php echo $Background_Image;?>'), <?php echo $Background_Color;?>;">
-    <div class="container-inner">
+<section class="testimoniyal" style="background-color:<?php echo $Background_Color;?>;">
+<div class="container-inner">
         <div class="testi-content text-center">
         <h3><?php echo $section_title;?></h3>
          <h5><?php echo $content;?></h5>

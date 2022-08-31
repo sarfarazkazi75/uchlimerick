@@ -2,12 +2,11 @@
 <?php 
 /*Template Name: board of directors */
 get_header();
-$board_bg_image = get_field('board_bg_image');
 $board_title   = get_field('board_title');
 $board_details  = get_field('board_details'); ?>
 <section class="board-directors-wrapper">
     <div class="board-bg-image" data-aos="fade-left">
-        <?php if( $board_bg_image ): ?><img src="<?php echo $board_bg_image['url']; ?>" alt=""><?php endif; ?>
+        <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Vector-10.png" alt="">
     </div>
     <div class="container-inner">
         <div class="board-directors-header">

@@ -19,7 +19,7 @@ $open_in_google_maps = get_field('open_in_google_maps'); ?>
                         <span class="text"><b><?php echo _('Address');?></b><br><p><?php echo $address; ?></p></a></span><?php endif; ?>
                     </li>
                     <li>
-                        <?php if($phone_number != ""): ?><a href="tel:<?php echo $phone_number; ?>" target="blank">
+                        <?php if($phone_number != ""): ?><a href="tel:<?php echo $phone_number; ?>">
                         <span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/call.svg" alt=""></span>
                         <span class="text"><b><?php echo _('Phone');?></b><br><p><?php echo $phone_number; ?></p></a></span><?php endif; ?>
                     </li>

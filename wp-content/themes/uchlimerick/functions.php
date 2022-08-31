@@ -143,6 +143,7 @@ function uchlimerick_scripts() {
 	//wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/assets/css/fontawesome.css', array());
 	wp_enqueue_style( 'all-fontawesome', get_template_directory_uri() . '/assets/css/all.min.css', array());
 	wp_enqueue_style( 'aos-css', get_template_directory_uri() . '/assets/css/aos.css', array());
+	wp_enqueue_style( 'fancybox-css', get_template_directory_uri() . '/assets/css/fancybox.css', array());
 	wp_enqueue_style( 'slick-css', get_template_directory_uri() . '/assets/css/slick.css', array());
 	wp_enqueue_style( 'style-one', get_template_directory_uri() . '/assets/css/style-one.css', array());
 	wp_enqueue_style( 'style-two', get_template_directory_uri() . '/assets/css/style-two.css', array());
@@ -157,6 +158,7 @@ function uchlimerick_scripts() {
 	wp_enqueue_script( 'slick-js', get_template_directory_uri() . '/assets/js/slick.min.js', array(), _S_VERSION, true );
 	
 	wp_enqueue_script( 'aos-js', get_template_directory_uri() . '/assets/js/aos.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'fancybox-umd-js', get_template_directory_uri() . '/assets/js/fancybox.umd.js', array(), _S_VERSION, true );
 	//wp_enqueue_script( 'myjs', get_template_directory_uri() . '/assets/js/jquery-3.5.1.min.dc5e7f18c8.js', array(), time(), false );
 	wp_enqueue_script( 'section-accordian', get_template_directory_uri() . '/assets/js/section-accordian.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'custom-js', get_template_directory_uri() . '/assets/js/custom.js', array(), _S_VERSION, true );
@@ -311,5 +313,42 @@ function single_faq_redirect()
 
 	wp_redirect( get_post_type_archive_link( 'faq' ), 301 );
 	exit;
+}
+
+/*admin custom logo */
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+function my_login_logo() {
+  $admin_logo = get_field('uchlimerick_site_admin_logo','option');
+  if(!empty($admin_logo)){ ?>
+    <style type="text/css">
+      body.login div#login h1 a {
+        background-image: url(<?php echo $admin_logo;?>);
+        margin: 0 auto;
+        background-size: auto;
+        width: auto;
+      }
+      body.login div#login h1 a:focus {
+        box-shadow: none;
+      }
+    </style>
+  <?php }
+} //end function
+
+add_filter( 'login_headerurl', 'custom_loginlogo_url' );																								
+	function custom_loginlogo_url($url) {	
+		return site_url();									
+	}
+add_action('admin_head', 'remove_content_editor');
+
+/**
+ * Remove the content editor from pages as all content is handled through Panels
+ */
+function remove_content_editor()
+{
+    $ids_array= array('21' , '143' , '152' , '183' , '258' ,'115' , '278' , '190' , '263' , '35' , '123' , '19' , '210' , '57' , '16');
+	if(in_array(get_the_ID(),$ids_array) ){
+	remove_post_type_support('page', 'editor');
+	}
 }
 

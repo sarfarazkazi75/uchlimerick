@@ -42,7 +42,7 @@ if (class_exists('acf')) {
                                     <a href="<?php echo $permalink; ?>" class="button bg-transparent"><?php echo _('Read More'); ?></a>
                                 </div>
                                 <div class="list-btn">
-                                    <a href="mailto:<?php echo $apply_for_this_job_email;?>?subject=<?php echo $title; ?>" class="button button-dark"><?php echo _('Apply Now'); ?></a>
+                                    <a href="mailto:<?php echo $apply_for_this_job_email;?>?subject=<?php echo $title = str_ireplace(array( '/', '&','#038;'),'',$title); ?>" class="button button-dark"><?php echo _('Apply Now'); ?></a>
                                 </div>
                             </div>
                         </div>

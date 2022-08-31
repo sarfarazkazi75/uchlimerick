@@ -3,7 +3,7 @@
     $main_title = get_field('main_title');   
 ?>
 
-<section class="visit-main-wrapper">
+<section class="visit-main-wrapper what-on-wrapper">
     <div class="container-inner">
         <div class="visit-title">
             <h2 class="text-border-bottom">

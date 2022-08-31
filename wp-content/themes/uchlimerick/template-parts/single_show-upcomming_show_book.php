@@ -37,8 +37,8 @@ $query = new WP_query($args);
         <div class="table-row">
             <ul>
                 <li>Event</li>
-                <li>Event date</li>
-                <li>Opening date</li>
+                <li>date</li>
+                <li>Time</li>
                 <li>Book</li>
             </ul>
         </div>
@@ -49,8 +49,8 @@ $query = new WP_query($args);
             foreach ($events as $event){
                 $title         = $event['name'];
                 $book_ticket   = $event['url'];
-                $evenDate = date('d M Y g:i a',strtotime($event['date_time_iso']['content']));
-                $openDate = date('d M Y g:i a',strtotime($event['opening_time_iso']['content']));
+                $evenDate = date('d M Y ',strtotime($event['date_time_iso']['content']));
+                $openDate = date('g:i a',strtotime($event['opening_time_iso']['content']));
                 ?>
                 <div class="table-row">
                     <ul>

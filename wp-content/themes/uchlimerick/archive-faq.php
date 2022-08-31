@@ -49,6 +49,7 @@ if (class_exists('acf')) {
                     if ($loop->have_posts()) {
                         $i = 1;
                         ?>
+                        <div class="only-desktop">
                         <div class="accordion-box faq-accordion-box">
                             <a href="javascript:void(0);" class="position-relative title-wrp d-block">
                                 <span class="h6 fw-bold title color-black"><?php echo $custom_term->name; ?></span>
@@ -70,6 +71,32 @@ if (class_exists('acf')) {
                                 </div>
                             </div>
                         </div>
+                        </div>
+
+                        <div class="only-mobile">
+                        <div class="accordion-box faq-accordion-box">
+                            <a href="javascript:void(0);" class="position-relative title-wrp d-block">
+                                <span class="h6 fw-bold title color-black"><?php echo $custom_term->name; ?></span>
+                                <div class="accordion-sign closed">
+                                    <div class="horizontal"></div>
+                                    <div class="vertical"></div>
+                                </div>
+                            </a>
+                            <div class="content faq-content" style="display: none;">
+                                <div class="faq-menu-visit-container faq-link-content">
+                                   <?php
+                                        while ($loop->have_posts()) : $loop->the_post();
+                                            ?>
+                                            <h5><?php echo get_the_title(); ?></h5>
+                                            <p><?php echo get_the_content(); ?></p>
+                                            <?php
+                                        endwhile;
+                                        ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                         <?php
                     }
                 }
@@ -77,14 +104,17 @@ if (class_exists('acf')) {
             </div>
             <div class="col-lg-8 col-md-7 order-md-2 order-1">
                 <div class="faq-right-cover">
+                    <p class="faq_questions_heading"><?php echo _('What is your question?'); ?></p>
                     <div class="faq-search">
-                        <form role="search" action="<?php echo site_url('/'); ?>" method="get" id="searchform">
-                            <input type="text" name="s" placeholder="Search your question here"/>
-                            <input type="hidden" name="post_type" value="faq" /> <!-- // hidden 'faq' value -->
+                        <form role="search" id="searchform">
+                            <input type="text" name="faq_search" id="faq_search" placeholder="Search your question here"></input>
                             <input type="submit" alt="Search" value="Search" />
-                        </form>
+                        </form> 
                     </div>
-                    <div class="only-desktop">
+                    
+
+
+                    <div class="only-desktop" id="faq_content_wrap_full">
                         <?php
                         $custom_terms = get_terms('faq_cat');
 
@@ -136,7 +166,7 @@ if (class_exists('acf')) {
                         }
                         ?>
                         <div class="contact-link">
-                            <?php echo _('Couldn’t find your answer?'); ?>
+                            <?php echo _('Couldn&lsquo;t find your answer?'); ?>
                             <a href="<?php echo site_url('contact'); ?>"><?php echo _('Contact Us'); ?></a>
                         </div>
                     </div>
@@ -145,7 +175,6 @@ if (class_exists('acf')) {
         </div>
     </div>
 </section>
-
 <?php
 get_template_part('template-parts/flex', 'helpful_resource');
 get_template_part('template-parts/flex', 'newsletter_section');

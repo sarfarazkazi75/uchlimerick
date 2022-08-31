@@ -38,7 +38,7 @@ if(class_exists('acf')){
                                      <h6 class="text-border-bottom">'.get_the_title().'</h6>
                                 </div>
                                 <div class="col-md-6">
-                                <p> '.get_the_content().' </p>
+                                <p> '.wp_trim_words( get_the_content(), 30, '...' ).' </p>
                                      
                                     <a class="post-date arrwo-has-link" href="'.get_permalink().'">Reed more</a>
                                 </div>
@@ -47,8 +47,7 @@ if(class_exists('acf')){
                      }else{
                         $class = 'col-md-4';
                         $col_8_content= '
-                            <h4 class="text-border-bottom">'.get_the_title().'</h4>
-                           <p> '.get_the_content().' </p>
+                            <h4 class="text-border-bottom">'.get_the_title().'</h4>                           
                             <a class="post-date arrwo-has-link" href="'.get_permalink().'">Read more</a>';
                         if($temp_data == 10){
                             $temp_data = 0;
@@ -56,24 +55,49 @@ if(class_exists('acf')){
                         $temp_data ++ ;
                      }
                      if($i == 3){
-                         $inner_class='donate-cover bg-gold';
-                     }elseif($i == 10){
-                        $inner_class='donate-cover Become-friend-cover bg-light-gray';
-                     }else{
-                        $inner_class='post-card';
-                     }
-                    ?>    
-                    <!-- do stuff ... -->
-                    <div class="project_single_wrap <?php echo $class;?>">
-                        <div class="<?php echo $inner_class;?>">
-                            <div class="post-image">
-                                <?php the_post_thumbnail(); ?>
+                         $inner_class='donate-cover bg-gold'; ?>
+                        <div class="project_single_wrap donate_div <?php echo $class;?>" data-href="<?php echo get_permalink(1795); ?>">
+                            <div class="<?php echo $inner_class;?>">
+                                <div class="post-image">
+                                    <?php the_post_thumbnail(); ?>
+                                </div>
+                                <div class="post-details">
+                                    <?php echo '<h4 class="text-border-bottom">'.get_the_title(1795).'</h4>'
+                                                .'<p>'.get_post_field('post_content', 1795).'</p>'.
+                                                '<a class="post-date arrwo-has-link" href="'.get_permalink(1795).'" target="blank">Read more</a>'; 
+                                    ?>
+                                </div>
                             </div>
-                            <div class="post-details">
-                              <?php echo $col_8_content;?>
-                             </div>
                         </div>
-                   </div>
+                     <?php }elseif($i == 10){
+                        $inner_class='donate-cover Become-friend-cover bg-light-gray'; ?>
+                        <div class="project_single_wrap become_a_friend_div <?php echo $class;?>" data-href="<?php echo get_permalink(1796); ?>">
+                            <div class="<?php echo $inner_class;?>">
+                                <div class="post-image">
+                                    <?php the_post_thumbnail(); ?>
+                                </div>
+                                <div class="post-details">
+                                    <?php echo '<h4 class="text-border-bottom">'.get_the_title(1796).'</h4>'
+                                                .'<p>'.get_post_field('post_content', 1796).'</p>'.
+                                                '<a class="post-date arrwo-has-link" href="'.get_permalink(1796).'" target="blank">Read more</a>'; 
+                                    ?>
+                                </div>
+                            </div>
+                        </div>                     
+                     <?php }else{
+                        $inner_class='post-card'; ?>
+                        <div class="project_single_wrap from_else <?php echo $class;?>">
+                            <div class="<?php echo $inner_class;?>">
+                                <div class="post-image">
+                                    <?php the_post_thumbnail(); ?>
+                                </div>
+                                <div class="post-details">
+                                <?php echo $col_8_content;?>
+                                </div>
+                            </div>
+                        </div>                     
+                     <?php }
+                    ?>    
                     <?php $i++; endwhile; ?>
                 <?php  endif; ?>
             </div>

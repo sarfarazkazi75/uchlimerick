@@ -13,6 +13,7 @@ $event_user_image = get_field('event_user_image');
                     <?php echo $event_content;?>
                     <?php if($event_file != ""): ?>
                     <a href="<?php echo $event_file['url']; ?>"  class="button button-dark text-center fw-medium" download="Technical Specs"><img src="<?php echo get_template_directory_uri(''); ?>/assets/images/download.svg" class="mr-3"><?php echo $event_file['title']; ?></a>
+                     
                     <?php endif; ?>
                 </div>
             </div>

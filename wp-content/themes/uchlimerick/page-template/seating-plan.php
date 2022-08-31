@@ -12,8 +12,10 @@
         <div class="col-md-5">
             <?php echo $seating_plan_content ;?>
         </div>
-        <div class="col-md-7">
-            <img src="<?php echo $seating_plan_image['url'] ;?>" alt="">
+        <div class="col-md-7 light-box-image">
+            <a data-fancybox href="<?php echo $seating_plan_image['url'] ;?>">
+                <img class="fancybox-img" src="<?php echo $seating_plan_image['url'] ;?>" alt="">
+            </a>
         </div>
     </div>
     </div>

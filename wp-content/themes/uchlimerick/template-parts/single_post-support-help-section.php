@@ -6,7 +6,7 @@
     <div class="container-inner">
         <div class="row text-border-bottom">
             <div class="col-lg-6 col-md-6">
-                <?php if($support_help_title != ""): ?><h4><?php echo $support_help_title; ?></h4><?php endif; ?>
+                <?php if($support_help_title != ""): ?><h3><?php echo $support_help_title; ?></h3><?php endif; ?>
             </div>
             <div class="col-lg-6 col-md-6 d-lg-block d-md-block d-none">
                 <div class="all-project-btn">

@@ -26,6 +26,7 @@
         $form_shortcode = get_field('form_shortcode', 'option'); 
         $form_footer = get_field('form_footer', 'option'); 
     ?>
+</section>
     <div class="newsletter-popup newsletter" data-aos="fade-left" >
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
@@ -43,4 +44,3 @@
                 <p class="p-small"><?php echo $form_footer; ?></p>
             <?php endif; ?>
     </div>
-</section>
