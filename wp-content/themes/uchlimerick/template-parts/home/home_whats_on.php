@@ -83,9 +83,16 @@
                                     <?php $url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ), 'thumbnail' ); ?>
                                     <?php
                                     $attachment_urls = get_post_meta( $post->ID, 'attachments_urls', TRUE );
-                                    if ( isset( $attachment_urls[0] ) ) {
-                                        $url = $attachment_urls[0];
+
+                                    if(empty($url)){
+	                                    if(isset($attachment_urls[0])){
+		                                    $url = $attachment_urls[0];
+	                                    }
+	                                    else{
+		                                    $url = get_template_directory_uri().'/assets/images/fallback-Image-2.png';
+	                                    }
                                     }
+                                    
                                     ?>
                                     <img src="<?php echo $url ?>"/>
                                 </div>
@@ -127,67 +134,7 @@
                     <?php endwhile; ?>
                     <?php wp_reset_postdata(); ?>
                 <?php endif; ?>
-                <!-- <div class="col-md-8 order-md-1 order-2">
-                    <div class="post-card">
-                        <div class="post-image">
-                            <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Rectangle-1089-2.png" alt="">
-                        </div>
-                        <div class="post-details">
-                            <h6 class="text-border-bottom">Concert or Event Title comes here and can go over two lines and this is the second line right here</h6>
-                            <a class="post-date" href="#">02 Jan - 03 Feb</a>
-                            <div class="btn-wrapper book-btn-cover">
-                                <a href="#" class="button button-dark">Book Tickets</a>
-                                <a href="#" class="button-light button">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 order-md-2 order-1">
-                    <div class="post-card">
-                        <div class="post-image">
-                            <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Rectangle-1088-5.png" alt="">
-                        </div>
-                        <div class="post-details">
-                            <h6 class="text-border-bottom">Concert or Event Title comes here and can go over two lines and this is the second line right here</h6>
-                            <a class="post-date" href="#">02 Jan - 03 Feb</a>
-                            <div class="btn-wrapper book-btn-cover">
-                                <a href="#" class="button button-dark">Book Tickets</a>
-                                <a href="#" class="button-light button">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
-                <div class="col-md-4 order-md-6 order-6">
-                    <div class="post-card">
-                        <div class="post-image">
-                            <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Rectangle-1088-2.png" alt="">
-                        </div>
-                        <div class="post-details">
-                            <h6 class="text-border-bottom">Concert or Event Title comes here and can go over two lines and this is the second line right here</h6>
-                            <a class="post-date" href="#">02 Jan - 03 Feb</a>
-                            <div class="btn-wrapper book-btn-cover">
-                                <a href="#" class="button button-dark">Book Tickets</a>
-                                <a href="#" class="button-light button">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-8 order-md-7 order-7">
-                    <div class="post-card">
-                        <div class="post-image">
-                            <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Rectangle-1089.png" alt="">
-                        </div>
-                        <div class="post-details">
-                            <h6 class="text-border-bottom">Concert or Event Title comes here and can go over two lines and this is the second line right here</h6>
-                            <a class="post-date" href="#">02 Jan - 03 Feb</a>
-                            <div class="btn-wrapper book-btn-cover">
-                                <a href="#" class="button button-dark">Book Tickets</a>
-                                <a href="#" class="button-light button">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
             <?php if($home_whats_on_sec_see_all_events != ""): ?><a href="<?php echo $home_whats_on_sec_see_all_events['url']; ?>" target="<?php echo $home_whats_on_sec_see_all_events['target']; ?>" class="button button-dark text-center w-100 mt-1 d-md-none whats-on-btn"><?php echo $home_whats_on_sec_see_all_events['title']; ?></a><?php endif; ?>
         </div>

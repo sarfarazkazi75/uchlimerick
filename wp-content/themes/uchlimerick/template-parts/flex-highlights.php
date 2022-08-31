@@ -76,8 +76,14 @@
                            <?php $url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ), 'thumbnail' ); ?>
                            <?php
                            $attachment_urls = get_post_meta( $post->ID, 'attachments_urls', TRUE );
-                           if ( isset( $attachment_urls[0] ) ) {
-                                 $url = $attachment_urls[0];
+                           
+                           if(empty($url)){
+	                           if(isset($attachment_urls[0])){
+		                           $url = $attachment_urls[0];
+	                           }
+	                           else{
+		                           $url = get_template_directory_uri().'/assets/images/fallback-Image-2.png';
+	                           }
                            }
                            ?>
                            <img src="<?php echo $url ?>" alt="image" class="img-100"/>                  
@@ -97,7 +103,7 @@
                               </div>
                            </div>
                         </div> 
-                        <?php $i ++; ?>
+                        <?php $i++; ?>
                     <?php endwhile; ?>
                     <?php wp_reset_postdata(); ?>
                 <?php endif; ?>

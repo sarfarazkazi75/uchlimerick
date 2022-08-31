@@ -4,14 +4,19 @@ $show_id     	              = get_the_id();
 
     $attachment_urls = get_post_meta($show_id,'attachments_urls',TRUE);
 	$feature_img 	              = get_the_post_thumbnail_url($show_id);
-	if(isset($attachment_urls[0])){
-        $feature_img = $attachment_urls[0];
+	
+	if(empty($feature_img)){
+		if(isset($attachment_urls[0])){
+			$feature_img = $attachment_urls[0];
+		}
+		else{
+			$feature_img = get_template_directory_uri().'/assets/images/fallback-Image-2.png';
+        }
     }
+	
 	$show_title  	              = get_the_title($show_id);
 	$mobile_img  	              = get_field('uchlimerick_post_show_mobile_img',$show_id);
-	if(isset($attachment_urls[0])){
-        $feature_img = $attachment_urls[0];
-    }
+	
 	$ticket      	              = get_field('uchlimerick_post_show_ticket',$show_id);
 	$book_ticket                  = get_field('uchlimerick_post_show_book_ticket_link',$show_id);
     $show_date                    = get_field('uchlimerick_post_show_date',$show_id); 

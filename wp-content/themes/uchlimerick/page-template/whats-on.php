@@ -188,22 +188,27 @@
                                     $permalink = get_permalink($donate_post); 
                                     
                                     ?>
-                                    <div class="show_single_wrap donate_div <?php echo $classes[$i%12]; ?>" data-href="<?php echo get_permalink(1702); ?>">                           
+                                    <div class="show_single_wrap donate_div <?php echo $classes[$i%12]; ?>" data-href="<?php echo get_permalink($donate_post->ID); ?>">
                                         <div class="<?php echo $inner_class;?>">
                                             <div class="post-image">
                                                 <?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' ); ?>
                                                 <?php
                                                 $attachment_urls = get_post_meta( $post->ID, 'attachments_urls', TRUE );
-                                                if ( isset( $attachment_urls[0] ) ) {
-                                                    $url = $attachment_urls[0];
+                                                if(empty($url)){
+	                                                if(isset($attachment_urls[0])){
+		                                                $url = $attachment_urls[0];
+	                                                }
+	                                                else{
+		                                                $url = get_template_directory_uri().'/assets/images/fallback-Image-2.png';
+	                                                }
                                                 }
                                                 ?>
                                                 <img src="<?php echo $url ?>" />
                                             </div>
                                             <div class="post-details">
-                                                <h4 class="text-border-bottom"><a href="<?php echo get_permalink(1702); ?>" style="color: #fff"><?php echo get_the_title(1702); ?></a></h4>                                            
-                                                <p><?php echo get_post_field('post_content', 1702); ?></p>
-                                                <a class="post-date arrwo-has-link" href="<?php echo get_permalink(1702); ?>" target="blank">Read more</a>                                                
+                                                <h4 class="text-border-bottom"><a href="<?php echo get_permalink($donate_post->ID); ?>" style="color: #fff"><?php echo get_the_title($donate_post->ID); ?></a></h4>
+                                                <p><?php echo get_post_field('post_content', $donate_post->ID); ?></p>
+                                                <a class="post-date arrwo-has-link" href="<?php echo get_permalink($donate_post->ID); ?>" target="blank">Read more</a>
                                             </div>
                                         </div>                           
                                     </div>
@@ -218,8 +223,13 @@
                                                 <?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' ); ?>
                                                 <?php
                                                 $attachment_urls = get_post_meta( $post->ID, 'attachments_urls', TRUE );
-                                                if ( isset( $attachment_urls[0] ) ) {
-                                                    $url = $attachment_urls[0];
+                                                if(empty($url)){
+	                                                if(isset($attachment_urls[0])){
+		                                                $url = $attachment_urls[0];
+	                                                }
+	                                                else{
+		                                                $url = get_template_directory_uri().'/assets/images/fallback-Image-2.png';
+	                                                }
                                                 }
                                                 ?>
                                                 <img src="<?php echo $url ?>" />
@@ -241,8 +251,13 @@
                                                 <?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' ); ?>
                                                 <?php
                                                 $attachment_urls = get_post_meta( $post->ID, 'attachments_urls', TRUE );
-                                                if ( isset( $attachment_urls[0] ) ) {
-                                                    $url = $attachment_urls[0];
+                                                if(empty($url)){
+	                                                if(isset($attachment_urls[0])){
+		                                                $url = $attachment_urls[0];
+	                                                }
+	                                                else{
+		                                                $url = get_template_directory_uri().'/assets/images/fallback-Image-2.png';
+	                                                }
                                                 }
                                                 ?>
                                                 <img src="<?php echo $url ?>" />
@@ -271,9 +286,7 @@
                                                     }
                                                     else{
                                                         ?>
-                                                        <a href="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
-                                                            echo $uchlimerick_post_show_book_ticket_link['url'];
-                                                        } ?>" target="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
+                                                        <a href="<?php echo !empty($uchlimerick_post_show_book_ticket_link['url'])?$uchlimerick_post_show_book_ticket_link['url']:'#' ?>" target="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
                                                             echo $uchlimerick_post_show_book_ticket_link['target'];
                                                         } ?>" class="button button-dark">Book Tickets</a> <a href="<?php echo $permalink; ?>" class="button-light button">Learn More</a>
                                                         <?php
