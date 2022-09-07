@@ -32,14 +32,13 @@
         <div class="banner-text">
             <h3 class="text-border-bottom"><?php echo _('Support Us'); ?></h3>
             <ul class="support-section-menu">
-                <li><?php if(have_rows('banner_support_link' , '19')) { 
-                    while(have_rows('banner_support_link' , '19')) { the_row(); 
-                        $icon = get_sub_field('icon' , '19'); 
-                        $support_link = get_sub_field('support_link' , '19'); 
+                <li><?php if(have_rows('banner_support_link')) { 
+                    while(have_rows('banner_support_link')) { the_row(); 
+                        $icon = get_sub_field('icon'); 
+                        $support_link = get_sub_field('support_link'); 
                 ?> 
-                            <li><a href="#support<?php echo get_row_index();?>">
-                                <img src="<?php echo $icon['url']; ?>"
-                                class="support-icon" alt="righ-icon"> <?php echo $support_link; ?>
+                            <li><a href="<?php echo site_url('support-us'); ?>/#support<?php echo get_row_index();?>">
+                                <?php if($icon != ""): ?><img src="<?php echo $icon['url']; ?>" class="support-icon" alt="<?php echo $icon['alt']; ?>"><?php endif; ?> <?php echo $support_link; ?>
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/right-chevrow-white.svg"
                                 class="support-rigth" alt="righ-icon"></a>
                             </li> 

@@ -6,7 +6,7 @@
 <section class="whats-on homepage">
     <div class="container-inner">
         <div class="section-title text-border-bottom">
-            <h3 class="">What's On?</h3>
+            <h3 class="">What's On</h3>
             <div class="">
                 <?php if($home_whats_on_sec_ticket_book != ""): ?><a href="<?php echo $home_whats_on_sec_ticket_book['url']; ?>" target="<?php echo $home_whats_on_sec_ticket_book['target'];?>" class="button button-dark d-none d-md-block"><?php echo $home_whats_on_sec_ticket_book['title'];?></a><?php endif; ?>
             </div>
@@ -20,7 +20,16 @@
                     // 'taxonomy' => 'whats-on',
                     'post_status'    => 'publish',
                     'posts_per_page' => 5,
-                    'post__not_in' => array(1702,1735),
+                    'meta_key'   => 'eventDateTime',
+                    'orderby'    => 'meta_value_num',
+                    'order'     => 'ASC',
+                    'tax_query' => array(
+                        array(
+                            'taxonomy'  => 'show_cat',
+                            'field'     => 'slug',
+                            'terms'     => array('donate', 'become_a_friend'), // exclude items media items in the news-cat custom taxonomy
+                            'operator'  => 'NOT IN')                            
+                            ),  
                 ] );
                 $show_date='';
                 $i       = 0;

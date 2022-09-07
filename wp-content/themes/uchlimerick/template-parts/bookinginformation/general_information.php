@@ -14,7 +14,7 @@
                             <div class="col-md-12 information"  data-aos="fade-up">
                                 <div class="information-block">
                                     <div class="text-border-bottom">
-                                    <h5><?php echo $booking_fees_data_title; ?></h5>
+                                    <h2><?php echo $booking_fees_data_title; ?></h2>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6"  >
@@ -38,7 +38,7 @@
                                 <div class="col-md-6 information"  data-aos="fade-up">
                                 <div class="information-block">
                                         <div class="text-border-bottom">
-                                        <h5><?php echo $booking_fees_data_title; ?></h5>
+                                        <h2><?php echo $booking_fees_data_title; ?></h2>
                                         </div>
                                         
                                         <div class="paragaraph-medium">

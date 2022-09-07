@@ -22,7 +22,7 @@ if (class_exists('acf')) {
         <div class="page-banner-text">
             <div class="container-inner">
                 <div class="page-border-bottom">
-                    <h2><?php echo $banner_title; ?></h2>
+                    <h1><?php echo $banner_title; ?></h1>
                 </div>
             </div>
         </div>
@@ -134,29 +134,28 @@ if (class_exists('acf')) {
                                 $i = 1;
                                 while ($loop->have_posts()) : $loop->the_post();
                                     $helpfull = get_field('uchlimerick_faq_did_you_find_this_helpful');
+                                    $no_of_likes = get_field('no_of_likes');
                                     ?>
-                                    <div class="faq-search-lorem" id="<?php echo get_the_ID(); ?>">
+                                    <div class="faq-search-lorem from_faq_archieve" id="<?php echo get_the_ID(); ?>">
                                         <h5><?php echo get_the_title(); ?></h5>
                                         <p><?php echo get_the_content(); ?></p>
                                         <div class="help-full-cover">
                                             <?php echo _('Did you find this helpful?'); ?>
                                             <?php if($helpfull == 1){ ?>
                                             <div class="help-full-thumbh">
-                                                <span class="thumbh-like active">
-                                                    <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Vector-8.png" alt="">
-                                                </span>
-                                                <span class="thumbh-like ">
-                                                    <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Vector-9.png" alt="">
-                                                </span>
+                                                <a class="like_thumb" href="javascript:void(0);" data-postid="<?php echo get_the_ID(); ?>" data-totallikes="<?php echo $no_of_likes; ?>">
+                                                    <span class="thumbh-like like_thumb_span">
+                                                        <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Vector-8.png" alt="">
+                                                    </span>                                                    
+                                                </a>
+                                                <a class="dis_like_thumb" href="javascript:void(0);" data-postid="<?php echo get_the_ID(); ?>" data-totallikes="<?php echo $no_of_likes; ?>">
+                                                    <span class="thumbh-like dis_like_thumb_span">
+                                                        <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Vector-9.png" alt="">
+                                                    </span>
+                                                </a>
                                             </div>
-                                            <?php } else { ?>
-                                            <span class="thumbh-like">
-                                                    <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Vector-8.png" alt="">
-                                                </span>
-                                                <span class="thumbh-like active">
-                                                    <img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/Vector-9.png" alt="">
-                                                </span>
                                             <?php } ?>
+                                            
                                         </div>
                                     </div>
                                     <?php

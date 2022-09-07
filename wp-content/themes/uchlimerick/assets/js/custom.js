@@ -29,7 +29,7 @@ jQuery(".page-wrapper .section").on('mouseenter', function() {
 
 });
 
-
+//console.log(Cookies.get('temp'));
 
 $('.close').on('click',function(){
   jQuery(this).parent().addClass("hide");
@@ -37,6 +37,7 @@ $('.close').on('click',function(){
   window.setTimeout(function(){
       $this.css('display', 'none');
   }, 500);
+  Cookies.set('temp', 'yes');
 });
 
 
@@ -318,7 +319,43 @@ $("#load_more_project").click(function(){
     });
 });
 
+// ADD LIKE+1 TO FAQ POSTS
+$(".like_thumb").one("click", function(e){
+  $(this).parent().find('.dis_like_thumb').addClass('disable-click');
+  console.log($(this).data('postid'));
+  console.log($(this).data('totallikes'), 'totallikes');
+  console.log('clicked');
+  $(this).find('.like_thumb_span').addClass('active');
+    $.post(ajaxurl,
+    {
+      'action': 'like_post_counter',
+      'postid': $(this).data('postid'),
+      'totallikes': $(this).data('totallikes'),
+    },
+    function(response)
+    {      
+      console.log(response);
+    });
+});
 
+// DISLIKE FAQ POSTS
+$(".dis_like_thumb").one("click", function(e){
+  $(this).parent().find('.like_thumb').addClass('disable-click');
+  console.log($(this).data('postid'));
+  console.log($(this).data('totallikes'), 'totallikes');
+  console.log('clicked');
+  $(this).find('.dis_like_thumb_span').addClass('active');
+    $.post(ajaxurl,
+    {
+      'action': 'dis_like_post_updater',
+      'postid': $(this).data('postid'),
+      'totallikes': $(this).data('totallikes'),
+    },
+    function(response)
+    {      
+      console.log(response);
+    });
+});
 
 $(document).ready(function() {
   $("#keyword").keyup(function() {
@@ -357,7 +394,44 @@ $(document).ready(function() {
           }
           jQuery('#faq_content_wrap_full').empty();
           jQuery('#faq_content_wrap_full').html( data );
+          var width = $(window).width();
+          if (width <= 480) {
+            jQuery("#faq_content_wrap_full").removeClass("only-desktop");
+          } else {
+            //code for other devices
+          }
           console.log(jQuery('#faq_search').val());
+          // ADD LIKE+1 TO FAQ POSTS
+          $(".like_thumb").one("click", function(e){
+            $(this).parent().find('.dis_like_thumb').addClass('disable-click');
+            $(this).find('.like_thumb_span').addClass('active');
+              $.post(ajaxurl,
+              {
+                'action': 'like_post_counter',
+                'postid': $(this).data('postid'),
+                'totallikes': $(this).data('totallikes'),
+              },
+              function(response)
+              {      
+                console.log(response);
+              });
+          });
+
+          // DISLIKE FAQ POSTS
+          $(".dis_like_thumb").one("click", function(e){
+            $(this).parent().find('.like_thumb').addClass('disable-click');
+            $(this).find('.dis_like_thumb_span').addClass('active');
+              $.post(ajaxurl,
+              {
+                'action': 'dis_like_post_updater',
+                'postid': $(this).data('postid'),
+                'totallikes': $(this).data('totallikes'),
+              },
+              function(response)
+              {      
+                console.log(response);
+              });
+          });          
           
       }
   });
@@ -411,14 +485,65 @@ $(document).ready(function() {
 });
 
 
+
 $(".fancybox-img").click( function( e ) {
   if ( window.innerWidth > 991 ) {
       e.stopPropagation();
       e.preventDefault();
   }
 })
+function myfunction(me) {
 
 $(".fancybox-img").fancybox( {
   margin     : 100,
   autoSize   : true,
 });
+}
+
+$(document).ready(function() {
+  $("#option_gen_width").html($('#genrefilter option:selected').text());
+  $('select#genrefilter').width($("#select_gen_width").width());
+
+  $('#genrefilter').change(function(){
+    $("#option_gen_width").html($('#genrefilter option:selected').text());
+    $(this).width($("#select_gen_width").width());  
+  });
+
+  $("#option_months_width").html($('#monthfilter option:selected').text());
+  $('select#monthfilter').width($("#select_months_width").width());
+
+  $('#monthfilter').change(function(){
+    $("#option_months_width").html($('#monthfilter option:selected').text());
+    $(this).width($("#select_months_width").width());  
+  });
+
+});
+
+ $(document).ready(function() {
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+
+
+if (localStorage.getItem('popState', 'value') != 'shown') {
+  $("#popup").delay(2000).fadeIn();
+  localStorage.setItem('popState', 'shown');
+  console.log('localstorage item set.');
+} else {
+    console.log('No modal for you.');
+}
+
+$('#popup-close').on('click', function(e) {
+  $('#popup').fadeOut(); // Now the pop up is hiden.
+});
+
+$('#popup').on('click', function(e) {
+  $('#popup').fadeOut();
+});
+
+
+

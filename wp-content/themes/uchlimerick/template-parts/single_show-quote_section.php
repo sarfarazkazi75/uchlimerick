@@ -10,6 +10,7 @@ $profile_img    = get_field('quote_choose_section_profile_image', $data);
 $profile_title  = get_field('quote_choose_section_profile_title', $data);
 $job_desciption = get_field('quote_choose_section_job_desciption', $data);
 $Background_Image    = get_field('quote_choose_section_background_image', $data);
+$background_image_mobile    = get_field('quote_choose_section_background_image_mobile', $data);
 $Background_Color    = get_field('quote_choose_section_background_color', $data);
 $section_mail    = get_field('quote_choose_section_mail', $data);
 $section_numbe    = get_field('quote_choose_section_number', $data);
@@ -20,6 +21,7 @@ if($choose_section == 0 || $choose_section == 1 || $choose_section == 2 ){ ?>
 <?php if(!empty($Background_Image)){ ?>
     <div class="background-shape">
      <img src="<?php echo $Background_Image['url']; ?>" alt="" class="d-md-block d-none">
+     <img src="<?php echo $background_image_mobile['url']; ?>" alt="" class="d-md-none d-block">
     </div>
 <?php } ?>
 
@@ -90,6 +92,12 @@ if($choose_section == 0 || $choose_section == 1 || $choose_section == 2 ){ ?>
 <?php }
 if($choose_section == 3){ ?>
 <section class="testimoniyal" style="background-color:<?php echo $Background_Color;?>;">
+<?php if(!empty($Background_Image)){ ?>
+    <div class="background-shape">
+     <img src="<?php echo $Background_Image['url']; ?>" alt="" class="d-md-block d-none">
+     <img src="<?php echo $background_image_mobile['url']; ?>" alt="" class="d-md-none d-block">
+    </div>
+<?php } ?>
 <div class="container-inner">
         <div class="testi-content text-center">
         <h3><?php echo $section_title;?></h3>

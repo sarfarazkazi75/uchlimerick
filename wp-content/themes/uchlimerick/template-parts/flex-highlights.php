@@ -2,7 +2,9 @@
 <section class="highlights highlights-patten">
    <div class="text-border-left">
       <div class="container-inner">
-         <h3 class=""><?php echo $highlights_title; ?></h3>
+         <div class="highlight-title-text">
+            <h3 class=""><?php echo $highlights_title; ?></h3>
+         </div>
       </div>
    </div>
    <div class="car-wrappper">

@@ -62,7 +62,7 @@
                                 </div>
                                 <?php } ?>
                                 <?php if(!empty($email_us_link)){ ?>
-                                <div class="col-md-6 mb-md-0 mb-2">
+                                <div class="col-md-12 col-lg-7 mb-md-0 mb-2">
                                     <a href="<?php echo $email_us_link['url']; ?>" target="<?php echo $email_us_link['target']; ?>" class="bg-transparent button text-center w-100"><?php echo $email_us_link['title']; ?></a>
                                 </div>
                                 <?php } ?>

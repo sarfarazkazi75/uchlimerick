@@ -33,7 +33,7 @@
                 <div class="container-inner">
                     <div class="page-border-bottom">
                         <?php if($banner_title = !empty($banner_title) ? $banner_title : get_the_title()): ?>
-                            <h2><?php echo $banner_title; ?></h2>
+                            <h1><?php echo $banner_title; ?></h1>
                         <?php endif; ?>
                     </div>
                 </div>

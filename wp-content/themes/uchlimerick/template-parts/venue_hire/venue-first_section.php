@@ -6,7 +6,7 @@ $event_user_image = get_field('event_user_image');
 ?>
 <section class="two-colum-section pt-100 pb-100" id="support1">
     <div class="container-inner">
-        <div class="row">
+        <div class="row align-items-start">
             <div class="col-lg-6">
                 <div class="two-col-left-col colpe-left">
                     <h4 class="text-border-bottom"><?php echo $event_title; ?></h4>

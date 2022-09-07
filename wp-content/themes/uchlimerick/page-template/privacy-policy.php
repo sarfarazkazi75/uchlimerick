@@ -10,7 +10,7 @@ $download_pdf_title = get_field('download_pdf_title');
     <div class="privacy-basic-text">
         <?php the_content();?>
         <?php if( $download_pdf ): ?>
-            <a href="<?php echo $download_pdf['url']; ?>" class="button button-dark" downloa="Privacy Policy"d><img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/File-download.png" alt=""><?php echo $download_pdf_title; ?></a>
+            <a href="<?php echo $download_pdf['url']; ?>"  target="_blank" class="button button-dark" downloa="Privacy Policy"d><img src="https://dddemo.net/wordpress/2022/uchlimerick/wp-content/uploads/2022/08/File-download.png" alt=""><?php echo $download_pdf_title; ?></a>
         <?php endif; ?>
     </div>
 </div>

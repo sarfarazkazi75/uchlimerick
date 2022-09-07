@@ -158,6 +158,7 @@ function uchlimerick_scripts() {
 	wp_enqueue_script( 'slick-js', get_template_directory_uri() . '/assets/js/slick.min.js', array(), _S_VERSION, true );
 	
 	wp_enqueue_script( 'aos-js', get_template_directory_uri() . '/assets/js/aos.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'jquery-zoom-js', get_template_directory_uri() . '/assets/js/jquery.zoom.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'fancybox-umd-js', get_template_directory_uri() . '/assets/js/fancybox.umd.js', array(), _S_VERSION, true );
 	//wp_enqueue_script( 'myjs', get_template_directory_uri() . '/assets/js/jquery-3.5.1.min.dc5e7f18c8.js', array(), time(), false );
 	wp_enqueue_script( 'section-accordian', get_template_directory_uri() . '/assets/js/section-accordian.js', array(), _S_VERSION, true );
@@ -239,6 +240,7 @@ function recent_posts_shortcode($atts, $content = null) {
 		'posts_per_page' => $num,
 		'order'          => $order,
 		'orderby'        => $orderby,
+		'post__not_in' => get_option( 'sticky_posts' ) 
 	);
 	
 	$output = '';

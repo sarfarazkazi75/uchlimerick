@@ -23,7 +23,7 @@ foreach ($month as $month_related_cat) {
 }
 if (!empty($gen_ids)){
     $args['tax_query'] = array(
-        'relation' => 'AND',
+        'relation' => 'OR',
         array(
             'taxonomy' => 'genre',
             'field' => 'id',
@@ -39,8 +39,8 @@ if (!empty($gen_ids)){
         array(
         'taxonomy' => 'month',
         'field' => 'id',
-        'terms' => $month,
-        'operator' => $month ? 'IN' : 'NOT IN'
+        'terms' => $month_ids,
+        'operator' => $month_ids ? 'IN' : 'NOT IN'
         )
     );
         
@@ -69,16 +69,21 @@ $related_blog_query = new wp_query($args);
                     <div class="col-lg-4 col-md-4">
                         <div class="post-card" data-aos="fade-up">
                             <div class="post-image">
-                                <img src="<?php echo $rel_image;?>" alt="">
+                                <?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' ); ?>
+                                <?php
+                                $attachment_urls = get_post_meta( $post->ID, 'attachments_urls', TRUE );
+                                if ( isset( $attachment_urls[0] ) ) {
+                                    $url = $attachment_urls[0];
+                                }
+                                ?>
+                                <img src="<?php echo $url ?>" />
                             </div>
                             <div class="post-details">
                                 <h6 class="text-border-bottom"><?php echo $rel_title;?></h6>
                                 <a class="post-date" href="<?php echo $rel_permalink;?>"><?php echo $evenStartDate->format('d M');?> - <?php echo $evenEndtDate->format('d M');?></a>
                                 <div class="btn-wrapper book-btn-cover">
-                                    <?php if(!empty($book_ticket)){ ?>
                                     <!-- <a href="<?php echo $book_ticket['url'];?>" class="button button-dark"><?php echo $book_ticket['title'];?></a> -->
-                                    <a href="<?php if ($book_ticket) { echo $book_ticket['url']; }  ?>" target="<?php if ($book_ticket) { echo $book_ticket['target']; }  ?>"  class="button button-dark">Book Tickets</a>                                     
-                                    <?php } ?>
+                                    <a href="<?php if ($book_ticket) { echo $book_ticket['url']; }  ?>" target="<?php if ($book_ticket) { echo $book_ticket['target']; }  ?>"  class="button button-dark"><?php echo _('Book Tickets');?></a>                                     
                                     <a href="<?php echo $rel_permalink;?>" class="button-light button"><?php echo _('Learn More');?></a>
                                 </div>
                             </div>

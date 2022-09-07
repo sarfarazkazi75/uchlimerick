@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <div class="two-col-left-col colpe-left">
-                    <h4 class="text-border-bottom"><?php echo $become_a_friend_title; ?></h4>
+                    <h2 class="text-border-bottom"><?php echo $become_a_friend_title; ?></h2>
                     <p><?php echo $become_a_friend_subtitle; ?></p>
                     <a href="<?php echo $become_a_friend_link['url'];?>" target="<?php echo $become_a_friend_link['target'];?>" class="button button-dark"><?php echo $become_a_friend_link['title'];?></a>
                 </div>

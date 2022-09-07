@@ -30,7 +30,7 @@ class DD_import_shows {
 		
 		$xml        = new SimpleXMLElement( $body, LIBXML_NOCDATA );
 		$json       = json_encode( $xml );
-		$showObj    = json_decode( $json, TRUE );
+		$showObj    = json_decode( $json, true );
 		$xml        = $this->XMLtoArray( $body );
 		$shows_arr  = $xml['venues']['venue']['shows']['show'];
 		$split_data = $this->splitMyArray( $shows_arr, 5 );
@@ -157,7 +157,7 @@ class DD_import_shows {
 	
 	function shows_sync_func() {
 		$imported_posts     = [];
-		$imported_shows_ids = get_option( 'imported_shows_ids', TRUE );
+		$imported_shows_ids = get_option( 'imported_shows_ids', true );
 		if ( ! is_array( $imported_shows_ids ) ) {
 			$imported_shows_ids = [];
 		}
@@ -213,28 +213,29 @@ class DD_import_shows {
 						$shows_data = isset( $_REQUEST['shows_data'] ) ? $_REQUEST['shows_data'] : '';
 						
 						if ( wp_verify_nonce( $shows_data, 'shows_data' ) ) {
-							$imported_shows_ids = get_option( 'imported_shows_ids', TRUE );
+							$imported_shows_ids = get_option( 'imported_shows_ids', true );
 							if ( $imported_shows_ids ) {
 								$imported_shows_ids = [];
 							}
 							
 							$sync_process_page = isset( $_REQUEST['sync_process_page'] ) ? $_REQUEST['sync_process_page'] : get_option( 'sync_process_page', 1 );
-							$shows_count       = get_option( 'shows_from_api', FALSE );
+							$shows_count       = get_option( 'shows_from_api', false );
 							if ( $shows_count ) {
 								require_once( ABSPATH . 'wp-admin/includes/media.php' );
 								require_once( ABSPATH . 'wp-admin/includes/file.php' );
 								require_once( ABSPATH . 'wp-admin/includes/image.php' );
 								for ( $i = $sync_process_page; $i <= $shows_count; $i ++ ) {
-									$all_imported_shows_ids = get_option( 'all_imported_shows_ids', TRUE );
+									$all_imported_shows_ids = get_option( 'all_imported_shows_ids', true );
 									if ( ! is_array( $all_imported_shows_ids ) ) {
 										$all_imported_shows_ids = [];
 									}
 									$shows_encode = get_option( 'shows_from_api_' . $i );
 									
-									$shows       = json_decode( $shows_encode, TRUE );
-									$meta_values = [];
+									$shows       = json_decode( $shows_encode, true );
+									
 								if ( $shows ) {
 									foreach ( $shows as $key => $single_prop ) {
+										$meta_values = [];
 										$post_title = trim( reset( $single_prop['name'] ) );
 										$post_id    = $this->post_exists_dd( $post_title, 'show' );
 										if ( ! in_array( $post_title, $all_imported_shows_ids ) ) {
@@ -251,7 +252,7 @@ class DD_import_shows {
 											$meta_values[ $meta_key ] = $meta_value;
 										}
 										
-										$post_desc = $meta_values['description'];
+										$post_desc = isset($meta_values['description'])?$meta_values['description']:'';
 										
 										$my_post = [
 											'post_type'    => 'show',
@@ -310,6 +311,18 @@ class DD_import_shows {
 											}
 											$meta_values['events'] = $bind_event;
 										}
+										$events = $meta_values['events'];
+										$event  = isset( $events[0] ) ? $events[0] : [];
+										if ( $event ) {
+											$event_date= $event['date_time_iso']['content'];
+											$meta_value['eventDateTime'] = strtotime( $event_date );
+											$meta_value['eventDate']     = date( 'd M, Y', strtotime( $event_date) );
+											$meta_value['event_month']   = date( 'F', strtotime($event_date) );
+											update_post_meta( $post_id, 'eventDateTime', $meta_value['eventDateTime']  );
+											update_post_meta( $post_id, 'eventDate', $meta_value['eventDate'] );
+											update_post_meta( $post_id, 'event_month', $meta_value['event_month']  );
+											$this->check_assign_terms( $post_id, strtolower($meta_value['event_month']), 'month',false );
+										}
 										if ( isset( $meta_values['properties'] ) && ! empty( $meta_values['properties'] ) ) {
 											if ( isset( $meta_values['properties']['property'] ) ) {
 												$meta_values['properties']                  = reset( $meta_values['properties']['property'] );
@@ -318,20 +331,20 @@ class DD_import_shows {
 										}
 										
 										if ( $meta_values ) {
-											$attachments_urls = [];
 											foreach ( $meta_values as $dmeta_key => $dmeta_value ) {
-												
 												if ( $dmeta_key == 'images' ) {
 													unset( $meta_value[ $dmeta_key ] );
 													if ( is_array( $dmeta_value ) && count( $dmeta_value ) == 1 ) {
 														if ( $dmeta_value ) {
 															$dmeta_value = reset( $dmeta_value );
-															
 															$dmeta_value = reset( $dmeta_value );
 															
+															$attachments_urls = [];
 															foreach ( $dmeta_value['url'] as $image_array ) {
 																$attachments_urls[] = $image_array['content'];
+																
 															}
+															update_post_meta( $post_id, 'attachments_urls', $attachments_urls );
 														}
 													} else {
 														$dmeta_value = trim( $dmeta_value );
@@ -352,10 +365,9 @@ class DD_import_shows {
 											$attachments = get_posts( $args );
 											if ( $attachments ) {
 												foreach ( $attachments as $attachment_id ) {
-													wp_delete_attachment( $attachment_id, TRUE );
+													wp_delete_attachment( $attachment_id, true );
 												}
 											}
-											update_post_meta( $post_id, 'attachments_urls', $attachments_urls );
 										}
 										
 										update_option( 'imported_posts', $imported_posts );
@@ -398,7 +410,7 @@ class DD_import_shows {
                             <div class="dd-log <?php echo ( $process != 'done' ) ? 'd-none' : '' ?>">
                                 <p>
 									<?php
-									$imported_shows_ids = get_option( 'all_imported_shows_ids', TRUE );
+									$imported_shows_ids = get_option( 'all_imported_shows_ids', true );
 									if ( ! is_array( $imported_shows_ids ) ) {
 										$imported_shows_ids = [];
 									}
@@ -415,7 +427,7 @@ class DD_import_shows {
 								$deleted_post = $this->remove_deleted_posts();
 								if ( $deleted_post ) {
 									?>
-									<p style="font-size: large;font-weight: 600"><?php _e( 'Deleted Shows : ', 'roborts' ) ?><?php echo count( $deleted_post ) ?></p>
+                                    <p style="font-size: large;font-weight: 600"><?php _e( 'Deleted Shows : ', 'roborts' ) ?><?php echo count( $deleted_post ) ?></p>
 									<?php
 									foreach ( $deleted_post as $post ) {
 										echo '<p>' . $post . '</p>';
@@ -460,16 +472,15 @@ class DD_import_shows {
 		
 		return $wpdb->get_var( $qry );
 		
-		return FALSE;
+		return false;
 	}
 	
-	function check_assign_terms( $post_id, $term_slug, $taxonomy ) {
+	function check_assign_terms( $post_id, $term_slug, $taxonomy,$append = true ) {
 		$pid = $post_id;
 		// post we will set it's categories
 		$cat_name = $term_slug; // category name we want to assign the post to
-		$append   = TRUE; // true means it will add the cateogry beside already set categories. false will overwrite
 		$cat      = get_term_by( 'name', $cat_name, $taxonomy );
-		if ( $cat == FALSE ) {
+		if ( $cat == false ) {
 			$cat = wp_insert_term( $cat_name, $taxonomy );
 			if ( ! is_wp_error( $cat ) ) {
 				$cat_id = $cat['term_id'];
@@ -480,6 +491,42 @@ class DD_import_shows {
 		$res = wp_set_post_terms( $pid, [ $cat_id ], $taxonomy, $append );
 		
 		return $res;
+	}
+	
+	function remove_deleted_posts() {
+		
+		$args       = [
+			'posts_per_page' => - 1,
+			'post_type'      => 'show',
+			'post_status'    => [ 'publish' ],
+			'fields'         => 'ids',
+		];
+		$properties = get_posts( $args );
+		$old_ids    = [];
+		if ( $properties ) {
+			foreach ( $properties as $property ) {
+				$old_ids[] = get_the_title( $property );
+			}
+		}
+		$all_imported_shows_ids = get_option( 'all_imported_shows_ids', true );
+		if ( ! is_array( $all_imported_shows_ids ) ) {
+			$all_imported_shows_ids = [];
+		}
+		$all_imported_shows_ids = array_filter( $all_imported_shows_ids, 'strlen' );
+		if ( ! empty( $all_imported_shows_ids ) ) {
+			$deleted_posts = array_diff( $old_ids, $all_imported_shows_ids );
+			if ( $deleted_posts ) {
+				foreach ( $deleted_posts as $delete_post_title ) {
+					$deleted_posts[] = $delete_post_title;
+					$post_id         = $this->post_exists_dd( $delete_post_title, 'show' );
+					wp_delete_post( $post_id );
+				}
+			}
+			
+			return $deleted_posts;
+		}
+		
+		return false;
 	}
 	
 	function clean_multi_array( $values ) {
@@ -501,42 +548,6 @@ class DD_import_shows {
 		}
 		
 		return $return_array;
-	}
-	
-	function remove_deleted_posts() {
-		
-		$args       = [
-			'posts_per_page' => - 1,
-			'post_type'      => 'show',
-			'post_status'    => [ 'publish' ],
-			'fields'         => 'ids',
-		];
-		$properties = get_posts( $args );
-		$old_ids    = [];
-		if ( $properties ) {
-			foreach ( $properties as $property ) {
-				$old_ids[] = get_the_title( $property );
-			}
-		}
-		$all_imported_shows_ids = get_option( 'all_imported_shows_ids', TRUE );
-		if ( ! is_array( $all_imported_shows_ids ) ) {
-			$all_imported_shows_ids = [];
-		}
-		$all_imported_shows_ids = array_filter( $all_imported_shows_ids, 'strlen' );
-		if ( ! empty( $all_imported_shows_ids ) ) {
-			$deleted_posts = array_diff( $old_ids, $all_imported_shows_ids );
-			if ( $deleted_posts ) {
-				foreach ( $deleted_posts as $delete_post_title ) {
-					$deleted_posts[] = $delete_post_title;
-					$post_id         = $this->post_exists_dd( $delete_post_title, 'show' );
-					wp_delete_post( $post_id );
-				}
-			}
-			
-			return $deleted_posts;
-		}
-		
-		return FALSE;
 	}
 	
 }

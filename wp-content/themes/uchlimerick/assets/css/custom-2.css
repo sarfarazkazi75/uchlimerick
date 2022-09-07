@@ -9,6 +9,8 @@
 .food-drink.light .text-border-bottom h5 {
     color: #000;
 }
+.section-header .text-border-bottom{color: #000;}
+.section-header .text-border-bottom.food-title{color: #fff;}
 .sponser-detail .fw-bold
 {
        font-size: 18px;
@@ -196,8 +198,8 @@
     color: #701D45;
 }
 .food-drink .food-drink-wrp p {
-    font-size: 12px;
-    line-height: 130%;
+    font-size: 14px;
+    line-height: 18px
 }
 .food-drink .food-drink-wrp p a{color:#FFF;text-decoration: underline;}
 .food-drink .food-drink-wrp p a:hover{color:#98774A;}
@@ -403,6 +405,7 @@
 .testimoniyal .link-btn:hover {
     color: #fff;
 }
+.section-header .text-border-bottom{font-size: 42px;}
 
 /* responsive css  */
 @media screen and (max-width: 1360px){
@@ -535,10 +538,13 @@
         margin-bottom: 24px;
     }
     .food-drink {
-        padding: 45px 0 20px;
+        /* padding: 45px 0 20px; */
+        padding: 45px 0 49px;
     }
+    .food-drink.light{ padding: 45px 0 55px;}
     .food-drink .food-drink-wrp .row {
-        margin-top: 28px;
+        /* margin-top: 28px; */
+        margin-top: 50px;
     }
     .food-drink .food-drink-wrp .text-border-bottom{
         padding-bottom: 15px;
@@ -608,6 +614,12 @@
     }
     .food-drink::before{opacity: 0.35;}
     .food-drink::after{opacity: 0.35;}
+    .section-header .text-border-bottom{font-size: 30px;}
+    #support4 .text-border-bottom:before{bottom: 5px;}
+    #support4 .section-header .food-text .text-border-bottom:before {
+        bottom: 15px;
+    }
+    /* .section-header .text-border-bottom{ font-size: 30px;} */
 }
 
 

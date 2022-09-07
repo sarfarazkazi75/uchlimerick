@@ -13,8 +13,8 @@
             <?php echo $seating_plan_content ;?>
         </div>
         <div class="col-md-7 light-box-image">
-            <a data-fancybox href="<?php echo $seating_plan_image['url'] ;?>">
-                <img class="fancybox-img" src="<?php echo $seating_plan_image['url'] ;?>" alt="">
+            <a data-fancybox data-scale="1.6" class='zoom' id='ex1' href="<?php echo $seating_plan_image['url'] ;?>">
+                <img class="fancybox-img zoomImg" role="presentation" src="<?php echo $seating_plan_image['url'] ;?>" alt="">
             </a>
         </div>
     </div>

@@ -27,8 +27,8 @@
         $form_footer = get_field('form_footer', 'option'); 
     ?>
 </section>
-    <div class="newsletter-popup newsletter" data-aos="fade-left" >
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div class="newsletter-popup newsletter" id="popup"  data-aos="fade-left" >
+        <button type="button" class="close close-left-popup popup-close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
         </button>
             <?php if($newsletter_main_title != ""): ?>

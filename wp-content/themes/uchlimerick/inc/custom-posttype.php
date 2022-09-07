@@ -265,7 +265,7 @@ function custome_post_type_init() {
 		"map_meta_cap"        => TRUE,
 		"hierarchical"        => FALSE,
 		"menu_icon"           => "dashicons-media-document",
-		"rewrite"             => [ "slug" => "Project", "with_front" => TRUE ],
+		"rewrite"             => [ "slug" => "project", "with_front" => TRUE ],
 		"query_var"           => TRUE,
 		"supports"            => [ "title", "editor", "thumbnail", "excerpt" ],
 		'taxonomies'          => [ 'Project_cat' ],

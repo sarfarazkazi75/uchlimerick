@@ -2,7 +2,7 @@
     $support_help_title = get_field('support_help_title');
     $view_post_link = get_field('view_post_link');
 ?>
-<section class="support-helps" id="support5">
+<section class="support-helps yes_from_file" id="support5">
     <div class="container-inner">
         <div class="row text-border-bottom">
             <div class="col-lg-6 col-md-6">

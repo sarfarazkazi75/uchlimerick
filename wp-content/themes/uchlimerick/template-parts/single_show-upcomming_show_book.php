@@ -2,6 +2,7 @@
 <?php
 global $post;
 $events = get_post_meta($post->ID,'events',true);
+// print_r($events);
 /*
 date_default_timezone_set('UTC');
 $today = date("Y-m-d g:i a");
@@ -48,13 +49,14 @@ $query = new WP_query($args);
             $events = array_reverse($events);
             foreach ($events as $event){
                 $title         = $event['name'];
+                $Event_title = strstr($title , '@');
                 $book_ticket   = $event['url'];
                 $evenDate = date('d M Y ',strtotime($event['date_time_iso']['content']));
                 $openDate = date('g:i a',strtotime($event['opening_time_iso']['content']));
                 ?>
                 <div class="table-row">
                     <ul>
-                        <li><?php echo $title; ?></li>
+                        <li><?php echo str_replace('@', '' , $Event_title); ?></li>
                         <li><?php echo $evenDate; ?></li>
                         <li><?php echo $openDate; ?></li>
                         <li>

@@ -12,7 +12,7 @@ if(class_exists('acf')){
     <div class="page-banner-text">
         <div class="container-inner">
             <div class="page-border-bottom">
-                <h2><?php echo $banner_title;?></h2>
+                <h1><?php echo $banner_title;?></h1>
             </div>
         </div>
     </div>

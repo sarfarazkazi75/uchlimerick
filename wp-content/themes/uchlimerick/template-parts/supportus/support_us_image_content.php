@@ -28,8 +28,7 @@
                         <h4 class="text-border-bottom"><?php echo $support_title; ?></h4>
                         <?php echo $support_description; ?>
                         <?php if($support_link != ""): ?>
-                        <a href="<?php echo $support_link['url'] ;?>" target="<?php $support_link['target']; ?>"
-                            class="button button-dark"><?php echo $support_link['title']; ?></a><?php endif; ?>
+                        <a href="<?php echo $support_link['url'] ;?>" target="<?php echo $support_link['target']; ?>" class="button button-dark"><?php echo $support_link['title']; ?></a><?php endif; ?>
                     </div>
                 </div>
 
@@ -45,7 +44,7 @@
                         <h4 class="text-border-bottom"><?php echo $support_title; ?></h4>
                         <?php echo $support_description; ?>
                         <?php if($support_link != ""): ?>
-                        <a href="<?php echo $support_link['url'] ;?>" target="<?php $support_link['target']; ?>"
+                        <a href="<?php echo $support_link['url'] ;?>" target="<?php echo $support_link['target']; ?>"
                             class="button button-dark"><?php echo $support_link['title']; ?></a><?php endif; ?>
                     </div>
                 </div>

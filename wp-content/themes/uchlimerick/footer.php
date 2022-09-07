@@ -27,7 +27,7 @@ $footer_section5_menu_heading = get_field( 'footer_section5_menu_heading', 'opti
 					<div class="col-lg-8 footer-block footer-links-block">
 						<div class="footer-links-items">
 						<div class="footer-logo d-lg-none">
-							<img src="<?php echo $footer_logo['url'];?>" alt="">
+							<a href="<?php echo get_site_url(); ?>"><img src="<?php echo $footer_logo['url'];?>" alt=""></a>
 						</div>
 							<div class="footer-links">
 								<h6 class="footer-link-title"><?php echo $footer_section1_menu_heading; ?><i class="fa-solid fa-angle-down"></i></h6>
@@ -88,7 +88,7 @@ $footer_section5_menu_heading = get_field( 'footer_section5_menu_heading', 'opti
 					</div>
 					<div class="col-lg-3 footer-block footer-logo-block">
 						<div class="footer-logo d-none d-lg-block">
-							<img src="<?php echo $footer_logo['url'];?>" alt="">
+							<a href="<?php echo get_site_url(); ?>"><img src="<?php echo $footer_logo['url'];?>" alt=""></a>
 						</div>
 						<div class="footer-social-block">
 							<p class="p-small"><?php echo $footer_social_heading_text; ?></p>
@@ -100,6 +100,9 @@ $footer_section5_menu_heading = get_field( 'footer_section5_menu_heading', 'opti
 									$linkedin_link = get_field( 'linkedin_link', 'options' );
 									$tiktok_link = get_field( 'tiktok_link', 'options' );
 									$youtube_link = get_field( 'youtube_link', 'options' );
+									$midnight_link = get_field( 'midnight_link', 'options' );
+									$izest_link = get_field( 'izest_link', 'options' );
+
 								?>
 								<ul>
 									<?php if($twitter_link != ""): ?>
@@ -141,8 +144,18 @@ $footer_section5_menu_heading = get_field( 'footer_section5_menu_heading', 'opti
 			<div class="footer-bottom">
 			<div class="site-info p-small">
 				<a href="<?php echo site_url(); ?>">
-				<span class="rights"><?php echo $footer_copyright_text; ?> </span>
+					<span class="rights"><?php echo $footer_copyright_text; ?> </span>
 				</a>
+				<p>
+					Designed by 
+					<?php if($midnight_link != ""): ?>
+						<a href="<?php echo $midnight_link['url']; ?>" target="<?php echo $midnight_link['target']; ?>" ><?php echo $midnight_link['title']; ?>,</a>
+					<?php endif; ?> Developed by 
+					<?php if($izest_link != ""): ?>
+						<a href="<?php echo $izest_link['url']; ?>" target="<?php echo $izest_link['target']; ?>" > <?php echo $izest_link['title']; ?>.</a>
+					<?php endif; ?>
+				</p>
+				
 			</div><!-- .site-info -->
 			</div>
 		</div>

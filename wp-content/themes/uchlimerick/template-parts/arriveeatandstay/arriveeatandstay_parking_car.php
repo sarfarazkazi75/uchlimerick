@@ -8,7 +8,7 @@
         <div class="row align-items-center">
             <div class="col-md-6 mb-md-0 mb-4 col-left">
                 <div class="section-header">
-                    <h4 class="text-border-bottom pb-md-1 pb-3 title color-black"><?php echo $parking_your_car_title; ?></h4>
+                    <h2 class="text-border-bottom pb-md-1 pb-3 title color-black"><?php echo $parking_your_car_title; ?></h2>
                 </div>
                 <?php echo $parking_your_car_content; ?>
             </div>

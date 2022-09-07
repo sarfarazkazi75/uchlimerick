@@ -24,7 +24,8 @@
                 $recent_posts = wp_get_recent_posts(array(
                     'post_type'   =>'Project', 
                     'numberposts' => 3, 
-                    'post_status' => 'publish' 
+                    'post_status' => 'publish',
+                    'order' => 'ASC',
                 ));
                 foreach($recent_posts as $post) : ?>
             <div class="col-lg-4 col-md-6">

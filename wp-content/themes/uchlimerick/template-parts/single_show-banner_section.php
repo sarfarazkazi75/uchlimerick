@@ -4,7 +4,6 @@ $show_id     	              = get_the_id();
 
     $attachment_urls = get_post_meta($show_id,'attachments_urls',TRUE);
 	$feature_img 	              = get_the_post_thumbnail_url($show_id);
-	
 	if(empty($feature_img)){
 		if(isset($attachment_urls[0])){
 			$feature_img = $attachment_urls[0];
@@ -16,10 +15,9 @@ $show_id     	              = get_the_id();
 	
 	$show_title  	              = get_the_title($show_id);
 	$mobile_img  	              = get_field('uchlimerick_post_show_mobile_img',$show_id);
-	
 	$ticket      	              = get_field('uchlimerick_post_show_ticket',$show_id);
 	$book_ticket                  = get_field('uchlimerick_post_show_book_ticket_link',$show_id);
-    $show_date                    = get_field('uchlimerick_post_show_date',$show_id); 
+    $show_date1                    = get_field('uchlimerick_post_show_date',$show_id); 
     //social
     $sb_url      = urlencode(get_permalink());
     $sb_title    = str_replace( ' ', '%20', get_the_title());
@@ -35,6 +33,8 @@ $show_id     	              = get_the_id();
             $transient_key = $event_id . '_' . $show_id;
             $eventObj      = get_transient( $transient_key );
             $show_date     = date( 'l jS F Y', strtotime( $eventObj['date_time'] ) );
+            $show_date_link     = date('Ymd\THis',strtotime($eventObj['date_time']));
+	        $enddate = date('Ymd\THis',strtotime($show_date_link . ' + 2 hours'));
             $book_ticket = $eventObj['url'];
             $ticket = $eventObj['available'];
         }
@@ -43,7 +43,7 @@ $show_id     	              = get_the_id();
 <!-- individual hero section  -->
 <section class="page-banner individ-hero">
 	<?php if(!empty($feature_img)){ ?>
-         <img src="<?php echo $feature_img;?>" alt="" class="d-none d-md-block img-100">
+         <img src="<?php echo $feature_img;?>" alt="" class="d-md-block img-100">
 	<?php } ?>
 	<?php if(!empty($mobile_img)){ ?>
          <img src="<?php echo $mobile_img['url'];?>" alt=""class="d-md-none img-100">
@@ -66,7 +66,7 @@ $show_id     	              = get_the_id();
                 <div class="col-md-6">
                     <div class="left-title">
                         <p class="small-yellow"><?php echo _('UCH presents');?></p>
-                        <h4><?php echo $show_title;?></h4>
+                        <h3><?php echo $show_title;?></h3>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -91,7 +91,7 @@ $show_id     	              = get_the_id();
 							<?php if(!empty($book_ticket)){ ?>
                                 <a href="<?php echo $book_ticket;?>" class="button button-dark me-15"><?php echo _e('Book Now','uchlimerick');?></a>
 							<?php } ?>
-                                <a href="<?php echo $book_ticket;?>" class="button-light button"><?php echo _('Add to Calendar');?></a>
+                                <a href="<?php echo 'https://calendar.google.com/calendar/u/0/r/eventedit?text='.$show_title.'&dates='.$show_date_link.'/'.$enddate ?>" class="button-light button"><?php echo _('Add to Calendar');?></a>
                             </div>
                         </div>
                     </div>
