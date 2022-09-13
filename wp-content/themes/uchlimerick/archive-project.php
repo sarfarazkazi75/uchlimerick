@@ -40,7 +40,7 @@ if(class_exists('acf')){
                                 <div class="col-md-6">
                                 <p> '.wp_trim_words( get_the_content(), 30, '...' ).' </p>
                                      
-                                    <a class="post-date arrwo-has-link" href="'.get_permalink().'">Reed more</a>
+                                    <a class="post-date arrwo-has-link" href="'.get_permalink().'">Read more</a>
                                 </div>
                             </div>';
                         $temp_data ++ ;

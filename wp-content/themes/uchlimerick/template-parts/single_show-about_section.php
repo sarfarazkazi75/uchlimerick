@@ -68,9 +68,10 @@ if ( $events ) {
                         <?php
                         if($event_prices){
                             foreach ($event_prices as $price){
+                                $final_selling_price = $price['selling_price'];
                                 ?>
                                 <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/euro-symbol.svg"
-                                         alt="phone-icon"><a href="javascript:void(0)"> <span><?php echo $price['type'].':&nbsp;' ;?></span>€<?php echo $price['selling_price'] ;?></a>
+                                         alt="phone-icon"><a href="javascript:void(0)"> <span><?php echo $price['type'].':&nbsp;' ;?></span>€<?php echo number_format((float)$final_selling_price, 2, '.', '');?></a>
                                 </li>
                                 <?php
                             }

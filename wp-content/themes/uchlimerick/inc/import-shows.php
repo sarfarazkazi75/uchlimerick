@@ -7,8 +7,41 @@ class DD_import_shows {
 		add_action( 'admin_notices', [ $this, 'general_admin_notice_dd' ] );
 		add_action( 'init', [ $this, 'import_property_data_dd' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
+		add_action('wp', [$this,'import_setup_schedule']);
+		add_action('cron_for_daily_shows',[$this,'dd_cron_for_daily_shows']);
+		add_action('cron_for_daily_shows_api',[$this,'dd_cron_for_daily_shows_api']);
+		add_filter('cron_schedules',[$this, 'add_cron_schedules'], 9999, 1);
 	}
-	
+	function add_cron_schedules($schedules){
+		if (!isset($schedules['dd_every_25_minute'])) {
+			$schedules['dd_every_25_minute'] = array(
+				'interval' => 25 * 60,
+				'display' => __('Every 25 Minute Sync')
+			);
+		}
+		if (!isset($schedules['dd_every_30_minute'])) {
+			$schedules['dd_every_30_minute'] = array(
+				'interval' => 30 * 60,
+				'display' => __('Every 30 Minute Sync')
+			);
+		}
+		return $schedules;
+    }
+	function import_setup_schedule(){
+		
+		if (!wp_next_scheduled('cron_for_daily_shows')) {
+			wp_schedule_event(time(), 'dd_every_30_minute', 'cron_for_daily_shows');
+		}
+		if (!wp_next_scheduled('cron_for_daily_shows_api')) {
+			wp_schedule_event(time(), 'dd_every_25_minute', 'cron_for_daily_shows_api');
+		}
+	}
+	function dd_cron_for_daily_shows(){
+		$this->dd_import_function(true);
+    }
+	function dd_cron_for_daily_shows_api(){
+		$this->dd_fetch_data_from_api();
+    }
 	public function admin_enqueue_scripts() {
 		wp_enqueue_style( 'uchlimerick-admin-css', get_template_directory_uri() . '/assets/css/dd-admin.css', [], time() );
 	}
@@ -156,12 +189,7 @@ class DD_import_shows {
 	}
 	
 	function shows_sync_func() {
-		$imported_posts     = [];
-		$imported_shows_ids = get_option( 'imported_shows_ids', true );
-		if ( ! is_array( $imported_shows_ids ) ) {
-			$imported_shows_ids = [];
-		}
-		$process = isset( $_REQUEST['process'] ) ? $_REQUEST['process'] : '';
+		
 		?>
         <div class="wrap shows-imports">
             <div id="poststuff wrap">
@@ -208,238 +236,76 @@ class DD_import_shows {
                             <strong><?php _e( 'Sync Process start', 'uchlimerick' ); ?></strong> <img class='img_loader' src='<?php echo get_stylesheet_directory_uri() ?>/assets/images/loader.gif'>
                         </p>
 						<?php
-						$redirect_url = admin_url( 'admin.php?page=sync-shows-data' );
 						
 						$shows_data = isset( $_REQUEST['shows_data'] ) ? $_REQUEST['shows_data'] : '';
+						$process = isset( $_REQUEST['process'] ) ? $_REQUEST['process'] : '';
 						
 						if ( wp_verify_nonce( $shows_data, 'shows_data' ) ) {
-							$imported_shows_ids = get_option( 'imported_shows_ids', true );
-							if ( $imported_shows_ids ) {
-								$imported_shows_ids = [];
-							}
-							
-							$sync_process_page = isset( $_REQUEST['sync_process_page'] ) ? $_REQUEST['sync_process_page'] : get_option( 'sync_process_page', 1 );
-							$shows_count       = get_option( 'shows_from_api', false );
-							if ( $shows_count ) {
-								require_once( ABSPATH . 'wp-admin/includes/media.php' );
-								require_once( ABSPATH . 'wp-admin/includes/file.php' );
-								require_once( ABSPATH . 'wp-admin/includes/image.php' );
-								for ( $i = $sync_process_page; $i <= $shows_count; $i ++ ) {
-									$all_imported_shows_ids = get_option( 'all_imported_shows_ids', true );
-									if ( ! is_array( $all_imported_shows_ids ) ) {
-										$all_imported_shows_ids = [];
-									}
-									$shows_encode = get_option( 'shows_from_api_' . $i );
-									
-									$shows       = json_decode( $shows_encode, true );
-									
-								if ( $shows ) {
-									foreach ( $shows as $key => $single_prop ) {
-										$meta_values = [];
-										$post_title = trim( reset( $single_prop['name'] ) );
-										$post_id    = $this->post_exists_dd( $post_title, 'show' );
-										if ( ! in_array( $post_title, $all_imported_shows_ids ) ) {
-											$all_imported_shows_ids[] = $post_title;
-										}
-										
-										foreach ( $single_prop as $meta_key => $meta_value ) {
-											if ( is_array( $meta_value ) && count( $meta_value ) == 1 ) {
-												$meta_value = reset( $meta_value );
-											}
-											if ( $meta_key == 'events' ) {
-												$meta_value = $meta_value['event'];
-											}
-											$meta_values[ $meta_key ] = $meta_value;
-										}
-										
-										$post_desc = isset($meta_values['description'])?$meta_values['description']:'';
-										
-										$my_post = [
-											'post_type'    => 'show',
-											'post_title'   => wp_strip_all_tags( $post_title ),
-											'post_excerpt' => substr( strip_tags( $post_desc ), 0, 250 ) . '...',
-											'post_content' => $post_desc,
-											'post_status'  => 'publish',
-										];
-										if ( ! empty( $post_id ) ) {
-											$my_post['ID'] = $post_id;
-										}
-										$post_id              = wp_insert_post( $my_post );
-										$imported_posts[]     = wp_strip_all_tags( $post_title );
-										$imported_shows_ids[] = wp_strip_all_tags( $post_id );
-										
-										if ( isset( $meta_values['event_category'] ) && ! empty( $meta_values['event_category'] ) ) {
-											if ( is_array( $meta_values['event_category'] ) && count( $meta_values['event_category'] ) == 1 ) {
-												$tags = reset( $meta_values['event_category'] );
-											} else {
-												$tags = $meta_values['event_category'];
-											}
-											if ( is_array( $tags ) ) {
-												foreach ( $tags as $tag_name ) {
-													$this->check_assign_terms( $post_id, $tag_name, 'genre' );
-												}
-												$meta_values['event_category'] = $tags;
-											} else {
-												$this->check_assign_terms( $post_id, $tags, 'genre' );
-											}
-										}
-										
-										if ( isset( $meta_values['event_category'] ) ) {
-											$this->check_assign_terms( $post_id, $meta_values['event_category'], 'show_cat' );
-										}
-										
-										if ( isset( $meta_values['events'] ) ) {
-											$bind = 0;
-											foreach ( $meta_values['events'] as $events ) {
-												if ( $events ) {
-													foreach ( $events as $key => $event ) {
-														if ( $key == 'content' ) {
-															continue;
-														}
-														if ( ! empty( $event ) ) {
-															if ( is_array( $event ) && count( $event ) == 1 ) {
-																$event = reset( $event );
-															}
-															$bind_event[ $bind ][ $key ] = $event;
-														}
-														
-														
-													}
-													$bind ++;
-													
-												}
-											}
-											$meta_values['events'] = $bind_event;
-										}
-										$events = $meta_values['events'];
-										$event  = isset( $events[0] ) ? $events[0] : [];
-										if ( $event ) {
-											$event_date= $event['date_time_iso']['content'];
-											$meta_value['eventDateTime'] = strtotime( $event_date );
-											$meta_value['eventDate']     = date( 'd M, Y', strtotime( $event_date) );
-											$meta_value['event_month']   = date( 'F', strtotime($event_date) );
-											update_post_meta( $post_id, 'eventDateTime', $meta_value['eventDateTime']  );
-											update_post_meta( $post_id, 'eventDate', $meta_value['eventDate'] );
-											update_post_meta( $post_id, 'event_month', $meta_value['event_month']  );
-											$this->check_assign_terms( $post_id, strtolower($meta_value['event_month']), 'month',false );
-										}
-										if ( isset( $meta_values['properties'] ) && ! empty( $meta_values['properties'] ) ) {
-											if ( isset( $meta_values['properties']['property'] ) ) {
-												$meta_values['properties']                  = reset( $meta_values['properties']['property'] );
-												$meta_values['uchlimerick_post_show_video'] = $meta_values['properties']['value'];
-											}
-										}
-										
-										if ( $meta_values ) {
-											foreach ( $meta_values as $dmeta_key => $dmeta_value ) {
-												if ( $dmeta_key == 'images' ) {
-													unset( $meta_value[ $dmeta_key ] );
-													if ( is_array( $dmeta_value ) && count( $dmeta_value ) == 1 ) {
-														if ( $dmeta_value ) {
-															$dmeta_value = reset( $dmeta_value );
-															$dmeta_value = reset( $dmeta_value );
-															
-															$attachments_urls = [];
-															foreach ( $dmeta_value['url'] as $image_array ) {
-																$attachments_urls[] = $image_array['content'];
-																
-															}
-															update_post_meta( $post_id, 'attachments_urls', $attachments_urls );
-														}
-													} else {
-														$dmeta_value = trim( $dmeta_value );
-													}
-												}
-												update_field( $dmeta_key, $dmeta_value, $post_id );
-											}
-											update_post_meta( $post_id, 'api_meta_values', $meta_values );
-										}
-										if ( $attachments_urls ) {
-											$args        = [
-												'post_type'      => 'attachment',
-												'posts_per_page' => - 1,
-												'post_status'    => 'any',
-												'post_parent'    => $post_id,
-												'fields'         => 'ids',
-											];
-											$attachments = get_posts( $args );
-											if ( $attachments ) {
-												foreach ( $attachments as $attachment_id ) {
-													wp_delete_attachment( $attachment_id, true );
-												}
-											}
-										}
-										
-										update_option( 'imported_posts', $imported_posts );
-										update_option( 'imported_shows_ids', $imported_shows_ids );
-									}
-									update_option( 'all_imported_shows_ids', $all_imported_shows_ids );
-									?>
-                                    <div class="dd-log <?php echo ! isset( $_REQUEST['sync_process_page'] ) ? 'd-none' : '' ?>">
-                                        <p>
-											<?php
-											$import_log = implode( '<br>', $imported_posts );
-											echo $import_log;
-											?>
-                                        </p>
-                                    </div>
-								<?php
-								
-								}
-								if ( $i == $shows_count ) {
-									update_option( 'sync_process_page', 1 );
-									$redirect_url = admin_url( 'admin.php?page=sync-shows-data&process=done' );
-								} elseif ( isset( $_REQUEST['sync_process_page'] ) ) {
-									update_option( 'sync_process_page', $i );
-									$page         = $_REQUEST['sync_process_page'] + 1;
-									$redirect_url = admin_url( 'admin.php?page=sync-shows-data&shows_data=' . $_REQUEST['shows_data'] . '&sync_process_page=' . $page );
-								}
-								?>
-                                    <script type="text/javascript">
-                                        window.location.href = "<?php echo $redirect_url ?>";
-                                    </script>
-									
-									<?php
-									die();
-								}
-							}
+						        self::dd_import_function();
 						}
-						
-						if ( $process ) {
+						if ( $process) {
 							?>
                             <div class="dd-log <?php echo ( $process != 'done' ) ? 'd-none' : '' ?>">
-                                <p>
 									<?php
-									$imported_shows_ids = get_option( 'all_imported_shows_ids', true );
-									if ( ! is_array( $imported_shows_ids ) ) {
-										$imported_shows_ids = [];
+									$imported_shows_title = get_option( 'all_imported_shows_ids', true );
+									if ( ! is_array( $imported_shows_title ) ) {
+										$imported_shows_title = [];
 									}
-									if ( $imported_shows_ids ) {
-									$imported_shows_ids = array_unique( $imported_shows_ids );
+									if ( $imported_shows_title ) {
+									$imported_shows_title = array_unique( $imported_shows_title );
 									?>
                                 <h3><?php _e( 'Imported Shows', 'roborts' ) ?></h3>
-                                <p style="font-size: large;font-weight: 600"><?php _e( 'Total Shows : ', 'roborts' ) ?><?php echo count( $imported_shows_ids ) ?></p>
+                                <p style="font-size: large;font-weight: 600"><?php _e( 'Total Shows : ', 'roborts' ) ?><?php echo count( $imported_shows_title ) ?></p>
 								<?php
-								foreach ( $imported_shows_ids as $post ) {
+								foreach ( $imported_shows_title as $post ) {
 									echo '<p>' . $post . '</p>';
 								}
-								/*
-								$deleted_post = $this->remove_deleted_posts();
-								if ( $deleted_post ) {
+								}
+								?>
+                                <?php
+							$args               = [
+								'posts_per_page' => - 1,
+								'post_type'      => 'show',
+								'post_status'    => [ 'publish' ],
+								'fields'         => 'ids',
+								'tax_query'      => [
+									[
+										'taxonomy' => 'show_cat',
+										'field'    => 'slug',
+										'terms'    => [ 'donate', 'become_a_friend' ],
+										'operator' => 'NOT IN',
+									],
+								],
+							];
+							$old_posts          = get_posts( $args );
+							if($old_posts){
+								$imported_shows_ids = get_option( 'imported_shows_ids', true );
+								if ( ! is_array( $imported_shows_ids ) ) {
+									$imported_shows_ids = [];
+								}
+								if ( $imported_shows_ids ) {
+									$imported_shows_ids = array_unique( $imported_shows_ids );
+								}
+								$deleted_post_arr = array_diff($old_posts, $imported_shows_ids);
+								$deleted_post_arr = array_unique($deleted_post_arr);
+                                $deleted_post = $this->remove_deleted_posts( $deleted_post_arr );
+								update_option( 'imported_shows_ids', array() );
+								
+								if ( $deleted_post) {
 									?>
-                                    <p style="font-size: large;font-weight: 600"><?php _e( 'Deleted Shows : ', 'roborts' ) ?><?php echo count( $deleted_post ) ?></p>
+                                    <h3><?php _e( 'Deleted Shows', 'roborts' ) ?></h3>
+                                    <p style="font-size: large;font-weight: 600"><?php _e( 'Total Deleted : ', 'roborts' ) ?><?php echo count( $deleted_post ) ?></p>
 									<?php
 									foreach ( $deleted_post as $post ) {
 										echo '<p>' . $post . '</p>';
 									}
 								}
-								*/
-								}
-								?>
-                                </p>
+							}
+							?>
                             </div>
-							
 							<?php
+							
+							
 						}
 						
 						?>
@@ -450,32 +316,227 @@ class DD_import_shows {
 		<?php
 	}
 	
-	function post_exists_dd( $post_name, $post_type = 'post' ) {
-		global $wpdb;
+	function dd_import_function($cron = false){
+		$redirect_url = admin_url( 'admin.php?page=sync-shows-data' );
 		
-		$query = "SELECT ID FROM $wpdb->posts WHERE 1=1";
-		$args  = [];
 		
-		if ( ! empty( $post_name ) ) {
-			$query  .= " AND post_title LIKE '%s' ";
-			$args[] = $post_name;
+		
+		$sync_process_page = isset( $_REQUEST['sync_process_page'] ) ? $_REQUEST['sync_process_page'] : get_option( 'sync_process_page', 1 );
+		$shows_count       = get_option( 'shows_from_api', false );
+		
+		if ( $shows_count ) {
+			require_once( ABSPATH . 'wp-admin/includes/media.php' );
+			require_once( ABSPATH . 'wp-admin/includes/file.php' );
+			require_once( ABSPATH . 'wp-admin/includes/image.php' );
+			for ( $i = $sync_process_page;
+				$i <= $shows_count;
+				$i ++ ) {
+			 
+				$imported_posts     =  [];
+				$imported_shows_ids = get_option( 'imported_shows_ids', true );
+				if ( !is_array($imported_shows_ids) ) {
+					$imported_shows_ids = [];
+				}
+				
+				$all_imported_shows_ids = get_option( 'all_imported_shows_ids', true );
+				if ( ! is_array( $all_imported_shows_ids ) ) {
+					$all_imported_shows_ids = [];
+				}
+				$shows_encode = get_option( 'shows_from_api_' . $i );
+				
+				$shows = json_decode( $shows_encode, true );
+				
+				if ( $shows ) {
+					foreach ( $shows as $key => $single_prop ) {
+						$post_id = 0;
+						$meta_values = [];
+						$post_title  = trim( reset( $single_prop['name'] ) );
+						$prev_post_id = $single_prop['ID'];
+						
+						
+						$posts_with_meta  = get_posts( array(
+							'posts_per_page' => 1,
+							'post_type'      => 'show',
+							'post_status'    => array( 'publish', 'preview', 'draft' ),
+							'meta_query'     => array(
+								array(
+									'key'   => 'ID',
+									'value' => $prev_post_id,
+								)
+							),
+							'fields'         => 'ids',
+						) );
+						if(isset($posts_with_meta[0])){
+							$post_id     = reset($posts_with_meta);
+						}
+						
+						if ( ! in_array( $post_title, $all_imported_shows_ids ) ) {
+							$all_imported_shows_ids[] = $post_title;
+						}
+						
+						foreach ( $single_prop as $meta_key => $meta_value ) {
+							if ( is_array( $meta_value ) && count( $meta_value ) == 1 ) {
+								$meta_value = reset( $meta_value );
+							}
+							if ( $meta_key == 'events' ) {
+								$meta_value = $meta_value['event'];
+							}
+							$meta_values[ $meta_key ] = $meta_value;
+						}
+						
+						$post_desc = isset( $meta_values['description'] ) ? $meta_values['description'] : '';
+						
+						$my_post = [
+							'post_type'    => 'show',
+							'post_title'   => wp_strip_all_tags( $post_title ),
+							'post_excerpt' => substr( strip_tags( $post_desc ), 0, 250 ) . '...',
+							'post_content' => $post_desc,
+							'post_status'  => 'publish',
+						];
+						if ( ! empty( $post_id ) ) {
+							$my_post['ID'] = $post_id;
+						}
+						$post_id              = wp_insert_post( $my_post );
+						$imported_posts[]     = wp_strip_all_tags( $post_title );
+						$imported_shows_ids[] = $post_id ;
+						
+						if ( isset( $meta_values['event_category'] ) && ! empty( $meta_values['event_category'] ) ) {
+							if ( is_array( $meta_values['event_category'] ) && count( $meta_values['event_category'] ) == 1 ) {
+								$tags = reset( $meta_values['event_category'] );
+							} else {
+								$tags = $meta_values['event_category'];
+							}
+							if ( is_array( $tags ) ) {
+								foreach ( $tags as $tag_name ) {
+									$this->check_assign_terms( $post_id, $tag_name, 'genre' );
+								}
+								$meta_values['event_category'] = $tags;
+							} else {
+								$this->check_assign_terms( $post_id, $tags, 'genre' );
+							}
+						}
+						
+						if ( isset( $meta_values['event_category'] ) ) {
+							$this->check_assign_terms( $post_id, $meta_values['event_category'], 'show_cat' );
+						}
+						
+						if ( isset( $meta_values['events'] ) && !empty($meta_values['events']) ) {
+							$bind = 0;
+							$bind_event = array();
+							foreach ( $meta_values['events'] as $events ) {
+								if ( $events ) {
+									foreach ( $events as $key => $event ) {
+										if ( $key == 'content' ) {
+											continue;
+										}
+										if ( ! empty( $event ) ) {
+											if ( is_array( $event ) && count( $event ) == 1 ) {
+												$event = reset( $event );
+											}
+											$bind_event[ $bind ][ $key ] = $event;
+										}
+									}
+									$bind ++;
+								}
+							}
+							$meta_values['events'] = $bind_event;
+						}
+						$event  = isset( $meta_values['events'][0] ) ? $meta_values['events'][0] : [];
+						if ( $event ) {
+							$event_date                  = $event['date_time_iso']['content'];
+							$meta_value['eventDateTime'] = strtotime( $event_date );
+							update_post_meta( $post_id, 'eventDateTime', $meta_value['eventDateTime'] );
+						}
+						
+						if(isset($bind_event)){
+						    foreach ($bind_event as $index => $event){
+							    $event_date                  = $event['date_time_iso']['content'];
+							    $event_dates[$index]     = date_i18n( 'd M, Y', strtotime( $event_date ) );
+							    $event_yr  = date_i18n( 'Y', strtotime( $event_date ) );
+							    $event_month   = date_i18n( 'F', strtotime( $event_date ) );
+							    $this->check_assign_terms( $post_id, strtolower( $event_month ), 'month', true );
+							    $this->check_assign_terms( $post_id, $event_yr, 'years', true );
+							    $store_yr[$index] = $event_yr;
+							    $store_month[$index] = $event_month;
+							    update_post_meta( $post_id, 'event_years', $store_yr );
+							    update_post_meta( $post_id, 'event_month', $store_month);
+							    update_post_meta( $post_id, 'eventDate',$event_dates );
+						    }
+                        }
+						if ( isset( $meta_values['properties'] ) && ! empty( $meta_values['properties'] ) ) {
+							if ( isset( $meta_values['properties']['property'] ) ) {
+								$meta_values['properties']                  = reset( $meta_values['properties']['property'] );
+								$meta_values['uchlimerick_post_show_video'] = $meta_values['properties']['value'];
+							}
+						}
+						
+						if ( $meta_values ) {
+							foreach ( $meta_values as $dmeta_key => $dmeta_value ) {
+								if ( $dmeta_key == 'images' ) {
+									unset( $meta_value[ $dmeta_key ] );
+									if ( is_array( $dmeta_value ) && count( $dmeta_value ) == 1 ) {
+										if ( $dmeta_value ) {
+											$dmeta_value = reset( $dmeta_value );
+											$dmeta_value = reset( $dmeta_value );
+											
+											$attachments_urls = [];
+											foreach ( $dmeta_value['url'] as $image_array ) {
+												$attachments_urls[] = $image_array['content'];
+												
+											}
+											update_post_meta( $post_id, 'attachments_urls', $attachments_urls );
+										}
+									} else {
+										$dmeta_value = trim( $dmeta_value );
+									}
+								}
+								update_field( $dmeta_key, $dmeta_value, $post_id );
+							}
+							update_post_meta( $post_id, 'api_meta_values', $meta_values );
+						}
+					}
+					
+					update_option( 'imported_shows_ids', $imported_shows_ids );
+					
+					update_option( 'all_imported_shows_ids', $all_imported_shows_ids );
+					
+					if($cron==false){
+					?>
+                        <div class="dd-log <?php echo ! isset( $_REQUEST['sync_process_page'] ) ? 'd-none' : '' ?>">
+                            <p>
+                                <?php
+                                $import_log = implode( '<br>', $imported_posts );
+                                echo $import_log;
+                                ?>
+                            </p>
+                        </div>
+					<?php
+                    }
+				}
+				if($cron==false){
+				    
+                    if ( $i == $shows_count ) {
+                        update_option( 'sync_process_page', 1 );
+                        $redirect_url = admin_url( 'admin.php?page=sync-shows-data&process=done' );
+                    } elseif ( isset( $_REQUEST['sync_process_page'] ) ) {
+                        update_option( 'sync_process_page', $i );
+                        $page         = $_REQUEST['sync_process_page'] + 1;
+                        $redirect_url = admin_url( 'admin.php?page=sync-shows-data&shows_data=' . $_REQUEST['shows_data'] . '&sync_process_page=' . $page );
+                    }
+                    ?>
+                    <script type="text/javascript">
+                        window.location.href = "<?php echo $redirect_url ?>";
+                    </script>
+                    
+                    <?php
+					die();
+				}
+			}
 		}
-		if ( ! empty( $post_type ) ) {
-			$query  .= " AND post_type = '%s' ";
-			$args[] = $post_type;
-		}
 		
-		if ( ! empty( $args ) ) {
-			$query .= " AND post_status='publish'";
-		}
-		$qry = $wpdb->prepare( $query, $args );
 		
-		return $wpdb->get_var( $qry );
-		
-		return false;
 	}
-	
-	function check_assign_terms( $post_id, $term_slug, $taxonomy,$append = true ) {
+	function check_assign_terms( $post_id, $term_slug, $taxonomy, $append = true ) {
 		$pid = $post_id;
 		// post we will set it's categories
 		$cat_name = $term_slug; // category name we want to assign the post to
@@ -493,40 +554,16 @@ class DD_import_shows {
 		return $res;
 	}
 	
-	function remove_deleted_posts() {
-		
-		$args       = [
-			'posts_per_page' => - 1,
-			'post_type'      => 'show',
-			'post_status'    => [ 'publish' ],
-			'fields'         => 'ids',
-		];
-		$properties = get_posts( $args );
-		$old_ids    = [];
-		if ( $properties ) {
-			foreach ( $properties as $property ) {
-				$old_ids[] = get_the_title( $property );
+	function remove_deleted_posts( $old_posts ) {
+		$deleted_posts = [];
+		if ( $old_posts ) {
+			foreach ( $old_posts as $delete_post_id ) {
+				$deleted_posts[] = get_the_title($delete_post_id);
+				wp_delete_post( $delete_post_id,true );
 			}
 		}
-		$all_imported_shows_ids = get_option( 'all_imported_shows_ids', true );
-		if ( ! is_array( $all_imported_shows_ids ) ) {
-			$all_imported_shows_ids = [];
-		}
-		$all_imported_shows_ids = array_filter( $all_imported_shows_ids, 'strlen' );
-		if ( ! empty( $all_imported_shows_ids ) ) {
-			$deleted_posts = array_diff( $old_ids, $all_imported_shows_ids );
-			if ( $deleted_posts ) {
-				foreach ( $deleted_posts as $delete_post_title ) {
-					$deleted_posts[] = $delete_post_title;
-					$post_id         = $this->post_exists_dd( $delete_post_title, 'show' );
-					wp_delete_post( $post_id );
-				}
-			}
-			
-			return $deleted_posts;
-		}
 		
-		return false;
+		return $deleted_posts;
 	}
 	
 	function clean_multi_array( $values ) {

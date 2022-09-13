@@ -348,10 +348,10 @@
                         <h6 class="text-border-bottom">Concert or Event Title comes here and can go over two lines and
                             this is the second line right here</h6>
                         <a class="post-date" href="#">02 Jan - 03 Feb</a>
-                        <div class="btn-wrapper book-btn-cover">
-                            <a href="#" class="button button-dark">Book Tickets</a>
-                            <a href="#" class="button-light button">Learn More</a>
-                        </div>
+                    </div>
+                    <div class="btn-wrapper book-btn-cover">
+                        <a href="#" class="button button-dark">Book Tickets</a>
+                        <a href="#" class="button-light button">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -364,10 +364,10 @@
                         <h6 class="text-border-bottom">Concert or Event Title comes here and can go over two lines and
                             this is the second line right here</h6>
                         <a class="post-date" href="#">02 Jan - 03 Feb</a>
-                        <div class="btn-wrapper book-btn-cover">
-                            <a href="#" class="button button-dark">Book Tickets</a>
-                            <a href="#" class="button-light button">Learn More</a>
-                        </div>
+                    </div>
+                    <div class="btn-wrapper book-btn-cover">
+                        <a href="#" class="button button-dark">Book Tickets</a>
+                        <a href="#" class="button-light button">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -380,10 +380,10 @@
                         <h6 class="text-border-bottom">Concert or Event Title comes here and can go over two lines and
                             this is the second line right here</h6>
                         <a class="post-date" href="#">02 Jan - 03 Feb</a>
-                        <div class="btn-wrapper book-btn-cover">
-                            <a href="#" class="button button-dark">Book Tickets</a>
-                            <a href="#" class="button-light button">Learn More</a>
-                        </div>
+                    </div>
+                    <div class="btn-wrapper book-btn-cover">
+                        <a href="#" class="button button-dark">Book Tickets</a>
+                        <a href="#" class="button-light button">Learn More</a>
                     </div>
                 </div>
             </div>

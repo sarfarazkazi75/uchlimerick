@@ -33,10 +33,21 @@ $show_id     	              = get_the_id();
             $transient_key = $event_id . '_' . $show_id;
             $eventObj      = get_transient( $transient_key );
             $show_date     = date( 'l jS F Y', strtotime( $eventObj['date_time'] ) );
+            $show_opening_time     = date( 'l jS F Y', strtotime( $eventObj['opening_time'] ) );
             $show_date_link     = date('Ymd\THis',strtotime($eventObj['date_time']));
 	        $enddate = date('Ymd\THis',strtotime($show_date_link . ' + 2 hours'));
             $book_ticket = $eventObj['url'];
             $ticket = $eventObj['available'];
+            $price_obj= $eventObj['prices']['price'];
+            if (count($price_obj) == count($price_obj, COUNT_RECURSIVE)){
+            $event_prices[] =$price_obj;
+            }
+            else{
+                $event_prices = $price_obj;
+            }
+            $event_diff_price = array_column($event_prices, 'selling_price');
+            $min_price = min($event_diff_price);
+            $max_price = max($event_diff_price);
         }
     }
     ?>
@@ -77,20 +88,21 @@ $show_id     	              = get_the_id();
 									<div class="des-text">
 										<p class="small-yellow">
 										<?php echo _('Date:');?></p><br>
-										<span><?php echo $show_date;?></span>
+										<span><?php echo $show_date;?> - <br><?php echo $show_opening_time; ?></span>
 									</div>
 								<?php } ?>
-								<?php if(!empty($ticket)){ ?>
+								<?php if(!empty($event_diff_price)){ ?>
                                 <div class="des-text">
                                     <p class="small-yellow"><?php echo _('Ticket:');?></p><br>
-                                    <span><?php echo $ticket;?></span>
+                                    <span>€<?php echo number_format((float)$min_price, 2, '.', '');?> - €<?php echo number_format((float)$max_price, 2, '.', '');?>
+                                    </span>
                                 </div>
 								<?php } ?>
                             </div>
                             <div class="indi-cta">
-							<?php if(!empty($book_ticket)){ ?>
-                                <a href="<?php echo $book_ticket;?>" class="button button-dark me-15"><?php echo _e('Book Now','uchlimerick');?></a>
-							<?php } ?>
+							<?php //if(!empty($book_ticket)){ ?>
+                                <a href="#book_now" class="button button-dark me-15"><?php echo _e('Book Now','uchlimerick');?></a>
+							<?php //} ?>
                                 <a href="<?php echo 'https://calendar.google.com/calendar/u/0/r/eventedit?text='.$show_title.'&dates='.$show_date_link.'/'.$enddate ?>" class="button-light button"><?php echo _('Add to Calendar');?></a>
                             </div>
                         </div>

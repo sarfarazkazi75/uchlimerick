@@ -9,12 +9,12 @@
             <div class="overlay"></div>
             <div class="container-inner">
                 <div class="banner-text" >
-                    <h1 data-aos="fade-up"><?php echo $banner_details['banner_title']; ?></h1>
+                    <?php if($banner_details['banner_title'] != ""): ?><h1 data-aos="fade-up"><?php echo $banner_details['banner_title']; ?></h1><?php endif; ?>
                     <span class="banner-border"></span>
-                    <p data-aos="fade-up"><?php echo $banner_details['banner_subtitle']; ?></p>
+                    <?php if($banner_details['banner_subtitle'] != ""): ?><p data-aos="fade-up"><?php echo $banner_details['banner_subtitle']; ?></p><?php endif; ?>
                     <div class="btn-wrapper" data-aos="fade-up">
-                          <a href="<?php echo $banner_details['book_ticket_link']['url']; ?>" target="<?php echo $banner_details['book_ticket_link']['target']; ?>" class="button button-dark"><?php echo $banner_details['book_ticket_link']['title']; ?></a>
-                          <a href="<?php echo $banner_details['support_us_link']['url']; ?>" target="<?php echo $banner_details['support_us_link']['target']; ?>" class="button-light button"><?php echo $banner_details['support_us_link']['title']; ?></a>
+                          <?php if($banner_details['book_ticket_link'] != ""): ?><a href="<?php echo $banner_details['book_ticket_link']['url']; ?>" target="<?php echo $banner_details['book_ticket_link']['target']; ?>" class="button button-dark"><?php echo $banner_details['book_ticket_link']['title']; ?></a><?php endif; ?>
+                          <?php if($banner_details['support_us_link'] != ""): ?><a href="<?php echo $banner_details['support_us_link']['url']; ?>" target="<?php echo $banner_details['support_us_link']['target']; ?>" class="button-light button"><?php echo $banner_details['support_us_link']['title']; ?></a><?php endif; ?>
                     </div>
                 </div>
             </div>

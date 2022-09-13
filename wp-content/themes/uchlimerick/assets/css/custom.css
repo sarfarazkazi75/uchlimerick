@@ -306,7 +306,7 @@ div#popup {display: none;}
 .highlights{position: relative;background: linear-gradient(360deg, #3C1226 39.06%, #181214 100%);padding-bottom: 114px;z-index: 3;}
 .highlights-patten{padding-top: 50px;}
 .highlights-patten::before{content: '';background-image: url(../images/banner-highlight-patten-new.svg);background-repeat: no-repeat;background-size: cover;background-position: center;width: 100%;height: 1150px;position: absolute;left: 0;top:-75%;pointer-events: none;opacity: 0.35;}
-.highlight-text{position: absolute;bottom:0;padding: 15px;left: 0;right: 0;max-width: 300px;}
+.highlight-text{position: absolute;bottom:0;padding: 15px 15px 25px 15px;left: 0;right: 0;max-width: 300px;}
 .highlights .text-border-left:before{display: none;}
 .highlight-title-text{position: relative;}
 .highlight-title-text::before{content: "";border-bottom: 1px solid #98774A;  position: absolute;right: 0%;bottom: 25%;width: calc(100% - 280px);}
@@ -314,14 +314,16 @@ div#popup {display: none;}
 .car-wrappper{display: flex;justify-content: flex-end;}
 .main-car{width: 100%;max-width: calc(100% - 21%);padding-top: 25px;}
 .date-info{display: flex;justify-content: space-between;}
-.date-info p{color:#FFC72C;margin-bottom: 0;white-space: nowrap;font-size: 18px;}
+.date-info p{color:#FFC72C;margin-bottom: 0;white-space: nowrap;font-size: 16px;line-height: 1;}
+.section:nth-child(2) .date-info .more-info{line-height: 9px;}
+.section.active:nth-child(2) .date-info .more-info{line-height: 1;}
 .highlight-text h6{font-size: 24px;text-transform: capitalize;}
-.date-info .more-info{visibility: hidden;opacity: 0;color:#FFC72C;transition: width 500ms cubic-bezier(.785, .135, .15, .86);}
+.date-info .more-info{visibility: hidden;opacity: 0;color:#FFC72C;transition: width 500ms cubic-bezier(.785, .135, .15, .86);font-size: 16px;line-height: 1;}
 .date-info .more-info:hover{color: #98774A;}
 .highlights .section::before{content:'';position: absolute;left: 0;bottom: 0;background: linear-gradient(180deg, rgba(0, 0, 0, 0) 23.44%, rgba(0, 0, 0, 0.85) 66.67%);width: 100%;height: 100%;}
 .section.active .highlight-text h6{font-size: 42px;transition: 0.4s ease-in-out;}
 .section.active .highlight-text{max-width: 100%;transition: 0.4s ease-in-out;padding: 35px 35px 25px 35px;}
-.section.active .date-info .more-info{visibility: visible;opacity: 1;transition: width 500ms cubic-bezier(.785, .135, .15, .86);font-size: 18px;}
+.section.active .date-info .more-info{visibility: visible;opacity: 1;transition: width 500ms cubic-bezier(.785, .135, .15, .86);font-size: 16px;}
 .section.active{width: 100vw!important;transition: width 500ms cubic-bezier(.785, .135, .15, .86);}
 /* Whats on css */
 .whats-on{background: linear-gradient(180deg, #3C1226 39.06%, #181214 100%);position: relative;}
@@ -403,7 +405,7 @@ div#popup {display: none;}
 .page-banner-text h1{text-transform: capitalize;line-height: 1;font-size: 67px;}
 .page-banner-text h2{text-transform: capitalize;}
 .page-banner-text .text-border-bottom:before{bottom: -30px;}
-.page-banner.individ-hero img{max-height: 750px;object-position: top;}
+.page-banner.individ-hero img{max-height: 750px;object-position: center;}
 .paragraph-medium{font-size: 16px;}
 .information{margin-bottom: 64px;}
 .information-top{margin-top: 75px;}
@@ -604,6 +606,7 @@ div#popup {display: none;}
     .highlight-text{max-width: 100%;padding: 20px;}
     .section.active .highlight-text{padding: 20px;}
     .date-info .more-info{visibility: visible;opacity: 1;font-size: 14px;}
+    .highlights .text-border-bottom:before{bottom: -6px;}
     /* Support Css */
     .support-hero.homepage .banner-text{top: 20%;right: 5%;}
     /* Newsletter Css */
@@ -792,6 +795,7 @@ div#popup {display: none;}
     .section.active .date-info p{font-size: 12px;}
     .date-info .more-info{visibility: visible;opacity: 1;font-size: 12px;}
     .section.active .date-info .more-info{font-size: 12px;}
+    .highlights .text-border-bottom:before{bottom: 2px;}
     /* Whats up css */
     .whats-on.homepage .post-image{max-height: 200px;}
     .whats-on.homepage .post-card{margin-bottom: 15px;}

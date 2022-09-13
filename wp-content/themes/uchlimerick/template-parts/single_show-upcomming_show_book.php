@@ -27,7 +27,7 @@ $args     = array(
 $query = new WP_query($args);
 */
 ?>
-<section class="book-now">
+<section class="book-now" id="book_now">
     <div class="book-inner bg-dark">
         <div class="book-title">
             <h3 class="bored-bottom"><?php echo _('Book Now');?></h3>
@@ -48,17 +48,24 @@ $query = new WP_query($args);
         {
             $events = array_reverse($events);
             foreach ($events as $event){
+
+                
+        
+
                 $title         = $event['name'];
                 $Event_title = strstr($title , '@');
                 $book_ticket   = $event['url'];
-                $evenDate = date('d M Y ',strtotime($event['date_time_iso']['content']));
-                $openDate = date('g:i a',strtotime($event['opening_time_iso']['content']));
+                
+                $evenDate = date('d M Y ',strtotime($event['opening_time_iso']['content']));
+                $openDate = date('G:i a',strtotime($event['opening_time_iso']['content']));
+                $opening_time=date_create($event['opening_time_iso']['content']);
+                $opening_time_date= date_format($opening_time,"h:i A");
                 ?>
                 <div class="table-row">
                     <ul>
                         <li><?php echo str_replace('@', '' , $Event_title); ?></li>
                         <li><?php echo $evenDate; ?></li>
-                        <li><?php echo $openDate; ?></li>
+                        <li><?php echo $opening_time_date; ?></li>
                         <li>
                         <?php if(!empty($book_ticket)){ ?>
                             <a href="<?php echo $book_ticket;?>" class="bg-transparent button"><?php echo __("Book now",'uchlimerick');?></a>

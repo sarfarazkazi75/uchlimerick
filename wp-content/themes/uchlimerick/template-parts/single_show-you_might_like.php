@@ -81,11 +81,11 @@ $related_blog_query = new wp_query($args);
                             <div class="post-details">
                                 <h6 class="text-border-bottom"><?php echo $rel_title;?></h6>
                                 <a class="post-date" href="<?php echo $rel_permalink;?>"><?php echo $evenStartDate->format('d M');?> - <?php echo $evenEndtDate->format('d M');?></a>
-                                <div class="btn-wrapper book-btn-cover">
-                                    <!-- <a href="<?php echo $book_ticket['url'];?>" class="button button-dark"><?php echo $book_ticket['title'];?></a> -->
-                                    <a href="<?php if ($book_ticket) { echo $book_ticket['url']; }  ?>" target="<?php if ($book_ticket) { echo $book_ticket['target']; }  ?>"  class="button button-dark"><?php echo _('Book Tickets');?></a>                                     
-                                    <a href="<?php echo $rel_permalink;?>" class="button-light button"><?php echo _('Learn More');?></a>
-                                </div>
+                            </div>
+                            <div class="btn-wrapper book-btn-cover">
+                                <!-- <a href="<?php echo $book_ticket['url'];?>" class="button button-dark"><?php echo $book_ticket['title'];?></a> -->
+                                <a href="<?php if ($book_ticket) { echo $book_ticket['url']; }  ?>" target="<?php if ($book_ticket) { echo $book_ticket['target']; }  ?>"  class="button button-dark"><?php echo _('Book Tickets');?></a>                                     
+                                <a href="<?php echo $rel_permalink;?>" class="button-light button"><?php echo _('Learn More');?></a>
                             </div>
                         </div>
                     </div>

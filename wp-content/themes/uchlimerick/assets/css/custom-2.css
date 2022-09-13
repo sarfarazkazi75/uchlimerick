@@ -198,8 +198,8 @@
     color: #701D45;
 }
 .food-drink .food-drink-wrp p {
-    font-size: 14px;
-    line-height: 18px
+    font-size: 16px;
+    line-height: 20px
 }
 .food-drink .food-drink-wrp p a{color:#FFF;text-decoration: underline;}
 .food-drink .food-drink-wrp p a:hover{color:#98774A;}
@@ -278,16 +278,19 @@
 }
 .become-ofc .section-header .subtitle {
     letter-spacing: 0.1em;
-    text-transform: uppercase;
+    /* text-transform: capitalize; */
     font-weight: 400;
     font-size: 12px;
     color: #3C3E4D;
     font-family: 'Rubik';
 }
+.become-ofc .section-header .subtitle::first-letter {text-transform: capitalize;}
+
 .become-ofc .section-header .title {
     font-weight: 600;
     font-size: 42px;
     color: #701D45;
+    text-transform: capitalize;
 }
 .become-ofc .section-header p{
     font-weight: 300;
@@ -343,6 +346,15 @@
 .become-ofc .benifit-box ul li::marker{
     color: #3C3E4D;
 }
+.page-template-Corporate-Member .become-ofc .benifit-box ul,
+.page-template-become-friend .become-ofc .benifit-box ul{ list-style: none; margin-left: 0;}
+.page-template-Corporate-Member .become-ofc .benifit-box ul li,.page-template-become-friend  .become-ofc .benifit-box ul li{ display: flex;}
+.page-template-Corporate-Member .become-ofc .benifit-box ul li:before,
+.page-template-become-friend  .become-ofc .benifit-box ul li:before {
+    content: '✓';
+    padding-right: 6px;
+  }
+
 .become-ofc .row-wrp:not(:last-child){
     margin-bottom: 90px;
 }
@@ -406,6 +418,7 @@
     color: #fff;
 }
 .section-header .text-border-bottom{font-size: 42px;}
+.flex-col{ flex-direction: column;}
 
 /* responsive css  */
 @media screen and (max-width: 1360px){
@@ -618,6 +631,11 @@
     #support4 .text-border-bottom:before{bottom: 5px;}
     #support4 .section-header .food-text .text-border-bottom:before {
         bottom: 15px;
+    }
+
+    .food-drink .food-drink-wrp p {
+        font-size: 14px;
+        line-height: 18px
     }
     /* .section-header .text-border-bottom{ font-size: 30px;} */
 }

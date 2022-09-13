@@ -1,22 +1,24 @@
 <?php 
-if(is_page()){
+/*if(is_page()){
      $data = get_the_id();
 }else{
     $data = 'option';
-}
-$choose_section = get_field('uchlimerick_quote_choose_section', $data);
-$content        = get_field('quote_choose_section_content', $data);
-$profile_img    = get_field('quote_choose_section_profile_image', $data);
-$profile_title  = get_field('quote_choose_section_profile_title', $data);
-$job_desciption = get_field('quote_choose_section_job_desciption', $data);
-$Background_Image    = get_field('quote_choose_section_background_image', $data);
-$background_image_mobile    = get_field('quote_choose_section_background_image_mobile', $data);
-$Background_Color    = get_field('quote_choose_section_background_color', $data);
-$section_mail    = get_field('quote_choose_section_mail', $data);
-$section_numbe    = get_field('quote_choose_section_number', $data);
-$section_title    = get_field('quote_choose_section_title', $data);
+}*/
+$choose_section = get_field('uchlimerick_quote_choose_section');
+$content        = get_field('quote_choose_section_content');
+$profile_img    = get_field('quote_choose_section_profile_image');
+$profile_title  = get_field('quote_choose_section_profile_title');
+$job_desciption = get_field('quote_choose_section_job_desciption');
+$Background_Image    = get_field('quote_choose_section_background_image');
+$background_image_mobile    = get_field('quote_choose_section_background_image_mobile');
+$Background_Color    = get_field('quote_choose_section_background_color');
+$section_mail    = get_field('quote_choose_section_mail');
+$section_numbe    = get_field('quote_choose_section_number');
+$section_title    = get_field('quote_choose_section_title');
 
-if($choose_section == 0 || $choose_section == 1 || $choose_section == 2 ){ ?>
+if($choose_section == 0 || $choose_section == 1 || $choose_section == 2 ){  
+if($content != "") {
+    ?>
 <section class="testimoniyal" style="background-color:<?php echo $Background_Color;?>">
 <?php if(!empty($Background_Image)){ ?>
     <div class="background-shape">
@@ -89,8 +91,11 @@ if($choose_section == 0 || $choose_section == 1 || $choose_section == 2 ){ ?>
         </div>
     </div>
 </section>
-<?php }
-if($choose_section == 3){ ?>
+<?php } }
+if($choose_section == 3){ 
+if($content != "") {
+    ?>
+
 <section class="testimoniyal" style="background-color:<?php echo $Background_Color;?>;">
 <?php if(!empty($Background_Image)){ ?>
     <div class="background-shape">
@@ -101,11 +106,8 @@ if($choose_section == 3){ ?>
 <div class="container-inner">
         <div class="testi-content text-center">
         <h3><?php echo $section_title;?></h3>
-         <h5><?php echo $content;?></h5>
-         <div class="per-name" style="color: #FFC72C;"> 
-         <a href="tel:+ <?php echo $section_numbe;?>">+ <?php echo $section_numbe;?></a>
-        <a href="mailto:<?php echo $section_mail;?>"><?php echo $section_mail;?></a>
-        </div>
+         <h5><?php echo $content;?><a href="tel:+ <?php echo $section_numbe;?>">+ <?php echo $section_numbe;?></a> or email
+        <a href="mailto:<?php echo $section_mail;?>"><?php echo $section_mail;?></a> for further details</h5>
     </div>
 </section>
-<?php }
+<?php } }

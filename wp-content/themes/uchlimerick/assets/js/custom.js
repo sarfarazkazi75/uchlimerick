@@ -189,25 +189,29 @@ if (window.matchMedia("(max-width: 991px)").matches) {
 
 }
 // //faq active
-$('.faq-accordion-wrapper .only-desktop .faq-search-lorem').css('display', 'none');
-$('.faq-accordion-wrapper .only-desktop .faq-search-lorem:first-child').css('display', 'block');
+// $('.faq-accordion-wrapper .only-desktop .faq-search-lorem').css('display', 'none');
+// $('.faq-accordion-wrapper .only-desktop .faq-search-lorem:first-child').css('display', 'block');
+$(".only-desktop .faq-search-lorem:first").addClass('active');
 
-$('ul.faq_active li a').click(function(e) 
-{ 
+$('ul.faq_active li a').click(function(e){ 
      $('ul.faq_active li a.active_faq').removeClass('active_faq');
      $(this).addClass("active_faq");
      var ul_active = $(this).attr('href');
      var slice_href = ul_active.slice(1);
-     console.log(slice_href);
+    //  console.log(slice_href);
      $('.only-desktop .faq-search-lorem').each(function(){
           var div_active= $(this).attr("id");
           if(div_active == slice_href){
-            $(this).css('display', 'block');
+            // $('.only-desktop .faq-search-lorem').css('display', 'none');
+            // $(this).css('display', 'block');
+            $('.only-desktop .faq-search-lorem').removeClass('active');
+            $(this).addClass('active');
           }else{
-            $(this).css('display', 'none');
+            
           }
      });
-
+     e.preventDefault();
+    //  doSomething();
      
 });
 
@@ -544,6 +548,7 @@ $('#popup-close').on('click', function(e) {
 $('#popup').on('click', function(e) {
   $('#popup').fadeOut();
 });
+
 
 
 

@@ -185,6 +185,35 @@ function custome_post_type_init() {
 	
 	register_taxonomy( 'month', [ 'show' ], $args_month );
 	
+	// month taxonomy for shows start here
+	$labels_years = [
+		'name'              => _x( 'Years', 'Years' ),
+		'singular_name'     => _x( 'Years', 'Years' ),
+		'search_items'      => __( 'Search Years' ),
+		'all_items'         => __( 'All Years' ),
+		'parent_item'       => __( 'Parent Years' ),
+		'parent_item_colon' => __( 'Parent Years:' ),
+		'edit_item'         => __( 'Edit Years' ),
+		'update_item'       => __( 'Update Years' ),
+		'add_new_item'      => __( 'Add Years' ),
+		'new_item_name'     => __( 'New Years Name' ),
+		'menu_name'         => __( 'Years' ),
+	];
+	
+	
+	$args_years = [
+		"public"             => TRUE,
+		"publicly_queryable" => FALSE,
+		'hierarchical'       => TRUE,
+		'labels'             => $labels_years,
+		'show_ui'            => TRUE,
+		'show_admin_column'  => TRUE,
+		'query_var'          => TRUE,
+		'rewrite'            => [ 'slug' => 'years' ],
+	];
+	
+	register_taxonomy( 'years', [ 'show' ], $args_years );
+	
 	// register_taxonomy("month", array("show"), array("hierarchical" => true, "label" => "Months", "singular_label" => "Months", "rewrite" => array( 'slug' => 'months', 'with_front'=> false )));
 	// register_taxonomy("genre", array("show"), array("hierarchical" => true, "label" => "Genres", "singular_label" => "Genres", "rewrite" => array( 'slug' => 'genres', 'with_front'=> false )));
 	// register_taxonomy("gift_idea", array("show"), array("hierarchical" => true, "label" => "Gift Ideas", "singular_label" => "Gift Ideas", "rewrite" => array( 'slug' => 'gift_idea', 'with_front'=> false )));

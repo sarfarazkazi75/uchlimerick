@@ -34,10 +34,10 @@
                         <?php
                         global $post;
                         $uchlimerick_post_show_start_date      = get_field( "uchlimerick_post_show_start_date" );
-                        $date_uchlimerick_post_show_start_date = date( "j M", strtotime( $uchlimerick_post_show_start_date ) );
+                        $date_uchlimerick_post_show_start_date = date( "j M, Y", strtotime( $uchlimerick_post_show_start_date ) );
                         
                         $uchlimerick_post_show_end_date      = get_field( "uchlimerick_post_show_end_date" );
-                        $date_uchlimerick_post_show_end_date = date( "j M", strtotime( $uchlimerick_post_show_end_date ) );
+                        $date_uchlimerick_post_show_end_date = date( "j M, Y", strtotime( $uchlimerick_post_show_end_date ) );
                         
                         $uchlimerick_post_show_book_ticket_link = get_field( "uchlimerick_post_show_book_ticket_link" );
                         $show_date='';
@@ -58,7 +58,7 @@
                                     set_transient($transient_key,$eventObj,HOUR_IN_SECONDS);
                                 }
                                 $eventObj      = get_transient( $transient_key );
-                                $show_date     = date( 'd M', strtotime( $eventObj['date_time'] ) );
+                                $show_date     = date( 'd M, Y', strtotime( $eventObj['date_time'] ) );
                                 $book_ticket = $eventObj['url'];
                                 
                             }
@@ -80,12 +80,12 @@
                            $attachment_urls = get_post_meta( $post->ID, 'attachments_urls', TRUE );
                            
                            if(empty($url)){
-	                           if(isset($attachment_urls[0])){
-		                           $url = $attachment_urls[0];
-	                           }
-	                           else{
-		                           $url = get_template_directory_uri().'/assets/images/fallback-Image-2.png';
-	                           }
+                              if(isset($attachment_urls[0])){
+                                 $url = $attachment_urls[0];
+                              }
+                              else{
+                                 $url = get_template_directory_uri().'/assets/images/fallback-Image-2.png';
+                              }
                            }
                            ?>
                            <img src="<?php echo $url ?>" alt="image" class="img-100"/>                  

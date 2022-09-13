@@ -4,16 +4,16 @@
 <section class="food-drink position-relative" id="support3">
     <div class="container-inner">
         <div class="section-header">
-            <div class="row alige-itmes-end">
+            <div class="row  alige-itmes-end">
 
-                <div class="col-md-6 col-left">
+                <div class="col-md-12 col-left">
                     <div class="text-border-bottom food-title">
                         <h2 class="mb-md-3 mb-0 fw-bold pb-md-0 pb-2">
                             <?php echo $food_and_drink['food_and_drink_title'] ; ?>
                         </h2>
                     </div>
                 </div>
-                <div class="col-md-6 col-right">
+                <div class="col-md-12 mt-md-3">
                     <?php echo $food_and_drink['food_and_drink_content'] ; ?>
                 </div>
             </div>

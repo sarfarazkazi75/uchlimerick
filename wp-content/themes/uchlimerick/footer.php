@@ -73,7 +73,7 @@ $footer_section5_menu_heading = get_field( 'footer_section5_menu_heading', 'opti
 					                ?>
 								</div>
 							</div>
-							<div class="footer-links">
+							<!-- <div class="footer-links">
 								<h6 class="footer-link-title"><?php echo $footer_section5_menu_heading; ?><i class="fa-solid fa-angle-down"></i></h6>
 								<div class="menu-ancillary-conatiner footer-link-content">
 									<?php
@@ -83,7 +83,7 @@ $footer_section5_menu_heading = get_field( 'footer_section5_menu_heading', 'opti
 					                  ) );
 					                ?>
 								</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 					<div class="col-lg-3 footer-block footer-logo-block">

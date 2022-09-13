@@ -183,6 +183,8 @@ function load_more_shows() {
 				$more_posts .= '<a class="post-date" href="' . get_the_permalink() . '"><p>';
 				$more_posts .= $show_date;
 				$more_posts .= '</p></a>';
+				
+				$more_posts .= '</div>';
 				$more_posts .= '<div class="btn-wrapper book-btn-cover">';
 				if ( isset( $book_ticket ) ) {
 					
@@ -203,7 +205,6 @@ function load_more_shows() {
 				}
 				
 				
-				$more_posts .= '</div>';
 				$more_posts .= '</div>';
 				$more_posts .= '</div>';
 				$more_posts .= '</div>';
@@ -496,25 +497,25 @@ function data_fetch() {
                         <a class="post-date" href="<?php the_permalink(); ?>">
                             <p><?php echo $show_date; ?></p>
                         </a>
-                        <div class="btn-wrapper book-btn-cover">
-							<?php
-							if ( isset( $book_ticket ) ) {
-								?>
-                                <a href="<?php echo $book_ticket; ?>" class="button button-dark"><?php _e( "Book Tickets", 'uchlimerick' ) ?></a>
-                                <a href="<?php the_permalink(); ?>" class="button button-light"><?php _e( "Learn More", 'uchlimerick' ) ?></a>
-								<?php
-							} else {
-								?>
-                                <a href="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
-									echo $uchlimerick_post_show_book_ticket_link['url'];
-								} ?>" target="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
-									echo $uchlimerick_post_show_book_ticket_link['target'];
-								} ?>" class="button button-dark">Book Tickets</a> <a href="<?php the_permalink(); ?>" class="button-light button">Learn More</a>
-								<?php
-							}
-							?>
-                        </div>
                     </div>
+					<div class="btn-wrapper book-btn-cover">
+						<?php
+						if ( isset( $book_ticket ) ) {
+							?>
+							<a href="<?php echo $book_ticket; ?>" class="button button-dark"><?php _e( "Book Tickets", 'uchlimerick' ) ?></a>
+							<a href="<?php the_permalink(); ?>" class="button button-light"><?php _e( "Learn More", 'uchlimerick' ) ?></a>
+							<?php
+						} else {
+							?>
+							<a href="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
+								echo $uchlimerick_post_show_book_ticket_link['url'];
+							} ?>" target="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
+								echo $uchlimerick_post_show_book_ticket_link['target'];
+							} ?>" class="button button-dark">Book Tickets</a> <a href="<?php the_permalink(); ?>" class="button-light button">Learn More</a>
+							<?php
+						}
+						?>
+					</div>
                 </div>
             </div>
 			<?php $i ++; ?>
@@ -635,4 +636,38 @@ function dd_the_title_filter( $title, $id ) {
 	}
 	
 	return $title;
+}
+add_action('init','ddxxx');
+function ddxxx(){
+    if(isset($_REQUEST['ddxxx'])){
+	    $args               = [
+		    'posts_per_page' => - 1,
+		    'post_type'      => 'show',
+		    'post_status'    => [ 'publish' ],
+		    'fields'         => 'ids',
+		    'tax_query'      => [
+			    [
+				    'taxonomy' => 'show_cat',
+				    'field'    => 'slug',
+				    'terms'    => [ 'donate', 'become_a_friend' ],
+				    'operator' => 'NOT IN',
+			    ],
+		    ],
+	    ];
+	    $old_posts          = get_posts( $args );
+	    dd($old_posts);
+	    if($old_posts) {
+		    $imported_shows_ids = get_option( 'imported_shows_ids', true );
+		    if ( ! is_array( $imported_shows_ids ) ) {
+			    $imported_shows_ids = [];
+		    }
+		    if ( $imported_shows_ids ) {
+			    $imported_shows_ids = array_unique( $imported_shows_ids );
+		    }
+		    dd($imported_shows_ids);
+		    $deleted_post_arr = array_diff($old_posts, $imported_shows_ids);
+		    dd($deleted_post_arr,1);
+	    }
+	    
+    }
 }

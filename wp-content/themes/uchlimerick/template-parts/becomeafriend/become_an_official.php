@@ -15,15 +15,15 @@
         <div class="row row-wrp align-items-center" data-aos="fade-up">
             <div class="col-md-6 mb-md-0 mb-3 aos-init aos-animate">
                 <div class="section-header">
-                    <h6 class="subtitle mb-2"><?php echo $benefit_title; ?></h6>
-                    <h4 class="title mb-4"><?php echo $benefit_subtitle; ?></h4>
+                    <?php if($benefit_title != ""){ ?><h6 class="subtitle mb-2"><?php echo $benefit_title; ?></h6><?php } ?>
+                    <?php if($benefit_subtitle != ""){ ?><h4 class="title mb-4"><?php echo $benefit_subtitle; ?></h4><?php } ?>
                     <div class="sponser-detail">
                         <div class="row justify-content-between mb-4">
                             <div class="col-6">
-                                <label class="mb-0 fw-bold color-black"><?php echo $benefit_type; ?></label>
+                                <?php if($benefit_type != ""){ ?><label class="mb-0 fw-bold color-black"><?php echo $benefit_type; ?></label><?php } ?>
                             </div>
                             <div class="col-6 text-right">
-                                <label class="mb-0 fw-bold color-black"><?php echo $benefit_price; ?></label>
+                                <?php if($benefit_price != ""){ ?><label class="mb-0 fw-bold color-black"><?php echo $benefit_price; ?></label><?php } ?>
                             </div>
                         </div>
                         <?php
@@ -35,10 +35,10 @@
                         <div class="data py-3 mb-3">
                             <div class="row justify-content-between">
                                 <div class="col-3">
-                                    <span class="mb-0 color-black"><?php echo $benefit_type_details; ?></span>
+                                    <?php if($benefit_type_details != ""){ ?><span class="mb-0 color-black"><?php echo $benefit_type_details; ?></span><?php } ?>
                                 </div>
                                 <div class="col-9 text-right">
-                                    <span class="mb-0 color-black"><?php echo $benefit_price_details; ?></span>
+                                    <?php if($benefit_price_details != ""){ ?><span class="mb-0 color-black"><?php echo $benefit_price_details; ?></span><?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -48,15 +48,15 @@
                     </div>
                     <div class="row mb-4 mt-4 pt-2 btn-wrap">
                         <div class="col-md-6 mb-md-0 mb-2">
-                            <a href="<?php echo $book_ticket_link['url']; ?>" target="<?php echo $book_ticket_link['target']; ?>"
-                                class="button button-dark text-center w-100"><?php echo $book_ticket_link['title'];?></a>
+                            <?php if($book_ticket_link != ""){ ?><a href="<?php echo $book_ticket_link['url']; ?>" target="<?php echo $book_ticket_link['target']; ?>"
+                                class="button button-dark text-center w-100"><?php echo $book_ticket_link['title'];?></a><?php } ?>
                         </div>
                         <div class="col-md-6 mb-md-0 mb-2">
-                            <a href="<?php echo $email_us_link['url']; ?>" target="<?php echo $email_us_link['target']; ?>"
-                                class="bg-transparent button text-center w-100"><?php echo $email_us_link['title']; ?></a>
+                            <?php if($email_us_link != ""){ ?><a href="<?php echo $email_us_link['url']; ?>" target="<?php echo $email_us_link['target']; ?>"
+                                class="bg-transparent button text-center w-100"><?php echo $email_us_link['title']; ?></a><?php } ?>
                         </div>
                     </div>
-                    <p><?php echo _('Call');?> <a href="tel:<?php echo $call_us_link; ?>"><?php echo $call_us_link; ?></a> <?php echo _('for further details or to join by phone');?></p>
+                    <p><?php echo _('Call');?> <?php if($call_us_link != ""){ ?><a href="tel:<?php echo $call_us_link; ?>"><?php echo $call_us_link; ?></a><?php } ?> <?php echo _('for further details or to join by phone');?></p>
                 </div>
             </div>
             <?php if(!empty($benefit_box)){ ?>

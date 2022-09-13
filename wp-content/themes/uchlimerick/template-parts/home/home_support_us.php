@@ -38,7 +38,7 @@
                         $support_link = get_sub_field('support_link'); 
                 ?> 
                             <li><a href="<?php echo site_url('support-us'); ?>/#support<?php echo get_row_index();?>">
-                                <?php if($icon != ""): ?><img src="<?php echo $icon['url']; ?>" class="support-icon" alt="<?php echo $icon['alt']; ?>"><?php endif; ?> <?php echo $support_link; ?>
+                                <?php if($icon != ""): ?><img src="<?php echo $icon['url']; ?>" class="support-icon" alt="<?php echo $icon['alt']; ?>"><?php endif; ?> <?php if($support_link != ""): ?><?php echo $support_link; ?><?php endif; ?> 
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/right-chevrow-white.svg"
                                 class="support-rigth" alt="righ-icon"></a>
                             </li> 

@@ -60,12 +60,34 @@ get_header();
 											<?php
 											endif;
 											
+											if ( $terms = get_terms( [
+											    'taxonomy' => 'years', 'order' => 'ASC',
+											    'hide_empty' => false,
+                                                ] ) ) :
+												echo '<div class="nav-select">';
+												echo '<select name="year_filter" id="year_filter" onchange="this.form.submit()">';
+												echo '<option value="">Years</option>';
+												foreach ( $terms as $term ) :
+													?>
+                                                    <option value="<?php echo $term->term_id; ?>" <?php selected( isset( $_REQUEST['year_filter'] ) ? $_REQUEST['year_filter'] : '',
+														$term->term_id ); ?>><?php echo ucwords($term->name); ?></option>
+												<?php
+												endforeach;
+												echo '</select>';
+												echo '<select id="select_months_width">';
+												echo '<option id="option_months_width"></option>';
+												echo '</select>';
+												echo '</div>';
+												?>
+											<?php
+											endif;
+											
 											?>
                                         </form>
                                     </div>
                                     <div class="nav-search">
                                         <form class="example">
-                                            <input type="text" name="keyword" id="keyword" placeholder="Search"></input>
+                                            <input type="text" name="keyword" id="keyword" placeholder="Search" value="<?php echo isset($_REQUEST['search'])?$_REQUEST['search']:''; ?>"></input>
                                         </form>
                                     
                                     </div>
@@ -102,6 +124,7 @@ get_header();
 						'meta_key'   => 'eventDateTime',
                         'orderby'    => 'meta_value_num',
 						'order'          => 'ASC',
+						's'=>isset($_REQUEST['search'])?$_REQUEST['search']:'',
 						'posts_per_page' => 12,
     						'tax_query'      => [
 							[
@@ -117,6 +140,7 @@ get_header();
 						$gen_cat_id        = $_REQUEST['genrefilter'] ?? NULL;
 						$gift_idea_cat_id  = $_REQUEST['gift_ideafilter'] ?? NULL;
 						$month_cat_id      = $_REQUEST['monthfilter'] ?? NULL;
+						$year_cat_id      = $_REQUEST['year_filter'] ?? NULL;
 						$taxquery          = [
 							'relation' => 'AND',
 							[
@@ -131,6 +155,13 @@ get_header();
 								'order'    => 'ASC',
 								'terms'    => $month_cat_id,
 								'operator' => $month_cat_id ? 'IN' : 'NOT IN',
+							],
+							[
+								'taxonomy' => 'years',
+								'field'    => 'id',
+								'order'    => 'ASC',
+								'terms'    => $year_cat_id,
+								'operator' => $year_cat_id ? 'IN' : 'NOT IN',
 							],
 						];
 						$args['tax_query'] = $taxquery;
@@ -297,25 +328,25 @@ get_header();
 												}
 												?>
                                             </a>
-                                            <div class="btn-wrapper book-btn-cover">
-												<?php
-												if ( isset( $book_ticket ) ) {
-													?>
-                                                    <a href="<?php echo $book_ticket; ?>" class="button button-dark"><?php _e( "Book Tickets", 'uchlimerick' ) ?></a>
-                                                    <a href="<?php echo $permalink; ?>" class="button button-light"><?php _e( "Learn More", 'uchlimerick' ) ?></a>
-													<?php
-												} else {
-													?>
-                                                    <a href="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
-														echo $uchlimerick_post_show_book_ticket_link['url'];
-													} ?>" target="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
-														echo $uchlimerick_post_show_book_ticket_link['target'];
-													} ?>" class="button button-dark">Book Tickets</a> <a href="<?php echo $permalink; ?>" class="button-light button">Learn More</a>
-													<?php
-												}
-												?>
-                                            </div>
                                         </div>
+										<div class="btn-wrapper book-btn-cover">
+											<?php
+											if ( isset( $book_ticket ) ) {
+												?>
+												<a href="<?php echo $book_ticket; ?>" class="button button-dark"><?php _e( "Book Tickets", 'uchlimerick' ) ?></a>
+												<a href="<?php echo $permalink; ?>" class="button button-light"><?php _e( "Learn More", 'uchlimerick' ) ?></a>
+												<?php
+											} else {
+												?>
+												<a href="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
+													echo $uchlimerick_post_show_book_ticket_link['url'];
+												} ?>" target="<?php if ( $uchlimerick_post_show_book_ticket_link ) {
+													echo $uchlimerick_post_show_book_ticket_link['target'];
+												} ?>" class="button button-dark">Book Tickets</a> <a href="<?php echo $permalink; ?>" class="button-light button">Learn More</a>
+												<?php
+											}
+											?>
+										</div>
                                     </div>
                                 </div>
 							<?php }

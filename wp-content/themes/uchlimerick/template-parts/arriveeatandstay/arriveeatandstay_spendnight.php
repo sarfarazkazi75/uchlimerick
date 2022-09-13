@@ -4,14 +4,14 @@
 <section class="food-drink light position-relative" id="support4">
     <div class="container-inner">
         <div class="section-header">
-            <div class="row alige-itmes-end">
-                <div class="col-md-6 col-left food-text">
-                    <div class="text-border-bottom">
+            <div class="row  alige-itmes-end">
+                <div class="col-md-12 col-left food-text">
+                    <div class="text-border-bottom ">
                         <h2 class="mb-3 fw-bold pb-md-0 pb-2"><?php echo $spend_the_night['spend_the_night_title'] ; ?>
                         </h2>
                     </div>
                 </div>
-                <div class="col-md-6 col-right">
+                <div class="col-md-12 col-right mt-md-3 mt-1">
                     <?php echo $spend_the_night['spend_the_night_content'] ; ?>
                 </div>
             </div>

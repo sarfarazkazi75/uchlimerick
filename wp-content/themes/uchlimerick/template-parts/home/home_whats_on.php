@@ -7,8 +7,14 @@
     <div class="container-inner">
         <div class="section-title text-border-bottom">
             <h3 class="">What's On</h3>
-            <div class="">
-                <?php if($home_whats_on_sec_ticket_book != ""): ?><a href="<?php echo $home_whats_on_sec_ticket_book['url']; ?>" target="<?php echo $home_whats_on_sec_ticket_book['target'];?>" class="button button-dark d-none d-md-block"><?php echo $home_whats_on_sec_ticket_book['title'];?></a><?php endif; ?>
+            <div class="home_whatson">
+                <form class="search" action="<?php echo home_url( '/whats-on/' ); ?>" method="get">
+                  <input type="search" class="whatson_search" name="search" placeholder="What's On">
+                  <input type="submit" class="whatson_search_icon" value="search">
+                </form>
+                <div class="">
+                    <?php if($home_whats_on_sec_ticket_book != ""): ?><a href="<?php echo $home_whats_on_sec_ticket_book['url']; ?>" target="<?php echo $home_whats_on_sec_ticket_book['target'];?>" class="button button-dark d-none d-md-block"><?php echo $home_whats_on_sec_ticket_book['title'];?></a><?php endif; ?>
+                </div>
             </div>
         </div>
         <div class="post-main-cover">
@@ -54,10 +60,10 @@
                         <?php
                         global $post;
                         $uchlimerick_post_show_start_date      = get_field( "uchlimerick_post_show_start_date" );
-                        $date_uchlimerick_post_show_start_date = date( "j M", strtotime( $uchlimerick_post_show_start_date ) );
+                        $date_uchlimerick_post_show_start_date = date( "j M, Y", strtotime( $uchlimerick_post_show_start_date ) );
                         
                         $uchlimerick_post_show_end_date      = get_field( "uchlimerick_post_show_end_date" );
-                        $date_uchlimerick_post_show_end_date = date( "j M", strtotime( $uchlimerick_post_show_end_date ) );
+                        $date_uchlimerick_post_show_end_date = date( "j M, Y", strtotime( $uchlimerick_post_show_end_date ) );
                         
                         $uchlimerick_post_show_book_ticket_link = get_field( "uchlimerick_post_show_book_ticket_link" );
                         
@@ -78,7 +84,7 @@
                                     set_transient($transient_key,$eventObj,HOUR_IN_SECONDS);
                                 }
                                 $eventObj      = get_transient( $transient_key );
-                                $show_date     = date( 'd M', strtotime( $eventObj['date_time'] ) );
+                                $show_date     = date( 'd M, Y', strtotime( $eventObj['date_time'] ) );
                                 $book_ticket = $eventObj['url'];
                                 
                             }
@@ -116,7 +122,8 @@
                                                     }
                                                     ?> 
                                     </a>
-                                    <div class="btn-wrapper book-btn-cover">
+                                </div>
+                                <div class="btn-wrapper book-btn-cover">
                                         <?php
                                         if(isset($book_ticket)){
                                             ?>
@@ -136,7 +143,6 @@
                                         ?>
                                     
                                     </div>
-                                </div>
                             </div>
                         </div>
                         <?php $i ++; ?>

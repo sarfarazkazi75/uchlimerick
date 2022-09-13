@@ -34,7 +34,7 @@
                    }
                     
                   ?>
-                   <div class="<?php echo $class_add;?>" data-aos="fade-up">
+                   <div class="<?php echo $class_add;?>" data-aos="fade-up" data-aos-duration="700">
                      <div class="visit-card">
                         <img src="<?php echo $card_image['url'];?>" alt="">
                         <div class="visit-details">

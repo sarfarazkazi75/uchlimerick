@@ -14,14 +14,14 @@
             <?php if(have_rows('supporters')) { 
                 while(have_rows('supporters')) { the_row(); 
                     $supporters_logo = get_sub_field('supporters_logo'); 
-                    $supporters_logo_link = get_sub_field('supporters_logo_link');
+                    //$supporters_logo_link = get_sub_field('supporters_logo_link');
             ?>
-            <?php if($supporters_logo_link != ""): ?>
-            <a href="<?php $supporters_logo_link['url']; ?>" target="<?php $supporters_logo_link['target']; ?>"
+            
+            <a href="" target=""
                 class="support-logo" data-aos="fade-left">
-                <img src="<?php echo $supporters_logo['url']; ?>" alt="logo-1">
+                <?php if($supporters_logo != ""): ?><img src="<?php echo $supporters_logo['url']; ?>" alt="logo-1"><?php endif; ?>
             </a>
-            <?php endif; ?>
+           
             <?php } 
             } ?>
         </div>
