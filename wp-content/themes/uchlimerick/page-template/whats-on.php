@@ -18,6 +18,7 @@ get_header();
                                     <div class="nav-select-cover">
                                         <form action="<?php echo home_url( '/whats-on#filter' ); ?>" method="GET" id="filter">
 											<?php
+											
 											if ( $terms = get_terms( [ 'taxonomy' => 'genre', 'orderby' => 'name' ] ) ) :
 												echo '<div class="nav-select">';
 												echo '<select name="genrefilter" id="genrefilter" onchange="this.form.submit()">';
@@ -36,8 +37,45 @@ get_header();
 												?>
 											<?php
 											endif;
+											
+											$months = get_terms( [
+												'taxonomy' => 'month',
+												'order' => 'ASC',
+												'hide_empty' => true,
+												'meta_key'   => 'menu_order',
+												'orderby'    => 'meta_value_num'
+											] );
+											$list_months = wp_list_pluck($months,'slug');
+											
+											$date = date("Y-m-01");
+											$newdate = date('Y-m-d',strtotime ( '+12 month' , strtotime ( $date ) )) ;
+											
+											$start    = new DateTime($date);
+											
+											$end      = new DateTime($newdate);
+											
+											$interval = DateInterval::createFromDateString('1 month');
+											$period   = new DatePeriod($start, $interval, $end);
+											echo '<div class="nav-select">';
+											echo '<select name="monthfilter" id="monthfilter" onchange="this.form.submit()">';
+											echo '<option value="">Filter by</option>';
+											foreach ($period as $dt) {
+											    $month = strtolower($dt->format("F"));
+											    if(!in_array($month,$list_months)){
+											        continue;
+                                                }
+												$month_yr = $dt->format("F Y");
+												$month_yr_val = strtolower($dt->format("F-Y"));
+												?>
+                                                <option value="<?php echo $month_yr_val ?>" <?php selected( isset( $_REQUEST['filter_by'] ) ? $_REQUEST['filter_by'] : '',													$month_yr_val ); ?>><?php echo $month_yr; ?></option>
+												<?php
+											}
+											echo '</select>';
+											echo '</div>';
+											/*
 											if ( $terms = get_terms( [
-											    'taxonomy' => 'month', 'order' => 'ASC',
+											    'taxonomy' => 'month',
+                                                'order' => 'ASC',
 											    'hide_empty' => true,
 											    'meta_key'   => 'menu_order',
 											    'orderby'    => 'meta_value_num'
@@ -81,7 +119,7 @@ get_header();
 												?>
 											<?php
 											endif;
-											
+											*/
 											?>
                                         </form>
                                     </div>
@@ -153,15 +191,16 @@ get_header();
 								'operator' => $gen_cat_id ? 'IN' : 'NOT IN',
 							];
                         }
-						if(!empty($month_cat_id) && !empty($year_cat_id) ){
+						if(!empty($month_cat_id) ){
 							$args[ 'meta_query' ] = array(
 								array(
 									'key'     => 'event_month_years',
-									'value'   => sprintf(':"%s";', $month_cat_id.'-'.$year_cat_id),
+									'value'   => sprintf(':"%s";', $month_cat_id),
 									'compare'   => 'LIKE',
 								)
 							);
                         }
+						/*
 						else{
 							if(!empty($month_cat_id)){
 								$args['tax_query'][]= [
@@ -185,7 +224,7 @@ get_header();
 							}
                         }
 						
-						
+						*/
 						/*
 						
 						*/

@@ -433,9 +433,15 @@ function data_fetch() {
 	$i = 0;
 	// $classes = array('col-md-8 order-md-1 order-2', 'col-md-4 order-md-2 order-1', 'col-md-4 order-md-3 order-4', 'col-md-4 order-md-4 order-3', 'col-md-4 order-md-5 order-5', 'col-md-4 order-md-6 order-6', 'col-md-8 order-md-7 order-7', 'col-md-4 order-md-8 order-9', 'col-md-4 order-md-9 order-10', 'col-md-4 order-md-10 order-8', 'col-md-8 order-md-11 order-11', 'col-md-4 order-md-12 d-md-block d-none order-12');
 	$classes   = [ 'col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4', 'col-md-4', 'col-md-4', 'col-md-8', 'col-md-4' ];
+	if($_POST['keyword'] != ""){
+	$the_query = new WP_Query( [ 'posts_per_page' => 12, 's' => esc_attr( $_POST['keyword'] ), 'post_type' => 'show',/*'meta_key'   => 'eventDateTime',
+                        'orderby'    => 'meta_value_num',
+						'order'          => 'ASC',*/ ] );
+	}else{	
 	$the_query = new WP_Query( [ 'posts_per_page' => 12, 's' => esc_attr( $_POST['keyword'] ), 'post_type' => 'show','meta_key'   => 'eventDateTime',
                         'orderby'    => 'meta_value_num',
 						'order'          => 'ASC', ] );
+	}
 	if ( $the_query->have_posts() ) :
 		while ( $the_query->have_posts() ): $the_query->the_post();
 			
