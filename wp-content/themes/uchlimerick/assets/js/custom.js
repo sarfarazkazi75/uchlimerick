@@ -259,7 +259,6 @@ $("#load_more").click(function(){
         else
           //$(".ajax_response").append(posts[i]);
             $("#show_content_wrap_full").append(posts[i]);
-            console.log(posts);
             $('.post-details h6.text-border-bottom').each(function(i, obj) {
               var output = ($(this).text()).replace(
                               /(\w)(\w*)/g,

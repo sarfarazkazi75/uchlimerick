@@ -276,6 +276,7 @@ get_header();
                                     $booking_link = 1;
                                 }
 							}
+							/*
 							if ( $i == 2 ) {
 								$inner_class      = 'donate-cover bg-gold';
 								$donate_post_data = new WP_Query( [
@@ -322,7 +323,8 @@ get_header();
 									endwhile;
 								endif;
 								?>
-							<?php } elseif ( $i == 9 ) {
+							<?php }
+							elseif ( $i == 9 ) {
 								$inner_class               = 'donate-cover Become-friend-cover bg-light-gray';
 								$become_a_friend_post_data = new WP_Query( [
 									'post_type'      => 'show',
@@ -367,7 +369,9 @@ get_header();
 									endwhile;
 								endif;
 								?>
-							<?php } else {
+							<?php }
+							*/
+//							else {
 								$inner_class = 'post-card';
 								$title       = '<h6 class="text-border-bottom">' . get_the_title() . '</h6>';
 								$permalink   = get_permalink(); ?>
@@ -419,7 +423,7 @@ get_header();
 										</div>
                                     </div>
                                 </div>
-							<?php }
+							<?php //}
 							?>
 							<?php $i ++; ?>
 						<?php endwhile; ?>
