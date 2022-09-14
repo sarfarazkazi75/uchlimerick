@@ -1,0 +1,16 @@
+
+p	php:S3776p"TRefactor this function to reduce its Cognitive Complexity from 25 to the 15 allowed.(ü…ë³8»¦ÐÔ¬0
+v	php:S3776Ì"TRefactor this function to reduce its Cognitive Complexity from 26 to the 15 allowed.(Ö–Žóøÿÿÿÿ8Ê¶áð¬0
+o	php:S1192¯"MDefine a constant instead of duplicating this literal "<div class="" 3 times.(˜˜Ï’þÿÿÿÿ8Ë¶áð¬0
+u	php:S1192R"YDefine a constant instead of duplicating this literal "<div class="post-image">" 3 times.(ŒÄå°8Ë¶áð¬0
+d	php:S1192U"HDefine a constant instead of duplicating this literal "</div>" 13 times.(ý²òö8»¦ÐÔ¬0
+|	php:S1192V"[Define a constant instead of duplicating this literal "<div class="post-details">" 3 times.(öâ¨Ùþÿÿÿÿ8Ë¶áð¬0
+g	php:S1192T"KDefine a constant instead of duplicating this literal "<img src="" 3 times.(Ð¥Ë“8Ì¶áð¬0
+Rphp:S836S"2Review the data-flow - use of uninitialized value.(áèýšÿÿÿÿÿ8»¦ÐÔ¬0
+Nphp:S836²"2Review the data-flow - use of uninitialized value.(þæŒé8¼¦ÐÔ¬0
+Nphp:S836"2Review the data-flow - use of uninitialized value.(þæŒé8Ì¶áð¬0
+Sphp:S836¶"2Review the data-flow - use of uninitialized value.(â«Çðüÿÿÿÿ8Ì¶áð¬0
+@php:S125´"Remove this commented out code.(­åï½øÿÿÿÿ8Ì¶áð¬0
+Kphp:S121c"0Add curly braces around the nested statement(s).(Ç²Ôž8¼¦ÐÔ¬0
+Lphp:S121¿"0Add curly braces around the nested statement(s).(Ç²Ôž8Ì¶áð¬0
+Lphp:S121›"0Add curly braces around the nested statement(s).(Ç²Ôž8Ì¶áð¬0

@@ -1,0 +1,21 @@
+
+sphp:S101"SRename class "DD_import_shows" to match the regular expression ^[A-Z][a-zA-Z0-9]*$.(æõâšÿÿÿÿÿ8€²ö®¬0
+p	php:S3776,"TRefactor this function to reduce its Cognitive Complexity from 49 to the 15 allowed.(¦å£ó8²ö®¬0
+r	php:S3776›"URefactor this function to reduce its Cognitive Complexity from 254 to the 15 allowed.(•ÇüÚ8‘²ö®¬0
+v	php:S3776…"TRefactor this function to reduce its Cognitive Complexity from 21 to the 15 allowed.(ÉÉÜ¦øÿÿÿÿ8ä‡ĞÔ¬0
+h	php:S1192•"KDefine a constant instead of duplicating this literal "Sync Shows" 3 times.(Ô•¦8‘²ö®¬0
+g	php:S1192e"KDefine a constant instead of duplicating this literal "[ $x_tag ]" 3 times.(Ê§İĞ8‘²ö®¬0
+i	php:S1763ï"GDelete this unreachable code or refactor the code to make it reachable.(ä÷–åşÿÿÿÿ8å‡ĞÔ¬0
+d	php:S1763"GDelete this unreachable code or refactor the code to make it reachable.(Ø°Ï³8æ‡ĞÔ¬0
+F	php:S1125ø")Remove the literal "FALSE" boolean value.(•ä²ò8æ‡ĞÔ¬0
+~	php:S1488€"\Immediately return this expression instead of assigning it to the temporary variable "$res".(“¶Ã˜ùÿÿÿÿ8æ‡ĞÔ¬0
+J	php:S1481#")Remove this unused "$key" local variable.(€”à¿øÿÿÿÿ8æ‡ĞÔ¬0
+H	php:S1481ˆ"+Remove this unused "$a_key" local variable.(£—ıÇ8æ‡ĞÔ¬0
+F	php:S1481Š")Remove this unused "$key" local variable.(ÎÏ˜ª8’²ö®¬0
+H	php:S1481À"+Remove this unused "$paged" local variable.(éŒéÊ8‘²ö®¬0
+F	php:S1481Õ")Remove this unused "$att" local variable.(ñ×íŠ8’²ö®¬0
+E	php:S1481p")Remove this unused "$key" local variable.(İ—¯8’²ö®¬0
+;php:S125ä"Remove this commented out code.(–±Ù8’²ö®¬0
+;php:S125¾"Remove this commented out code.(–±Ù8Å• ù¬0
+›php:S138›"This function "shows_sync_func" has 184 lines, which is greater than the 150 lines authorized. Split it into smaller functions.(•ÇüÚ8’²ö®¬0
+OWeb:ImgWithoutAltCheckÍ"%Add an "alt" attribute to this image.(ïÖª†8ÄÄ©¬0
