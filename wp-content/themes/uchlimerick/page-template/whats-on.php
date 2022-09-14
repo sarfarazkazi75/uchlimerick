@@ -47,6 +47,7 @@ get_header();
 											] );
 											$list_months = wp_list_pluck($months,'slug');
 											
+											
 											$date = date("Y-m-01");
 											$newdate = date('Y-m-d',strtotime ( '+12 month' , strtotime ( $date ) )) ;
 											
@@ -58,7 +59,7 @@ get_header();
 											$period   = new DatePeriod($start, $interval, $end);
 											echo '<div class="nav-select">';
 											echo '<select name="monthfilter" id="monthfilter" onchange="this.form.submit()">';
-											echo '<option value="">Filter by</option>';
+											echo '<option value="">Search Month</option>';
 											foreach ($period as $dt) {
 											    $month = strtolower($dt->format("F"));
 											    if(!in_array($month,$list_months)){
@@ -73,6 +74,7 @@ get_header();
 											echo '</select>';
 											echo '</div>';
 											/*
+											
 											if ( $terms = get_terms( [
 											    'taxonomy' => 'month',
                                                 'order' => 'ASC',
@@ -269,6 +271,10 @@ get_header();
 									$show_date   = date( 'd M, Y', strtotime( $eventObj['date_time'] ) );
 									$book_ticket = $eventObj['url'];
 								}
+                                if(sizeof($events) <= 1){
+                                    $book_ticket = $events[0]['url'];
+                                    $booking_link = 1;
+                                }
 							}
 							if ( $i == 2 ) {
 								$inner_class      = 'donate-cover bg-gold';
