@@ -38,17 +38,17 @@ get_header();
 											endif;
 											if ( $terms = get_terms( [
 											    'taxonomy' => 'month', 'order' => 'ASC',
-											    'hide_empty' => false,
+											    'hide_empty' => true,
 											    'meta_key'   => 'menu_order',
 											    'orderby'    => 'meta_value_num'
                                                 ] ) ) :
 												echo '<div class="nav-select">';
 												echo '<select name="monthfilter" id="monthfilter" onchange="this.form.submit()">';
-												echo '<option value="">Months</option>';
+												echo '<option value="">Month</option>';
 												foreach ( $terms as $term ) :
 													?>
-                                                    <option value="<?php echo $term->term_id; ?>" <?php selected( isset( $_REQUEST['monthfilter'] ) ? $_REQUEST['monthfilter'] : '',
-														$term->term_id ); ?>><?php echo ucwords($term->name); ?></option>
+                                                    <option value="<?php echo $term->slug; ?>" <?php selected( isset( $_REQUEST['monthfilter'] ) ? $_REQUEST['monthfilter'] : '',
+														$term->slug); ?>><?php echo ucwords($term->name); ?></option>
 												<?php
 												endforeach;
 												echo '</select>';
@@ -66,11 +66,11 @@ get_header();
                                                 ] ) ) :
 												echo '<div class="nav-select">';
 												echo '<select name="year_filter" id="year_filter" onchange="this.form.submit()">';
-												echo '<option value="">Years</option>';
+												echo '<option value="">Year</option>';
 												foreach ( $terms as $term ) :
 													?>
-                                                    <option value="<?php echo $term->term_id; ?>" <?php selected( isset( $_REQUEST['year_filter'] ) ? $_REQUEST['year_filter'] : '',
-														$term->term_id ); ?>><?php echo ucwords($term->name); ?></option>
+                                                    <option value="<?php echo $term->slug; ?>" <?php selected( isset( $_REQUEST['year_filter'] ) ? $_REQUEST['year_filter'] : '',
+														$term->slug ); ?>><?php echo ucwords($term->name); ?></option>
 												<?php
 												endforeach;
 												echo '</select>';
@@ -136,36 +136,61 @@ get_header();
 						],
 					];
 					if ( isset( $_REQUEST['genrefilter'] ) ) {
-						
 						$gen_cat_id        = $_REQUEST['genrefilter'] ?? NULL;
 						$gift_idea_cat_id  = $_REQUEST['gift_ideafilter'] ?? NULL;
 						$month_cat_id      = $_REQUEST['monthfilter'] ?? NULL;
 						$year_cat_id      = $_REQUEST['year_filter'] ?? NULL;
 						$taxquery          = [
 							'relation' => 'AND',
-							[
+						];
+						$args['tax_query'] = $taxquery;
+						if(!empty($gen_cat_id)){
+						 
+							$args['tax_query'][] =[
 								'taxonomy' => 'genre',
 								'field'    => 'id',
 								'terms'    => $gen_cat_id,
 								'operator' => $gen_cat_id ? 'IN' : 'NOT IN',
-							],
-							[
-								'taxonomy' => 'month',
-								'field'    => 'id',
-								'order'    => 'ASC',
-								'terms'    => $month_cat_id,
-								'operator' => $month_cat_id ? 'IN' : 'NOT IN',
-							],
-							[
-								'taxonomy' => 'years',
-								'field'    => 'id',
-								'order'    => 'ASC',
-								'terms'    => $year_cat_id,
-								'operator' => $year_cat_id ? 'IN' : 'NOT IN',
-							],
-						];
-						$args['tax_query'] = $taxquery;
+							];
+                        }
+						if(!empty($month_cat_id) && !empty($year_cat_id) ){
+							$args[ 'meta_query' ] = array(
+								array(
+									'key'     => 'event_month_years',
+									'value'   => sprintf(':"%s";', $month_cat_id.'-'.$year_cat_id),
+									'compare'   => 'LIKE',
+								)
+							);
+                        }
+						else{
+							if(!empty($month_cat_id)){
+								$args['tax_query'][]= [
+									'taxonomy' => 'month',
+									'field'    => 'slug',
+									'order'    => 'ASC',
+									'terms'    => $month_cat_id,
+									'operator' => $month_cat_id ? 'IN' : 'NOT IN',
+								];
+							}
+							
+							if(!empty($year_cat_id)){
+								
+								$args['tax_query'][]= [
+									'taxonomy' => 'years',
+									'field'    => 'slug',
+									'order'    => 'ASC',
+									'terms'    => $year_cat_id,
+									'operator' => $year_cat_id ? 'IN' : 'NOT IN',
+								];
+							}
+                        }
+						
+						
+						/*
+						
+						*/
 					}
+//					dd($args);
 					$wp_query = new WP_Query( $args );
 					$count    = $GLOBALS['wp_query']->post_count;
 					$i        = 0;

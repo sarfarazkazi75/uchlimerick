@@ -7,10 +7,10 @@ class DD_import_shows {
 		add_action( 'admin_notices', [ $this, 'general_admin_notice_dd' ] );
 		add_action( 'init', [ $this, 'import_property_data_dd' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
-		add_action('wp', [$this,'import_setup_schedule']);
+		/*add_action('wp', [$this,'import_setup_schedule']);
 		add_action('cron_for_daily_shows',[$this,'dd_cron_for_daily_shows']);
 		add_action('cron_for_daily_shows_api',[$this,'dd_cron_for_daily_shows_api']);
-		add_filter('cron_schedules',[$this, 'add_cron_schedules'], 9999, 1);
+		add_filter('cron_schedules',[$this, 'add_cron_schedules'], 9999, 1);*/
 	}
 	function add_cron_schedules($schedules){
 		if (!isset($schedules['dd_every_25_minute'])) {
@@ -366,6 +366,7 @@ class DD_import_shows {
 							),
 							'fields'         => 'ids',
 						) );
+						
 						if(isset($posts_with_meta[0])){
 							$post_id     = reset($posts_with_meta);
 						}
@@ -449,18 +450,29 @@ class DD_import_shows {
 						}
 						
 						if(isset($bind_event)){
+							$month_yr = $store_yr = $store_month = $event_dates= array();
 						    foreach ($bind_event as $index => $event){
 							    $event_date                  = $event['date_time_iso']['content'];
+							    
 							    $event_dates[$index]     = date_i18n( 'd M, Y', strtotime( $event_date ) );
-							    $event_yr  = date_i18n( 'Y', strtotime( $event_date ) );
+							    
+							    $event_yr  = date_i18n( 'Y', strtotime( $event_date));
+							    
 							    $event_month   = date_i18n( 'F', strtotime( $event_date ) );
+							    
 							    $this->check_assign_terms( $post_id, strtolower( $event_month ), 'month', true );
+							    
 							    $this->check_assign_terms( $post_id, $event_yr, 'years', true );
+							    
 							    $store_yr[$index] = $event_yr;
+							    
 							    $store_month[$index] = $event_month;
-							    update_post_meta( $post_id, 'event_years', $store_yr );
-							    update_post_meta( $post_id, 'event_month', $store_month);
-							    update_post_meta( $post_id, 'eventDate',$event_dates );
+							    
+							    $month_yr[$index] = strtolower($event_month).'-'.$event_yr;
+							    update_post_meta( $post_id, 'event_month_years',array_unique($month_yr)  );
+							    update_post_meta( $post_id, 'event_years', array_unique($store_yr) );
+							    update_post_meta( $post_id, 'event_month', array_unique($store_month));
+							    update_post_meta( $post_id, 'eventDate',array_unique($event_dates) );
 						    }
                         }
 						if ( isset( $meta_values['properties'] ) && ! empty( $meta_values['properties'] ) ) {
