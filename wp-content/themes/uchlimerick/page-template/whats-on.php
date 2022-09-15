@@ -276,106 +276,11 @@ get_header();
                                     $booking_link = 1;
                                 }
 							}
-							/*
-							if ( $i == 2 ) {
-								$inner_class      = 'donate-cover bg-gold';
-								$donate_post_data = new WP_Query( [
-									'post_type'      => 'show',   // custom post type
-									'posts_per_page' => 1,
-									'tax_query'      => [
-										[
-											'taxonomy' => 'show_cat',
-											'field'    => 'id',
-											'terms'    => $donate_category_id,
-										],
-									],
-								] );
-								if ( $donate_post_data->have_posts() ):
-									while ( $donate_post_data->have_posts() ): $donate_post_data->the_post();
-										?>
-                                        <div class="show_single_wrap donate_div <?php echo $classes[ $i % 12 ]; ?>" data-href="<?php the_permalink(); ?>">
-                                            <div class="<?php echo $inner_class; ?>">
-                                                <div class="post-image">
-	
-	                                                <?php $url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ), 'thumbnail' ); ?>
-                                                    <?php
-                                                            $attachment_urls = get_post_meta( $post->ID, 'attachments_urls', TRUE );
-                                                            if(empty($url)){
-                                                                if(isset($attachment_urls[0])){
-                                                                    $url = $attachment_urls[0];
-                                                                }
-                                                                else{
-                                                                    $url = get_template_directory_uri().'/assets/images/fallback-Image-2.png';
-                                                                }
-                                                            }
-                                                     
-													?>
-                                                    <img src="<?php echo $url ?>"/>
-                                                </div>
-                                                <div class="post-details">
-                                                    <h4 class="text-border-bottom"><a href="<?php the_permalink(); ?>" style="color: #fff"><?php echo the_title(); ?></a></h4>
-                                                    <p><?php the_content(); ?></p>
-                                                    <a class="post-date arrwo-has-link" href="<?php the_permalink(); ?>" target="blank">Read more</a>
-                                                </div>
-                                            </div>
-                                        </div>
-									<?php
-									endwhile;
-								endif;
-								?>
-							<?php }
-							elseif ( $i == 9 ) {
-								$inner_class               = 'donate-cover Become-friend-cover bg-light-gray';
-								$become_a_friend_post_data = new WP_Query( [
-									'post_type'      => 'show',
-									'posts_per_page' => 1,
-									'tax_query'      => [
-										[
-											'taxonomy' => 'show_cat',
-											'field'    => 'id',
-											'terms'    => $become_a_friend_category_id,
-										],
-									],
-								] );
-								if ( $become_a_friend_post_data->have_posts() ):
-									while ( $become_a_friend_post_data->have_posts() ): $become_a_friend_post_data->the_post();
-										?>
-                                        <div class="show_single_wrap bocome_a_fiend_div <?php echo $classes[ $i % 12 ]; ?>" data-href="<?php the_permalink(); ?>">
-                                            <div class="<?php echo $inner_class; ?>">
-                                                <div class="post-image">
-	                                                <?php $url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ), 'thumbnail' ); ?>
-	                                                <?php
-	                                                $attachment_urls = get_post_meta( $post->ID, 'attachments_urls', TRUE );
-	                                                if(empty($url)){
-		                                                if(isset($attachment_urls[0])){
-			                                                $url = $attachment_urls[0];
-		                                                }
-		                                                else{
-			                                                $url = get_template_directory_uri().'/assets/images/fallback-Image-2.png';
-		                                                }
-	                                                }
-	
-	                                                ?>
-                                                    <img src="<?php echo $url ?>"/>
-                                                </div>
-                                                <div class="post-details">
-                                                    <h4 class="text-border-bottom"><a href="<?php the_permalink(); ?>" style="color: #fff"><?php echo the_title(); ?></a></h4>
-                                                    <p><?php the_content(); ?></p>
-                                                    <a class="post-date arrwo-has-link" href="<?php the_permalink(); ?>" target="blank">Read more</a>
-                                                </div>
-                                            </div>
-                                        </div>
-									<?php
-									endwhile;
-								endif;
-								?>
-							<?php }
-							*/
-//							else {
+						
 								$inner_class = 'post-card';
 								$title       = '<h6 class="text-border-bottom">' . get_the_title() . '</h6>';
 								$permalink   = get_permalink(); ?>
-                                <div class="show_single_wrap test_from_whatson_template <?php echo $classes[ $i % 12 ]; ?>">
+                                <div class="show_single_wrap test_from_whatson_template <?php echo ($i % 6 == 0)?'col-md-8':'col-md-4'; ?>">
                                     <div class="<?php echo $inner_class; ?>">
                                         <div class="post-image">
 	                                        <?php $url = wp_get_attachment_url( get_post_thumbnail_id( $post->ID ), 'thumbnail' ); ?>
@@ -423,8 +328,6 @@ get_header();
 										</div>
                                     </div>
                                 </div>
-							<?php //}
-							?>
 							<?php $i ++; ?>
 						<?php endwhile; ?>
 						<?php wp_reset_query(); ?>
